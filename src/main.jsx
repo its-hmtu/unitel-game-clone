@@ -9,7 +9,32 @@ const router = createBrowserRouter(
     {
       path: '/',
       element: <App />
-    }
+    },
+
+    {
+      path: '/shop',
+      element: <App />
+    },
+
+    {
+      path: '/prize',
+      element: <App />
+    },
+
+    {
+      path: '/rank',
+      element: <App />
+    },
+
+    {
+      path: '/spine',
+      element: <App />
+    },
+
+    {
+      path: '/more',
+      element: <App />
+    },
   ]
 )
 

@@ -1,6 +1,7 @@
 .navbar-container {
   background-color: $header-bg;
-  padding: 20px 200px;
+  padding: 16px 200px;
+  max-height: 80px;
 }
 
 .navbar-nav {
@@ -12,6 +13,10 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+
+  &:hover {
+    color: $primary;
+  }
 }
 
 .navbar-container a.active {
@@ -20,4 +25,35 @@
 
 .navbar-container a {
   color: $gray-300;
+}
+
+.navbar-container .flag-icon {
+  width: 25px;
+}
+
+.login-btn {
+  background-color: $primary!important;
+  color: $white-100!important;
+  padding: 8px 16px!important;
+  border-radius: 8px!important;
+  font-size: 14px!important;
+  font-weight: 600!important;
+  gap: 8px;
+
+  &:hover {
+    background-color: $primary-hover!important;
+  }
+}
+
+.language-btn {
+  background-color: $header-bg!important;
+  color: $gray-300!important;
+  padding: 4px 8px 0!important;
+  text-transform: none!important;
+  font-size: 16px!important;
+  margin-right: 16px!important;
+
+  &:hover {
+    color: $primary!important;
+  }
 }
