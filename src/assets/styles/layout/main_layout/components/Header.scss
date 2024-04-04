@@ -1,0 +1,23 @@
+.navbar-container {
+  background-color: $header-bg;
+  padding: 20px 200px;
+}
+
+.navbar-nav {
+  gap: 30px;
+}
+
+.navbar-nav--item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.navbar-container a.active {
+  color: $primary;
+}
+
+.navbar-container a {
+  color: $gray-300;
+}

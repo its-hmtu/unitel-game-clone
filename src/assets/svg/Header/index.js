@@ -1,0 +1,6 @@
+export { HeaderHomeSvg } from './HeaderHomeSvg'
+export { HeaderShopSvg } from './HeaderShopSvg'
+export { HeaderStarSvg } from './HeaderStarSvg'
+export { HeaderCupSvg } from './HeaderCupSvg'
+export { HeaderUserSvg } from './HeaderUserSvg'
+export { HeaderMenuSvg } from './HeaderMenuSvg'
