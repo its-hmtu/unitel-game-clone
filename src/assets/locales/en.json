@@ -1,0 +1,359 @@
+{
+	"header": {
+		"home": "Home",
+		"shop": "Shop",
+		"prize": "Prize",
+		"rank": "Rank",
+		"friend": "Friend",
+		"more": "More",
+		"account": {
+			"my_acc": "My account",
+			"gift_hist": "Gift history",
+			"invitation": "Invitation",
+			"introduce": "Introduce",
+			"setting": "Setting",
+			"change_pass": "Change password",
+			"logout": "Log out"
+		}
+	},
+	"all-game": "ALL GAME",
+	"mobile": {
+		"footer": {
+			"game": "Game"
+		},
+		"my_acc": {
+			"title": "Personal information",
+			"basic_info": "Basic information",
+			"ava": "Avatar",
+			"name": "Display name",
+			"phone": "Phone number",
+			"ref": "Referral code",
+			"change_ava": "Change photo",
+			"change_pass": "Change password"
+		},
+		"select_ava": "Select your avatar",
+		"change_pass": {
+			"title": "Change password",
+			"new": "New password",
+			"enter_new": "Enter new password"
+		},
+		"gift_hist": {
+			"title": "Gift history",
+			"this_month": "This month",
+			"this_week": "This week",
+			"today": "Today",
+			"search": "Search"
+		},
+		"invitation": {
+			"title": "Invitation",
+			"name": "Name",
+			"gold": "Gold"
+		},
+		"setting": {
+			"title": "Setting",
+			"sounds": "Sounds",
+			"bg_music": "Background music",
+			"lang": "Language",
+			"en": "English",
+			"la": "Laotian"
+		},
+		"introduce": "Introduce",
+		"change_info": {
+			"title": "Change information",
+			"name": "Display name",
+			"phone": "Phone number"
+		}
+	},
+	"profile": {
+		"profile": "Profile",
+		"select_ava": "Select your avatar",
+		"sidebar": {
+			"my_acc": "My account",
+			"friend": "Friend",
+			"gift_hist": "Gift history",
+			"invitation": "Invitation",
+			"introduce": "Introduce",
+			"setting": "Setting",
+			"change_pass": "Change password",
+			"logout": "Log out"
+		},
+		"personal_info": {
+			"title": "Personal information",
+			"name": "Display name",
+			"phone": "Phone number",
+			"referral": "Referral code",
+			"referral_success": "Referral code copied to clipboard",
+			"referral_error": "Can not copied referral code"
+		},
+		"change_pass": {
+			"new": "New password",
+			"enter_new": "Enter new password"
+		},
+		"gift_hist": {
+			"title": "Gift history",
+			"this_month": "This month",
+			"this_week": "This week",
+			"today": "Today",
+			"search": "Search"
+		},
+		"invitation": {
+			"title": "Invitation",
+			"name": "Name",
+			"gold": "Gold"
+		},
+		"introduce": {
+			"title": "Introduce"
+		},
+		"setting": {
+			"sounds": "Sounds",
+			"bg_music": "Background music",
+			"lang": "Language",
+			"en": "English",
+			"la": "Laos",
+			"vi": "VietNamese"
+		}
+	},
+	"login": {
+		"login": "Login"
+	},
+	"footer": {
+		"all_right": "Unitel - Arabica. All Rights Reserved",
+		"content": "Arabica Gaming Hub service is an online one-versus-one platform which contains many small game where user could play only with other players over the internet. The service also has some mechanic to reward through weekly rewards and spin rewards.",
+		"hot": "Game hot",
+		"help": "Help",
+		"contact": "Contact us",
+		"receive": "Receive",
+		"faq": "FAQ",
+		"term_condition": "Term condition",
+		"intro": "Intro",
+		"term_privacy": "Term privacy",
+		"summary": "Summary"
+	},
+	"game_card": {
+		"play_btn": "Play now",
+		"how_to_play_btn": "How to play",
+		"how_to_play": "HOW TO PLAY",
+		"number_playing": "_NUMBER_ played"
+	},
+	"search_bar": "Search game",
+	"congrat": "Congratulations to _PLAYER_ who just received _REWARD_.",
+	"modal": {
+		"form": {
+			"phone": "Phone number",
+			"pass": "Password",
+			"gold": "Gold number"
+		},
+		"login": {
+			"title": "Login Unitel",
+			"title_OTP": "Login OTP",
+			"desc": "Join the game now to receive many attractive gifts.",
+			"save_pass": "Save password",
+			"login_otp": "Or login OTP",
+			"login_otp_btn": "Login OTP",
+			"login_pass": "Or login with password",
+			"login_UniID": "Or login with UniID",
+			"login_pass_btn": "Login with password",
+			"otp_confirm": "Confirm OTP",
+			"otp_sendtophone": "Enter OTP code sent to Tel: _PHONE_",
+			"otp_resend": "Resend",
+			"otp_notreceived": "You have not received the code.",
+			"otp_error": "You did not enter a phone number"
+		},
+		"create_room": {
+			"gold_bet": "Enter gold",
+			"room_pass": "Enter pass (optional)"
+		},
+		"btn": {
+			"agree": "Agree",
+			"ok": "OK",
+			"cancel": "Cancel"
+		},
+		"join_playroom": {
+			"join_game": "Join game"
+		},
+		"invite": {
+			"friend": "Invite friend",
+			"invite": "Invite",
+			"invitation": "Invitation",
+			"game": "Game",
+			"room_id": "ID room",
+			"bet": "Bet level"
+		},
+		"profile": {
+			"logout": "Are you sure you want to logout?",
+			"change_pass_success": "Change password successfully!"
+		},
+		"prize": {
+			"are_you_sure": "Are you sure you want to spend _GOLD_ GOLD in exchange for _REWARD_?"
+		},
+		"shop": {
+			"are_you_sure": "Are you sure you want to buy this _PACKAGE_ package?",
+			"are_you_cancel": "Are you sure you want to cancel this _PACKAGE_ package?",
+			"title_modal_OTP": "Confirm OTP",
+			"error_null_OTP": "Invalid OTP"
+		},
+		"change_pass": "Are you sure to change your password?",
+		"change_pass_error": "Please enter full information!",
+		"error": "Error! Try again later.",
+		"success": "Success.",
+		"reward": {
+			"title": "Reward",
+			"confirm_button": "Confirm",
+			"sub_input": "Enter the amount of gold to exchange",
+			"require_input": " (must be a multiple of [number])",
+			"error_null_input": "Gold number cannot be left blank",
+			"note_input": "You must have at least [number] gold",
+			"check_gold_enought": "You don't have enough gold"
+		}
+	},
+	"room": {
+		"list-game-no-data": "No search data",
+		"other_game": "Other games",
+		"create_room": "Create room",
+		"search_id": "Search ID",
+		"tab": {
+			"bronze": "Bronze",
+			"silver": "Silver",
+			"gold": "Gold",
+			"diamond": "Diamond"
+		},
+		"table": {
+			"id": "ID",
+			"player": "Player",
+			"bet_level": "Bet level",
+			"status": "Status",
+			"pagination": "Show _FIRSTROOM_ to _LASTROOM_ in total _TOTALROOM_",
+			"join": "Join",
+			"memessage_play_now": "You are currently in another playroom, please exit all playrooms before starting",
+			"check_coin": "not enough coins"
+		},
+		"room": "Room",
+		"playroom": {
+			"start": "Start",
+			"ready": "Ready",
+			"unready": "UnReady",
+			"enter_text": "Enter text",
+			"title": "Play room",
+			"find_room": "Find room",
+			"error_game": "There was an error while starting the game, please try again!"
+		}
+	},
+	"confirm": "Confirm",
+	"err_page": {
+		"title": "Page not found",
+		"content": "Sorry! The page you are looking for does not exist or has been moved."
+	},
+	"maintain_page": {
+		"title": "The system is under warranty",
+		"content": "We apologize for this inconvenience. To improve our service, we have taken our website down for maintenance."
+	},
+	"shoppage": {
+		"choose": "Choose an Option",
+		"title": "Investment Package",
+		"retail": "Retail package",
+		"sub": "Subscription package",
+		"reward_desc": "Get it now _GOLD_ gold",
+		"buy": "Buy now _PRICE_ Kip",
+		"cancel": "Cancel {name-package}",
+		"day": "DAY",
+		"week": "WEEK",
+		"month": "MONTH"
+	},
+	"prizepage": {
+		"choose": "Choose an Option",
+		"title": "Reward",
+		"gold": "_GOLD_ GOLD",
+		"sub_title": "Change _DATA_",
+		"data": "Change data",
+		"minutes": "Change call minutes",
+		"title_confirm": "Are you sure you want to exchange _GOLD_ for _REWARD_ ?"
+	},
+	"rankpage": {
+		"title": "Table ranking",
+		"title_t12":"December Ranking Table",
+		"point":"Accumulated Point",
+		"my_point":"My Accumulated Point",
+		"day": "Today",
+		"week": "Week",
+		"month": "Month",
+		"table": {
+			"rank": "Rank",
+			"player": "Player",
+			"gold": "Gold",
+			"winrate": "Win/Lose"
+		},
+		
+		"mobile": {
+			"top": "Top earner",
+			"last": "Last win",
+			"gold": "Gold",
+			"winrate": "Win/Lose"
+		}
+	},
+	"friendpage": {
+		"title": "Friend",
+		"name": "Name",
+		"gold": "Gold",
+		"all_friend": "All friends",
+		"contact_only": "Contact only",
+		"invite": "Invite",
+		"invite_play": "Invite to play",
+		"friend": "Friend"
+	},
+	"event":{
+		"water":{
+			"tab":{
+				"name_event":"Buonpimay Event",
+				"detail":"Detail",
+				"rank_table":"Rank Table"
+			},
+			"event_main":{
+				"your_collection":"Your collection",
+				"play_now":"Play now",
+				"buy_more_package":"Buy More Package",
+				"text_d1":"Fill in with 100 drops to collect water bucket.",
+				"text_d2":"Three people which have collected the most water buckets by the end of the event will receive 1 smartphone OPPO 79 and 2 more U-money prizes.",
+				"text_d3":"Let’s play or buy more package now to get more drops and collect more buckets."
+			},
+			"detail":{
+				"title":"Buonpimay Festival",
+				"text_d1_1":"Program time:",
+				"text_d1_2":"April 01 - April 30",
+				"text_d2_1":"Prizes:",
+				"text_d2_2":"3 special prizes for the 3 luckiest people, including:",
+				"text_d3":"1st prize: 1 OPPO A79",
+				"text_d4":"2nd prize: 1,000,000 KIP U-money",
+				"text_d5":"3rd prize: 500,000 KIP U-money",
+				"text_d6_1":"Awarding Rules:",
+				"text_d6_2":"User will have to compete to see who can collect the most water buckets. Top 3 users will receive the 3 prizes mentioned above in turn. The winner will be determined after 23:59:59 on April 30, 2024. In case users accumulate the same number of water bottles, ranking will be calculated based on the number of drops of water in the water bottle which has been not full yet. In case the number of water drops in the unfinished water bottle is equal, ranking will be based on which user reaches that number of water drops the earliest. After campaign ends, system will update the winners and then Unitel will proactively contact the winner to proceed with the award according to normal regulations.",
+				"text_d7_1":"How to collect water buckets",
+				"text_d7_2":"Let see the water bucket in the middle of the screen. It shows the number of drops you are accumulating. Try to fill the water tank with 100 water drops. You can earn more drops by winning or buying packages.",
+				"package":"Package",
+				"number":"Number of drops (random)",
+				"register":"Buy/ Renew Daily package",
+				"winning":"1 winning time",
+				"package_1":"Buy Package 1",
+				"package_2":"Buy Package 2",
+				"package_3":"Buy Package 3",
+				"package_4":"Buy Package 4",
+				"package_5":"Buy Package 5"
+			},
+			"rank":{
+				"rank": "Rank",
+				"isdn":"ISDN",
+				"name":"Nickname",
+				"bucket":"Number of buckets",
+				"drop":"Number of drops in the current bucket",
+				"my_rank":"My rank current"
+			},
+			"result":{
+				"top_1":"Congrats! You have excellently won 1st place and get 01 OPPO A79 for free. Unitel will contact you soon to give you your reward.",
+				"top_2":"Congrats! You have excellently won 2nd place and get 1,000,000 kip Umoney for free. Unitel will contact you soon to give you your reward.",
+				"top_3":"Congrats! You have excellently won 3rd place and get 500,000 kip Umoney for free. Unitel will contact you soon to give you your reward",
+				"all":"The Buonpimay event has ended. Congratulations to our 3 winners!",
+				"page":"Buonpimay event has ended. Above is the list of users who won prizes from this offer. Please continue to experience and look forward to upcoming Campaigns from Arabica!",
+				"close":"Close"
+			}
+		}
+	}
+}

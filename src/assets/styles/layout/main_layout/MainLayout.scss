@@ -1,0 +1,65 @@
+.main-layout-container {
+  background-image: url('src/assets/images/web-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-layout-outlet {
+  margin-bottom: 50px;
+}
+
+
+.carousel-indicators {
+  bottom: -50px;
+
+  .active {
+    background-color: $primary;
+  }
+}
+
+.carousel-inner {
+  & img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.event-banner {
+  position: fixed;
+  right: 10px;
+  bottom: 50px;
+  z-index: 1000;
+
+  img {
+    width: 100px;
+    animation: zoomLoop 2s infinite;
+
+    @include media-breakpoint-up(sm) {
+      width: 150px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 100%;
+    }
+  }
+
+
+}
+
+
+
+@keyframes zoomLoop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

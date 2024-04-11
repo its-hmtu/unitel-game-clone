@@ -1,0 +1,142 @@
+.game-list {
+  max-width: 96vw;
+  position: relative;
+  margin: 10px auto 0;
+
+  @include media-breakpoint-up(sm) {
+    max-width: 80vw;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-top: 60px;
+  }
+ 
+  @include media-breakpoint-up(lg) {
+    max-width: 70vw;
+  }
+
+  @include media-breakpoint-up(xl) {
+    max-width: 80vw;
+  }
+
+  & .nav-tabs {
+    border: 0;
+    margin: 0 8px 24px;  
+    gap: 20px;
+
+
+    & .nav-item {
+      
+      & .nav-link {
+        color: $gray-300;
+        border: 0;
+        border-bottom: 2px solid transparent;
+
+        @include media-breakpoint-down(lg) {
+          padding-inline: 0;
+        }
+
+        &.active {
+          color: $primary;
+          background-color: transparent;
+          border: 0;
+          border-bottom: 2px solid $primary;
+        }
+
+        &:hover {
+          color: $primary;
+          border: 0;
+          border-bottom: 2px solid $primary;
+        }
+      }
+    }
+  }
+}
+
+.search-bar {
+  position: absolute;
+  width: 160px;
+  top: 0;
+  right: 0;
+
+  @include media-breakpoint-up(xxl) {
+    width: 228px;
+  }
+
+  & form {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $gray-400;
+    border-radius: 4px;
+    
+    & input {
+      background-color: transparent;
+      color: $gray-300;
+      border: 0;
+
+      &:focus {
+        outline: none;
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        color: $gray-300;
+      }
+
+      &::placeholder {
+        color: $gray-300;
+      }
+    }
+  }
+
+  & button {
+    background-color: transparent;
+    border: none;
+    padding: 6px 12px;
+    margin-left: auto;
+    color: $gray-300;
+  }
+}
+
+.test {
+  background-image: url('../../../images/web-bg.png');
+  background-size: cover;
+  width: 500px;
+  height: 500px;
+}
+
+.slider {
+  position: relative;
+
+  .carousel-inner {
+    border-radius: 24px;
+  }
+
+  .noti {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: calc(100vw - 3 * 10vw);
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+    padding-inline: 10vw;
+
+    @include media-breakpoint-down(md) {
+      position: unset;
+      width: 100vw;
+      backdrop-filter: unset;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.tab-content {
+  .fade {
+    transition: none;
+  }
+}
+

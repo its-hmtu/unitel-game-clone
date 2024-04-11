@@ -1,0 +1,358 @@
+{
+	"header": {
+		"home": "Trang chủ",
+		"shop": "Cửa hàng",
+		"prize": "Phần thưởng",
+		"rank": "Bảng xếp hạng",
+		"friend": "Bạn",
+		"more": "Nhiều hơn",
+		"account": {
+			"my_acc": "Tài khoản của tôi",
+			"gift_hist": "Lịch sử quà tặng",
+			"invitation": "Lời mời",
+			"introduce": "Giới thiệu",
+			"setting": "Cài đặt",
+			"change_pass": "Thay đổi mật khẩu",
+			"logout": "Đăng xuất"
+		}
+	},
+	"all-game": "TẤT CẢ TRÒ CHƠI",
+	"mobile": {
+		"footer": {
+			"game": "Trò chơi"
+		},
+		"my_acc": {
+			"title": "Thông tin cá nhân",
+			"basic_info": "Thông tin cơ bản",
+			"ava": "Ảnh đại diện",
+			"name": "tên hiển thị",
+			"phone": "Số điện thoại",
+			"ref": "Mã giới thiệu",
+			"change_ava": "Đổi ảnh",
+			"change_pass": "Đổi mật khẩu"
+		},
+		"select_ava": "Chọn ảnh đại diện của bạn",
+		"change_pass": {
+			"title": "Đổi mật khẩu",
+			"new": "Mật khẩu mới",
+			"enter_new": "Nhập mật khẩu mới"
+		},
+		"gift_hist": {
+			"title": "Lịch sử quà tặng",
+			"this_month": "Tháng",
+			"this_week": "Tuần",
+			"today": "Hôm nay",
+			"search": "Tìm kiếm"
+		},
+		"invitation": {
+			"title": "Lời mời",
+			"name": "Tên",
+			"gold": "Vàng"
+		},
+		"setting": {
+			"title": "Cài Đặt",
+			"sounds": "Âm thanh",
+			"bg_music": "Nhạc nền",
+			"lang": "Ngôn ngữ",
+			"en": "English",
+			"la": "Laotian"
+		},
+		"introduce": "Giới thiệu",
+		"change_info": {
+			"title": "Thay đổi thông tin",
+			"name": "Tên hiển thị",
+			"phone": "Số điện thoại"
+		}
+	},
+	"profile": {
+		"profile": "Hồ sơ",
+		"select_ava": "Chọn hình đại diện của bạn",
+		"sidebar": {
+			"my_acc": "Tài khoản của tôi",
+			"friend": "Bạn",
+			"gift_hist": "Lịch sử quà tặng",
+			"invitation": "Lời mời",
+			"introduce": "Giới thiệu",
+			"setting": "Cài đặt",
+			"change_pass": "Đổi mật khẩu",
+			"logout": "Đăng xuất"
+		},
+		"personal_info": {
+			"title": "Thông tin cá nhân",
+			"name": "Tên hiển thị",
+			"phone": "Số điện thoại",
+			"referral": "Mã giới thiệu",
+			"referral_success": "Đã sao chép mã giới thiệu vào khay nhớ tạm",
+			"referral_error": "Không thể sao chép mã giới thiệu"
+		},
+		"change_pass": {
+			"new": "mật khẩu mới",
+			"enter_new": "Nhập mật khẩu mới"
+		},
+		"gift_hist": {
+			"title": "Lịch sử quà tặng",
+			"this_month": "Tháng",
+			"this_week": "Tuần",
+			"today": "Hôm nay",
+			"search": "Tìm kiếm"
+		},
+		"invitation": {
+			"title": "Lời mời",
+			"name": "Tên",
+			"gold": "Vàng"
+		},
+		"introduce": {
+			"title": "Giới thiệu"
+		},
+		"setting": {
+			"sounds": "Âm thanh",
+			"bg_music": "Nhạc nền",
+			"lang": "Ngôn ngữ",
+			"en": "English",
+			"la": "Laos",
+			"vi": "VietNamese"
+		}
+	},
+	"login": {
+		"login": "Đăng nhập"
+	},
+	"footer": {
+		"all_right": "Unitel - Arabica. Đã đăng ký Bản quyền",
+		"content": "Dịch vụ Arabica Gaming Hub là một nền tảng trực tuyến 1 đấu 1 chứa nhiều trò chơi nhỏ mà người dùng chỉ có thể chơi với những người chơi khác qua internet. Dịch vụ này cũng có một số cơ chế để thưởng thông qua phần thưởng hàng tuần và phần thưởng quay.",
+		"hot": "Trò chơi nổi bật",
+		"help": "Giúp đỡ",
+		"contact": "Liên lạc của chúng tôi",
+		"receive": "Tiếp nhận",
+		"faq": "FAQ",
+		"term_condition": "Kì hạn và điều kiện",
+		"intro": "Giới thiệu",
+		"term_privacy": "Quyền riêng tư",
+		"summary": "Bản tóm tắt"
+	},
+	"game_card": {
+		"play_btn": "Chơi ngay",
+		"how_to_play_btn": "Hướng dẫn chơi",
+		"how_to_play": "HƯỚNG DẪN CHƠI",
+		"number_playing": "_NUMBER_ đã chơi"
+	},
+	"search_bar": "Tìm kiếm trò chơi",
+	"congrat": "Xin chúc mừng _PLAYER_ vừa nhận được _REWARD_.",
+	"modal": {
+		"form": {
+			"phone": "Số điện thoại",
+			"pass": "Mật khẩu",
+			"gold": "Số vàng"
+		},
+		"login": {
+			"title": "Đăng nhập Unitel",
+			"title_OTP": "Đăng nhập OTP",
+			"desc": "Tham gia game ngay để nhận nhiều phần quà hấp dẫn.",
+			"save_pass": "Lưu Mật khẩu",
+			"login_otp": "Hoặc Đăng nhập OTP",
+			"login_otp_btn": "Đăng nhập OTP",
+			"login_pass": "Hoặc Đăng nhập với mật khẩu",
+			"login_UniID": "Hoặc Đăng nhập với UniID",
+			"login_pass_btn": "Đăng nhập với mật khẩu",
+			"otp_confirm": "Xác nhận OTP",
+			"otp_sendtophone": "Nhập mã OTP gửi đến Tel: _PHONE_",
+			"otp_resend": "Gửi lại",
+			"otp_notreceived": "Bạn chưa nhận được mã.",
+			"otp_error": "Bạn chưa nhập số điện thoại"
+		},
+		"create_room": {
+			"gold_bet": "Nhập vàng",
+			"room_pass": "Nhập mật khẩu(không bắt buộc)"
+		},
+		"btn": {
+			"agree": "Đồng ý",
+			"ok": "OK",
+			"cancel": "Hủy bỏ"
+		},
+		"join_playroom": {
+			"join_game": "Vào game"
+		},
+		"invite": {
+			"friend": "Mời bạn",
+			"invite": "Mời",
+			"invitation": "Lời mời",
+			"game": "Trò chơi",
+			"room_id": "ID Phòng",
+			"bet": "Mức cược"
+		},
+		"profile": {
+			"logout": "Bạn có chắc chắn muốn đăng xuất?",
+			"change_pass_success": "Thay đổi mật khẩu thành công!"
+		},
+		"prize": {
+			"are_you_sure": "Bạn có chắc chắn muốn đổi _GOLD_ GOLD để lấy _REWARD_ không?"
+		},
+		"shop": {
+			"are_you_sure": "Bạn có chắc chắn muốn mua gói _PACKAGE_ này không?",
+			"are_you_cancel": "Bạn có chắc chắn muốn hủy gói _PACKAGE_ này không?",
+			"title_modal_OTP": "Xác nhận OTP",
+			"error_null_OTP": "Mã OTP không hợp lệ"
+		},
+		"change_pass": "Bạn có chắc chắn đổi mật khẩu không?",
+		"change_pass_error": "Vui lòng nhập đầy đủ thông tin!",
+		"error": "Lỗi! Thử lại sau.",
+		"success": "Thành công.",
+		"reward": {
+			"title": "Phần thưởng",
+			"confirm_button": "Xác nhận",
+			"sub_input": "Nhập số vàng cần đổi",
+			"require_input": " (phải là bội số của [number])",
+			"error_null_input": "Số vàng không được để trống",
+			"note_input": "Bạn phải có ít nhất [number] vàng",
+			"check_gold_enought": "Bạn không đủ vàng"
+		}
+	},
+	"room": {
+		"list-game-no-data": "Không có dữ liệu tìm kiếm",
+		"other_game": "Trò chơi khác",
+		"create_room": "Tạo phòng",
+		"search_id": "Tìm kiếm ID",
+		"tab": {
+			"bronze": "Đồng",
+			"silver": "Bạc",
+			"gold": "Vàng",
+			"diamond": "Kim cương"
+		},
+		"table": {
+			"id": "ID",
+			"player": "Người chơi",
+			"bet_level": "Mức cược",
+			"status": "Trạng thái",
+			"pagination": "Hiển thị _FIRSTROOM_ đến _LASTROOM_ trong tổng số _TOTALROOM_",
+			"join": "Vào",
+			"memessage_play_now": "Bạn hiện đang ở một phòng chơi khác, vui lòng thoát khỏi tất cả các phòng chơi trước khi bắt đầu",
+			"check_coin": "Không đủ vàng"
+		},
+		"room": "Phòng",
+		"playroom": {
+			"start": "Bắt đầu",
+			"ready": "Sẵn sàng",
+			"unready": "Chưa sẵn sàng",
+			"enter_text": "Nhập văn bản",
+			"title": "Phòng chơi",
+			"find_room": "Tìm kiếm phòng",
+			"error_game": "Có lỗi trong quá trình bắt đầu game, vui lòng thử lại!"
+		}
+	},
+	"confirm": "Xác nhận",
+	"err_page": {
+		"title": "Không tìm thấy trang",
+		"content": "Xin lỗi! Trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển."
+	},
+	"maintain_page": {
+		"title": "Hệ thống đang được bảo trì",
+		"content": "Chúng tôi xin lỗi vì sự bất tiện này. Để cải thiện dịch vụ của mình, chúng tôi đã gỡ trang web của mình xuống để bảo trì."
+	},
+	"shoppage": {
+		"choose": "Chọn một lựa chọn",
+		"title": "Mua gói",
+		"retail": "Gói bán lẻ",
+		"sub": "Gói đăng ký",
+		"reward_desc": "Nhận ngay _GOLD_ vàng",
+		"buy": "Mua ngay _PRICE_ Kip",
+		"cancel": "Hủy bỏ {name-package}",
+		"day": "Ngày",
+		"week": "Tuần",
+		"month": "Tháng"
+	},
+	"prizepage": {
+		"choose": "Chọn một lựa chọn",
+		"title": "Quà tặng",
+		"gold": "_GOLD_ VÀNG",
+		"sub_title": "Đổi _DATA_",
+		"data": "Đổi data",
+		"minutes": "Đổi phút gọi",
+		"title_confirm": "Bạn có chắc chắn muốn đổi _GOLD_ lấy _REWARD_ ?"
+	},
+	"rankpage": {
+		"title": "Bảng xếp hạng",
+		"title_t12":"Bảng xếp hạng tháng 12",
+		"point":"Điểm tích lũy",
+		"my_point":"Điểm tích lũy của tôi",
+		"day": "Ngày",
+		"week": "Tuần",
+		"month": "Tháng",
+		"table": {
+			"rank": "Hạng",
+			"player": "Người chơi",
+			"gold": "Vàng",
+			"winrate": "Thắng/Thua"
+		},
+		"mobile": {
+			"top": "Top rank",
+			"last": "Người chiến thắng cuối cùng",
+			"gold": "Vàng",
+			"winrate": "Win/Lose"
+		}
+	},
+	"friendpage": {
+		"title": "Bạn bè",
+		"name": "Tên",
+		"gold": "Vàng",
+		"all_friend": "Tấn cả bạn",
+		"contact_only": "Liên hệ riêng",
+		"invite": "Mời",
+		"invite_play": "mời chơi",
+		"friend": "Bạn"
+	},
+	"event":{
+		"water":{
+			"tab":{
+				"name_event":"Buonpimay Event",
+				"detail":"Chi tiết",
+				"rank_table":"Bảng xếp hạng"
+			},
+			"event_main":{
+				"your_collection":"Bộ sưu tập của bạn",
+				"play_now":"Chơi ngay",
+				"buy_more_package":"Mua thêm gói",
+				"text_d1":"Tìm đủ 100 giọt nước để thu thập bình nước.",
+				"text_d2":"Top 3 người chơi thu thập được nhiều bình nước nhất vào cuối sự kiện sẽ nhận được 1 điện thoại OPPO A79 và 2 giải thưởng tiền mặt qua U-Money.",
+				"text_d3":"Tham gia chơi ngay hoặc mua thêm gói cước để có thêm nhiều giọt nước và thu thập thêm nhiều bình nước."
+			},
+			"detail":{
+				"title":"Buonpimay Festival",
+				"text_d1_1":"Thời gian diễn ra:",
+				"text_d1_2":"01 tháng 4 - 30 tháng 4",
+				"text_d2_1":"Giải thưởng:",
+				"text_d2_2":" 3 giải thưởng đặc biệt cho 3 người chơi xuất sắc nhất, bao gồm:",
+				"text_d3":"Giải nhất: 1 OPPO A79",
+				"text_d4":"Giải nhì: 1,000,000 KIP U-money",
+				"text_d5":"Giải ba: 500,000 KIP U-money",
+				"text_d6_1":"Thể lệ:",
+				"text_d6_2":"Người chơi sẽ phải cạnh tranh để xem ai thu thập được nhiều bình nước nhất. 3 người chơi xuất sắc nhất sẽ nhận lần lượt 3 giải thưởng đã được đề cập ở trên. Người chiến thắng sẽ được xác định sau 23:59:59 vào ngày 30 tháng 4 năm 2024. Trong trường hợp người dùng tích lũy cùng một số lượng bình nước, thứ hạng sẽ được tính dựa trên số giọt nước trong bình nước chưa đầy. Trong trường hợp số giọt nước trong bình nước đó là bằng nhau, thứ hạng sẽ được xếp dựa trên thời gian đạt được số giọt nước đó. Sau khi sự kiện kết thúc, hệ thống sẽ cập nhật người chiến thắng và sau đó Unitel sẽ liên lạc với người chiến thắng để tiến hành việc trao thưởng theo quy định thông thường.",
+				"text_d7_1":"Cách thu thập bình nước",
+				"text_d7_2":"Hãy xem bình nước ở giữa màn hình. Nó sẽ hiển thị số lượng giọt nước bạn đang tích lũy. Hãy cố gắng làm đầy bình nước với 100 giọt nước. Bạn có thể kiếm thêm giọt nước bằng cách chiến thắng game hoặc mua các gói sản phẩm.",
+				"package":"Gói",
+				"number":"Số giọt nước (ngẫu nhiên)",
+				"register":"Mua/Gia hạn gói ngày",
+				"winning":"1 lần chiến thắng",
+				"package_1":"Mua Package 1",
+				"package_2":"Mua Package 2",
+				"package_3":"Mua Package 3",
+				"package_4":"Mua Package 4",
+				"package_5":"Mua Package 5"
+			},
+			"rank":{
+				"rank": "Xếp hạng",
+				"isdn":"ISDN",
+				"name":"Nickname",
+				"bucket":"Số bình nước",
+				"drop":"Số giọt nước hiện tại trong bình",
+				"my_rank":"Xếp hạng hiện tại của tôi"
+			},
+			"result":{
+				"top_1":"Xin chúc mừng! Bạn vừa xuất sắc dành được vị trí thứ 1 và chiến thắng 1 điện thoại OPPO A79. Unitel sẽ sớm liên lạc để trao phần quà này cho bạn.",
+				"top_2":"Xin chúc mừng! Bạn vừa xuất sắc dành được vị trí thứ 2 và chiến thắng 1,000,000 kip Umoney. Unitel sẽ sớm liên lạc để trao phần quà này cho bạn.",
+				"top_3":"Xin chúc mừng! Bạn vừa xuất sắc dành được vị trí thứ 3 và chiến thắng 500,000 kip Umoney. Unitel sẽ sớm liên lạc để trao phần quà này cho bạn.",
+				"all":"Sự kiện Buonpimay đã kết thúc. Chúc mừng 3 người chơi xuất sắc trúng giải!",
+				"page":"Sự kiện Buonpimay đã kết thúc. Bên trên là danh sách người chơi trúng giải của ưu đãi lần này. Hãy tiếp tục trải nghiệm và đón chờ những Campaign thú vị từ Arabica!",
+				"close":"Đóng"
+			}
+		}
+	}
+}

@@ -5,3 +5,12 @@ body {
   color: $text-default;
   background-color: rgb(3 17 28);
 }
+
+.btn-primary,
+.btn.active,
+.btn.show {
+  color: $text-default;
+  &:hover {
+    color: $text-default;
+  }
+}

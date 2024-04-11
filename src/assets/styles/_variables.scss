@@ -1,7 +1,8 @@
-$primary: #F95C2A;
-$primary-hover: #FF8862;
-$primary-disable: #FFC3AF;
-$primary-bg: #FFEEE9;
+$orange: #F95C2A;
+$orange-hover: #FF8862;
+$orange-disable: #FFC3AF;
+$orange-bg: #FFEEE9;
+$orange-gradient: linear-gradient(180deg, rgb(238, 75, 40) 0%, rgb(207, 50, 15) 100%);
 
 $green: #20B255;
 $green-gradient: linear-gradient(0deg, rgba(72, 194, 36, 1) 0%, rgba(36, 119, 11, 1) 100%);
@@ -21,3 +22,5 @@ $white-200:#F4F5F6;
 $white-100:#FCFCFD;
 
 $text-default: #FFFFFF;
+
+$primary: $orange;

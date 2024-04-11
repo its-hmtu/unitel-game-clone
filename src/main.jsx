@@ -3,38 +3,11 @@ import ReactDOM from 'react-dom/client'
 import App from 'src/App'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import "styles/index.scss"
+import { RouteList } from './routes'
 
 const router = createBrowserRouter(
   [
-    {
-      path: '/',
-      element: <App />
-    },
-
-    {
-      path: '/shop',
-      element: <App />
-    },
-
-    {
-      path: '/prize',
-      element: <App />
-    },
-
-    {
-      path: '/rank',
-      element: <App />
-    },
-
-    {
-      path: '/spine',
-      element: <App />
-    },
-
-    {
-      path: '/more',
-      element: <App />
-    },
+    ...RouteList()
   ]
 )
 

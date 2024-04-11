@@ -1,0 +1,56 @@
+.footer-container {
+  background-image: url('src/assets/images/footer-bg.svg');
+  background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: auto;
+
+  & .row {
+    max-width: 90vw;
+    padding: 20px 10px;
+    gap: 0px;
+
+    @include media-breakpoint-up(xl) {
+      max-width: 80vw;
+      gap: 20px;
+    }
+  }
+
+  h2 {
+    color: $primary;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+  }
+
+  li {
+    font-size: 1.125rem;
+  }
+
+  ul {
+    & > *+* {
+      margin-top: 16px;
+
+    }
+  }
+}
+
+.footer-copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & img {
+    width: 160px;
+  }  
+
+  & h6 {
+    font-weight: bold;
+    margin: 0;
+  }
+
+  & p {
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0;
+  }
+}
