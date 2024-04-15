@@ -1,0 +1,136 @@
+.shoppage {
+  width: calc(100vw - 3 * 10vw);
+
+  & >:first-child {
+    margin: 1.5rem 0 1rem;
+    p {
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1.5rem;
+      color: $gray-300;
+      
+    }
+
+    h1 {
+      font-weight: 700;
+      line-height: 3rem;
+      margin: 0;
+    }
+  }
+}
+
+.package-container {
+  background-image: url("src/assets/images/shoppage-package-bg.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 24px 32px 72px;
+  min-height: 562px;
+  border-radius: 14px 14px 152px;
+  background-color: $bg;
+
+  .nav-tabs {
+    border-bottom: 0;
+    border-radius: 8px;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 24px;
+
+    .nav-link {
+      font-size: 20px;
+      color: $text-default;
+      line-height: 1.5rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: none;
+      
+      &.active {
+        background-color: $primary;
+        border: 1px solid $primary;
+        border-radius: 8px;
+        min-height: 56px;
+      }
+
+      &:hover {
+        border: 1px solid transparent;
+      }
+
+      &:focus {
+        border: 1px solid transparent;
+      }
+      
+    }
+  }
+
+  .tab-content {
+    overflow-x: auto;
+
+    & > .active {
+      display: flex;
+      gap: 16px;
+
+      @include media-breakpoint-up(lg) {
+        gap: 32px;
+      }
+    }
+  }
+}
+
+.package {
+  position: relative;
+  padding: 32px 0;
+  margin-bottom: 16px;
+  background: linear-gradient(161.94deg, #030824 23%, rgba(97, 21, 116, 0) 73.89%), #0a0a0b;
+  min-width: 256px;
+  height: 349px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px;
+  border: 1px solid $gray-400;
+
+  &-heading {
+    text-align: center;
+
+    h2 {
+      font-size: 24px;
+      background: $yellow-gradient;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 0;
+    }
+
+    p {
+      font-size: 12px;
+      color: $gray-300;
+      margin: 0;
+    }
+  }
+
+  button {
+    width: 90%;
+    padding: 12px;
+    border-radius: 8px;
+    background: $green-gradient;
+    border: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &-best-sale {
+    position: absolute;
+    top: 0;
+    right: -2px;
+  }
+
+  &.retail {
+    background: linear-gradient(161.94deg,#08253d 23%,rgba(8,37,61,0) 73.89%),#0a0a0b;
+  }
+}

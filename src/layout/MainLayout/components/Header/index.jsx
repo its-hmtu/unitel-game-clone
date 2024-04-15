@@ -20,12 +20,15 @@ import i18n from "src/i18n";
 import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery";
 import menu from "images/menu-svgrepo-com.svg";
 import Drawer from "@mui/material/Drawer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FooterGameSvg, FooterProfileSvg } from "svg/Footer";
 
 const Header = () => {
   const { t } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
+  const [language, setLanguage] = useState(
+    localStorage.getItem("i18nextLng") || "la"
+  );
 
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`);
 
@@ -35,6 +38,12 @@ const Header = () => {
 
   const handleCloseMenu = () => {
     setShowMenu((prev) => !prev);
+  };
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setLanguage(lng);
+    localStorage.setItem("i18nextLng", lng);
   };
 
   return (
@@ -61,7 +70,13 @@ const Header = () => {
 
           <Drawer anchor="left" open={showMenu} onClose={handleCloseMenu}>
             <div style={{ backgroundColor: "hsl(207deg 83% 6%)" }}>
-              <div style={{width: "250px", minHeight: "100vh", paddingBottom: "100px"}}>
+              <div
+                style={{
+                  width: "250px",
+                  minHeight: "100vh",
+                  paddingBottom: "100px",
+                }}
+              >
                 <Link
                   to={"/"}
                   className="navbar-brand d-flex flex-column justify-content-center align-items-center my-2"
@@ -147,7 +162,11 @@ const Header = () => {
                     </div>
 
                     <div>
-                      <img src={footerLogo} alt="Lao app footer" style={{marginBottom: "10px"}}/>
+                      <img
+                        src={footerLogo}
+                        alt="Lao app footer"
+                        style={{ marginBottom: "10px" }}
+                      />
                       <p>{t("footer.all_right")}</p>
                       <p>{t("footer.content")}</p>
                     </div>
@@ -181,21 +200,70 @@ const Header = () => {
             </NavLink>
           </Nav>
 
-          <img src={flagLa} alt="Laos's flag" className="language-icon" />
+          <img
+            src={
+              language === "la" ? flagLa : language === "en" ? flagEn : flagVi
+            }
+            alt="Laos's flag"
+            className="language-icon"
+          />
           <Nav className="nav-btns">
             <NavDropdown
-              title={t("profile.setting.la")}
+              title={
+                language === "la"
+                  ? t("profile.setting.la")
+                  : language === "en"
+                  ? t("profile.setting.en")
+                  : t("profile.setting.vi")
+              }
               className="language-btn"
             >
-              <NavDropdown.Item className="">
-                <img src={flagEn} alt="English's flag" />
-                {t("profile.setting.en")}
-              </NavDropdown.Item>
+              {language === "la" ? (
+                <>
+                  <NavDropdown.Item
+                    className=""
+                    onClick={() => changeLanguage("en")}
+                  >
+                    <img src={flagEn} alt="English's flag" />
+                    {t("profile.setting.en")}
+                  </NavDropdown.Item>
 
-              <NavDropdown.Item>
-                <img src={flagVi} alt="Vietnam's flag" />
-                {t("profile.setting.vi")}
-              </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => changeLanguage("vi")}>
+                    <img src={flagVi} alt="Vietnam's flag" />
+                    {t("profile.setting.vi")}
+                  </NavDropdown.Item>
+                </>
+              ) : language === "en" ? (
+                <>
+                  <NavDropdown.Item
+                    className=""
+                    onClick={() => changeLanguage("la")}
+                  >
+                    <img src={flagLa} alt="Laos's flag" />
+                    {t("profile.setting.la")}
+                  </NavDropdown.Item>
+
+                  <NavDropdown.Item onClick={() => changeLanguage("vi")}>
+                    <img src={flagVi} alt="Vietnam's flag" />
+                    {t("profile.setting.vi")}
+                  </NavDropdown.Item>
+                </>
+              ) : (
+                <>
+                  <NavDropdown.Item
+                    className=""
+                    onClick={() => changeLanguage("en")}
+                  >
+                    <img src={flagEn} alt="English's flag" />
+                    {t("profile.setting.en")}
+                  </NavDropdown.Item>
+
+                  <NavDropdown.Item onClick={() => changeLanguage("la")}>
+                    <img src={flagLa} alt="Laos's flag" />
+                    {t("profile.setting.la")}
+                  </NavDropdown.Item>
+                </>
+              )}
             </NavDropdown>
             <Button variant="primary" className="login-btn">
               <HeaderUserLoginSvg

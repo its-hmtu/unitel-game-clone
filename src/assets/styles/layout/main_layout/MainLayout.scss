@@ -34,6 +34,10 @@
   bottom: 50px;
   z-index: 1000;
 
+  @include media-breakpoint-down(sm) {
+    bottom: 70px;
+  }
+
   img {
     width: 100px;
     animation: zoomLoop 2s infinite;

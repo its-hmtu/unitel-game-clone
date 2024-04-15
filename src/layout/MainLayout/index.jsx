@@ -3,6 +3,7 @@ import {Outlet} from 'react-router-dom'
 import Footer from "./components/Footer"
 import buonPiMay from 'images/buonpimay-event.png'
 import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery"
+import FooterMobile from "./components/FooterMobile"
 
 const MainLayout = () => {
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`)
@@ -15,7 +16,7 @@ const MainLayout = () => {
         </div>
         <Outlet />
       </div>
-      {isMobile ? null : <Footer />}
+      {isMobile ? <FooterMobile /> : <Footer />}
     </div>
   )
 }
