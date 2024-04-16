@@ -133,4 +133,18 @@
   &.retail {
     background: linear-gradient(161.94deg,#08253d 23%,rgba(8,37,61,0) 73.89%),#0a0a0b;
   }
+
+  &.bgData {
+    background-image: url("src/assets/images/BackgroundReward.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &.bgMinutes {
+    background-image: url("src/assets/images/minutes.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
