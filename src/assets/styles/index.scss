@@ -7,5 +7,6 @@
 @import "layout/main_layout/components/GameCard.scss";
 @import "layout/main_layout/components/Footer.scss";
 @import "layout/main_layout/components/FooterMobile.scss";
-@import "pages/HomePage";
-@import "pages/ShopPage";
+
+@import "./pages";
+@import "./components"

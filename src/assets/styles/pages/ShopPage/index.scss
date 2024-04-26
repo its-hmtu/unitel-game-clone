@@ -1,5 +1,13 @@
 .shoppage {
-  width: calc(100vw - 3 * 10vw);
+  width: 90vw;
+
+  @include media-breakpoint-up(lg) {
+    width: 80vw;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: 70vw;
+  }
 
   & >:first-child {
     margin: 1.5rem 0 1rem;
@@ -30,12 +38,44 @@
   border-radius: 14px 14px 152px;
   background-color: $bg;
 
+  @include media-breakpoint-down(md) {
+    background: none;
+    padding: 0;
+  }
+
   .nav-tabs {
     border-bottom: 0;
     border-radius: 8px;
     align-items: center;
     gap: 15px;
     margin-bottom: 24px;
+
+    @include media-breakpoint-down(md) {
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      background-color: $bg;
+      padding: 5px !important;
+      border-radius: 24px;
+      gap: 10px;
+
+      .nav-item {
+        flex: 1;
+        & button {
+          width: 100%;
+        }
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      .nav-item {
+        & button {
+          font-size: 13px;
+          padding-inline: 10px;
+          line-height: 16px;
+          min-height: 32px!important;
+        }
+      }
+    }
 
     .nav-link {
       font-size: 20px;
@@ -50,6 +90,10 @@
         border: 1px solid $primary;
         border-radius: 8px;
         min-height: 56px;
+
+        @include media-breakpoint-down(md) {
+          border-radius: 24px;
+        }
       }
 
       &:hover {
@@ -73,6 +117,12 @@
       @include media-breakpoint-up(lg) {
         gap: 32px;
       }
+
+      @include media-breakpoint-down(md) {
+        flex-wrap: wrap;
+        flex-shrink: 0;
+        gap: 8px;
+      }
     }
   }
 }
@@ -91,6 +141,14 @@
   border-radius: 16px;
   border: 1px solid $gray-400;
 
+  @include media-breakpoint-down(md) {
+    min-width: auto;
+    height: 214px;
+    width: 48%;
+    padding-block: 16px;
+    margin-bottom: 0;
+  }
+
   &-heading {
     text-align: center;
 
@@ -100,12 +158,27 @@
       -webkit-background-clip: text;
       color: transparent;
       margin: 0;
+
+      @include media-breakpoint-down(md) {
+        font-size: 14px;
+      }
     }
 
     p {
       font-size: 12px;
       color: $gray-300;
       margin: 0;
+
+      @include media-breakpoint-down(md) {
+        font-size: 10px;
+      }
+    }
+
+    
+  }
+  img {
+    @include media-breakpoint-down(md) {
+      width: 75px;
     }
   }
 
@@ -118,6 +191,13 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 24px;
+
+    @include media-breakpoint-down(md) {
+      font-size: 10px;
+      padding: 6px 12px;
+      height: 30px;
+      line-height: 15px;
+    }
     
     &:hover {
       opacity: 0.9;

@@ -1,0 +1,7 @@
+.room-page-container {
+  width: 100%;
+
+  @include media-breakpoints-up(xxl) {
+    max-width: 70vw;
+  }
+}

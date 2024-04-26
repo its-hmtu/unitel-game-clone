@@ -1,0 +1,38 @@
+table {
+  width: 100%;
+  text-align: center;
+
+  thead {
+    border-bottom: 1px solid rgba(238,78,43,.5);
+    font-size: 20px;
+    color: $primary;
+    font-weight: 500;
+    height: 66px;
+
+    @include media-breakpoint-down(md) {
+      background-color: $header-bg;
+    }
+
+    th {
+      width: auto;
+      &:first-of-type {
+        width: 10%;
+      }
+
+      &:last-of-type {
+        width: 10%;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      height: 54px;
+      border-bottom: 1px solid rgba(120, 127, 145, .1);
+
+      &:last-of-type {
+        border-bottom: 0;
+      }
+    }
+  }
+}

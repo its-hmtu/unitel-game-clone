@@ -1,0 +1,66 @@
+.modal-help-play {
+  .carousel-item {
+    .box-item {
+      display: flex;
+      justify-content: space-between;
+
+      &-text {
+        display: flex;
+        flex-direction: column;
+        width: 33.33%;
+        align-items: center;
+
+      }
+    }
+
+
+  }
+
+  img {
+    width: 90%;
+    height: 200px;
+    border-radius: 20px;
+    border: 1px solid $gray-400;
+    object-fit: fill;
+
+    
+  }
+
+  .text {
+    height: 131px;
+    width: 90%;
+    margin-inline: auto;
+    * {
+      margin-block: 10px;
+    }
+    h5 {
+      font-size: 16px;
+      font-weight: 700;
+      color: $primary;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+  
+  .slick-slider {
+    .slick-list {
+      overflow: hidden;
+    }
+  }
+
+  .slick-slide {
+    float: left;
+    display: none;
+
+    .mobile-img {
+      width: 100%;
+      height: initial;
+    }
+  }
+
+  .slick-initialized .slick-slide{ 
+    display: block;
+  }
+}

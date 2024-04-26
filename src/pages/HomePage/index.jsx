@@ -13,6 +13,9 @@ const HomePage = () => {
 
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`);
 
+  const [searchValue, setSearchValue] = useState('')
+  
+
   return (
     <>
       <div className="slider">
@@ -28,17 +31,21 @@ const HomePage = () => {
           className="mx-0 mx-sm-2 px-3"
         >
           <Tab eventKey={"all-game"} title={t("all-game")}>
-            <GameList type="play" />
+            <GameList type="play" searchValue={searchValue} />
           </Tab>
 
           <Tab eventKey="how-to-play" title={t("game_card.how_to_play")}>
-            <GameList type="how-to-play" />
+            <GameList type="how-to-play" searchValue={searchValue} />
           </Tab>
         </Tabs>
 
         {isMobile ? null : (
           <div className="search-bar">
-            <SearchBar type="text" placeholder={t("search_bar")} />
+            <SearchBar 
+              type="text" 
+              placeholder={t("search_bar")} 
+              onChange={e => setSearchValue(e.target.value)} 
+            />
           </div>
         )}
       </Row>

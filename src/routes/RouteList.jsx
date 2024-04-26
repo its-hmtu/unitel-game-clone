@@ -1,6 +1,8 @@
 import MainLayout from "src/layout/MainLayout";
 import HomePage from "src/pages/HomePage";
 import PrizePage from "src/pages/PrizePage";
+import RankPage from "src/pages/RankPage";
+import RoomPage from "src/pages/RoomPage";
 import ShopPage from "src/pages/ShopPage";
 
 export function RouteList() {
@@ -22,7 +24,11 @@ export function RouteList() {
         },
         {
           path: "/rank",
-          element: <HomePage />
+          element: <RankPage />
+        },
+        {
+          path: "/room/:roomId",
+          element: <RoomPage />
         }
       ] 
     }

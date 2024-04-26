@@ -4,10 +4,12 @@ import Tab from 'react-bootstrap/Tab'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
 import PrizeCard from './PrizeCard'
+import { useMediaQuery,queryPoint } from 'src/utils/hooks/useMediaQuery'
 
 const PrizePage = () => {
   const { t } = useTranslation();
   const [key, setKey] = useState(1)
+  const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px`)
 
   const data = [
     {
@@ -63,10 +65,14 @@ const PrizePage = () => {
   
   return (
     <Container fluid className='shoppage'>
-      <div>
-        <p>{t('prizepage.choose')}</p>
-        <h1>{t('prizepage.title')}</h1>
-      </div>
+      {
+        !isMobile && (
+          <div>
+            <p>{t('prizepage.choose')}</p>
+            <h1>{t('prizepage.title')}</h1>
+          </div>
+        )
+      }
 
       <div className='package-container'>
         <Tabs

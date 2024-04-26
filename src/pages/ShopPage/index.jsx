@@ -4,10 +4,13 @@ import Tab from 'react-bootstrap/Tab'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
 import PackageCard from './PackageCard'
+import { queryPoint, useMediaQuery } from 'src/utils/hooks/useMediaQuery'
 
 const ShopPage = () => {
   const { t } = useTranslation();
   const [key, setKey] = useState(1)
+  const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px`)
+
   const sub = [
     {
       title: 'Daily',
@@ -66,11 +69,15 @@ const ShopPage = () => {
   ]
 
   return (
-    <Container fluid className='shoppage'>
-      <div>
-        <p>{t('shoppage.choose')}</p>
-        <h1>{t('shoppage.title')}</h1>
-      </div>
+    <Container fluid className={`shoppage ${isMobile ? "mobile": ""}`}>
+      {
+        !isMobile && (
+          <div>
+            <p>{t('shoppage.choose')}</p>
+            <h1>{t('shoppage.title')}</h1>
+          </div>
+        )
+      }
 
       <div className='package-container'>
         <Tabs

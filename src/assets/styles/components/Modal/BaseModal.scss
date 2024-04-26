@@ -1,0 +1,110 @@
+.base-modal {
+  .modal-content {
+    background-color: $bg;
+    padding-block: 30px;
+    margin-inline: auto;
+    width: calc(min(100%, 1000px));
+    min-height: 500px;
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: 700;
+      color: $primary;
+      border: none;
+      padding: 0 0 10px;
+    }
+
+    .carousel-indicators {
+      button {
+        padding: 3px;
+        background-color: #ee4e2b
+      }
+    }
+  }
+
+  .btn {
+    background-color: transparent;
+    border:none;
+
+    &:hover, &:active {
+      background-color: transparent;
+      border:none
+    }
+  }
+
+  .btn-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  .slick-dots{
+    margin-bottom: 0;
+    padding: 0;
+    position: absolute;
+    bottom: -5px;
+    width: 100%;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      margin: 5px;
+    }
+
+    li button {
+      color: transparent;
+      border: none;
+      background-color: transparent;
+
+      &::before {
+        content: "•";
+        font-family: "slick";
+        color: $gray-400;
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        font-size: 24px;
+      }
+    }
+
+    & li.slick-active button {
+      
+    }
+
+    & li.slick-active button::before {
+      
+      color: $primary;
+    }
+  }
+
+
+  @include media-breakpoint-down(md) {
+    .modal-content {
+      width: calc(min(85%, 1000px));
+      padding: 5px;
+      min-height: auto;
+    }
+
+    .modal-header {
+      padding: 0 0 0!important;
+      margin: 10px 0 20px;
+    }
+
+    .btn-modal-close {
+      top: 12px;
+      right: 5px;
+    }
+    .modal-body {
+      padding: 5px 5px 30px;
+    }
+  }
+}
+
+
+

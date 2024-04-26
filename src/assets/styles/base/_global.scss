@@ -5,12 +5,29 @@ body {
   color: $text-default;
   background-color: rgb(3 17 28);
 }
+.btn{
+  &-primary,
+  &.show {
+    color: $text-default;
+  }
 
-.btn-primary,
-.btn.active,
+  &:hover {
+    color: $text-default;
+  }
+
+  &:active {
+    color: $text-default!important;
+  }
+}
+
+
 .btn.show {
   color: $text-default;
   &:hover {
+    color: $text-default;
+  }
+
+  &:active {
     color: $text-default;
   }
 }

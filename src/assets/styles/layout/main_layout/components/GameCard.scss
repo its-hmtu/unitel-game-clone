@@ -1,6 +1,12 @@
 .card {
   background-color: transparent;
 
+  &-ishot {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+  }
+
   &-small {
     .card-body {
       background-color: $bg;

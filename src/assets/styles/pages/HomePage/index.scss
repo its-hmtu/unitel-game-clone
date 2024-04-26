@@ -9,14 +9,15 @@
 
   @include media-breakpoint-up(md) {
     margin-top: 60px;
+    max-width: 70vw;
   }
  
   @include media-breakpoint-up(lg) {
-    max-width: 70vw;
+    max-width: 80vw;
   }
 
   @include media-breakpoint-up(xl) {
-    max-width: 80vw;
+    max-width: 70vw;
   }
 
   & .nav-tabs {
