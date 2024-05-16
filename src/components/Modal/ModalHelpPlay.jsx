@@ -120,9 +120,9 @@ const ModalHelpPlay = ({
       ],
     }
     
-    if (idGame === 1) setStateModal(goldMiner)
-    else if (idGame === 2) setStateModal(knifeHit)
-    else if (idGame === 3) setStateModal(beatMouse)
+    if (idGame == 1) setStateModal(goldMiner)
+    else if (idGame == 2) setStateModal(knifeHit)
+    else if (idGame == 3) setStateModal(beatMouse)
   }, [idGame])
   
 

@@ -1,5 +1,4 @@
 import { Link, NavLink } from "react-router-dom";
-// import { Box, Button, Grid, MenuItem, Select } from "@mui/material"
 import logo from "images/logo.svg";
 import footerLogo from "images/footer-lao-app.svg";
 import {
@@ -20,7 +19,7 @@ import i18n from "src/i18n";
 import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery";
 import menu from "images/menu-svgrepo-com.svg";
 import Drawer from "@mui/material/Drawer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FooterGameSvg, FooterProfileSvg } from "svg/Footer";
 
 const Header = () => {

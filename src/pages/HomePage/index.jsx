@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GameList from "./components/GameList";
 import Slider from "./components/Slider";
 import { Row, Tabs, Tab } from "react-bootstrap";
@@ -6,6 +6,7 @@ import SearchBar from "components/SearchBar";
 import { useTranslation } from "react-i18next";
 import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery";
 import SliderMobile from "./components/SliderMobile";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -14,7 +15,6 @@ const HomePage = () => {
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`);
 
   const [searchValue, setSearchValue] = useState('')
-  
 
   return (
     <>

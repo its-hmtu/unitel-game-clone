@@ -1,18 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from 'src/App'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import "styles/index.scss"
 import { RouteList } from './routes'
+import { Provider } from 'react-redux'
+import store from './store'
 
-const router = createBrowserRouter(
-  [
-    ...RouteList()
-  ]
-)
+const routeList = RouteList()
+const router = createBrowserRouter([...routeList])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </React.StrictMode>
 )

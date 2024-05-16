@@ -2,13 +2,26 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import gamecard_ishot from "images/gamecard-ishot.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BaseModal from "components/Modal";
 import ModalHelpPlay from "src/components/Modal/ModalHelpPlay";
+import { useDispatch } from "react-redux";
+import { gameSlice } from "src/store/game/gameSlice";
 
 const GameCard = ({ type, isSmall, data, idGame }) => {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
+
+  const dispatch = useDispatch();
+  const handleSelectGame = (game) => {
+    dispatch(gameSlice.actions.selectGame(game));
+  }
+
+  // useEffect(() => {
+  //   console.log(show)
+
+  //   console.log(idGame)
+  // }, [idGame, show])
 
   return (
     <Card className={isSmall ? "card-small" : "card-medium"}>
@@ -46,7 +59,7 @@ const GameCard = ({ type, isSmall, data, idGame }) => {
                 ? () => {
                     setShow((prev) => !prev);
                   }
-                : null
+                : () => handleSelectGame(data)
             }
           >
             {type === "how-to-play"

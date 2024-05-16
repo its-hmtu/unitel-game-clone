@@ -1,24 +1,88 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getAllGame } from 'src/api/game'
+import { useEffect, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
+
 import RoomSearchCreate from './components/RoomSearchCreate'
+import { Tab, Tabs } from 'react-bootstrap'
+import Table from 'src/components/Table'
+import OtherGames from './components/OtherGames'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllGames, fetchRoomLevels } from 'src/store/game/actions'
+import { gameSlice } from "src/store/game/gameSlice";
 
 const RoomPage = () => {
   const { roomId } = useParams()
-  const [gameSelected, setGameSelected] = useState({})
-  
-  useEffect(() => {
-    const fetchGameList = async () => {
-      const data = await getAllGame()
-      setGameSelected(data.find(item => item.id === roomId))
-    }
-    fetchGameList();
-  })
+  let location = useLocation()
+  console.log(location);
 
+  
+  const [level, setLevel] = useState("1")
+  const otherSelected = useSelector(state => state.game.selected)
+  
+  // const [game, setGame] = useState({})
+  const gameSelected = useSelector(state => state.game.selected)
+  const gameList = useSelector(state => state.game.games || [])
+  const roomLevels = useSelector(state => state.game.roomLevels)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (gameList.length === 0) {
+      dispatch(fetchAllGames())
+    }
+  }, [dispatch, gameList])
+
+  useEffect(() => {
+    if (roomLevels.length === 0) {
+      dispatch(fetchRoomLevels())
+    }
+  }, [dispatch, roomLevels])
+
+  useEffect(() => {
+    dispatch(gameSlice.actions.selectGame(gameList.find(item => item.id == roomId)))
+  }, [dispatch, roomId, gameList]);
+
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
+  useEffect(() => {
+    if (gameSelected) {
+      document.title = gameSelected.title
+      handleScrollTop()
+    }
+
+
+    return () => {
+      document.title = "Unitel Games"
+    }
+  }, [gameSelected])
+  
   return (
     <div className='room-page-container'>
-      <h1>{gameSelected.title}</h1>
+      <h1>{ gameSelected?.title }</h1>
       <RoomSearchCreate />
+      <Tabs
+        id="controlled-tab-example"
+        activeKey={level}
+        onSelect={(k) => setLevel(k)}
+      >
+        {
+          Array.isArray(roomLevels) && 
+          roomLevels.map((item) => {
+            return (
+              <Tab eventKey={item.id} key={item.id} title={item.name}>
+                <div>
+                  <Table roomTable data={[{id: 1, playerName: "name", betLevel: "300", status: ""}]}/>
+                </div>
+              </Tab>
+            )
+          })
+        }
+      </Tabs>
+
+      <OtherGames gameList={gameList} roomId={roomId}/>
     </div>
   )
 }

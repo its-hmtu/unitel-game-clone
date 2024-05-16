@@ -1,33 +1,29 @@
 import { Container, Row, Col } from "react-bootstrap";
 import GameCard from "layout/MainLayout/components/GameCard";
 import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery";
-import banner_daovang from "images/banne-daovang.png";
-import banner_phidao from "images/banner-phidao.png";
-import banner_dapchuot from "images/banner-dapchuot.png";
 import { useEffect, useState, memo } from "react";
-import { getAllGame } from "src/api/game";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllGames } from "src/store/game/actions";
 
 const GameList = ({ type, searchValue }) => {
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`);
-  const [gameList, setGameList] = useState([]);
+  const gameList = useSelector((state) => state.game.games);
+  const dispatch = useDispatch()
+  const [list, setList] = useState([])
 
   useEffect(() => {
-    const fetchGameList = async () => {
-      const data = await getAllGame();
-      setGameList(data);
-    }
-
-    fetchGameList();
-  }, []);
+    dispatch(fetchAllGames())
+  }, [dispatch]);
 
   useEffect(() => {
-    let searched =
-      Array.isArray(gameList) &&
-      gameList.filter((item) =>
-        item.title.toLowerCase().includes(searchValue.toLowerCase())
-      );
+    setList(gameList)
+  }, [gameList])
 
-    setGameList(searched);
+  useEffect(() => {
+    if (searchValue)
+      setList(list.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())))
+    else 
+      setList(gameList)
   }, [searchValue]);
 
   return (
@@ -35,7 +31,7 @@ const GameList = ({ type, searchValue }) => {
       <Row>
         {isMobile ? (
           <>
-            {gameList
+            {list
               .filter((item) => item.isHot)
               .map((item) => (
                 <Col
@@ -54,7 +50,7 @@ const GameList = ({ type, searchValue }) => {
               ))}
             <Col xs={12} lg={6}>
               <Row className="row-cols-2">
-                {gameList
+                {list
                   .filter((item) => !item.isHot)
                   .map((item) => (
                     <Col className="px-2 px-sm-2 mt-sm-2 mt-2" key={item.id}>
@@ -71,7 +67,7 @@ const GameList = ({ type, searchValue }) => {
           </>
         ) : (
           <>
-            {gameList
+            {list
               .filter((item) => item.isHot)
               .map((item) => (
                 <Col
@@ -86,7 +82,7 @@ const GameList = ({ type, searchValue }) => {
                   />
                 </Col>
               ))}
-            {gameList
+            {list
               .filter((item) => !item.isHot)
               .map((item) => (
                 <Col

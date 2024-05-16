@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import RankTable from "src/pages/RankPage/RankTable";
+import RoomTable from "src/pages/RoomPage/components/RoomTable";
 
 const Table = ({ rankTable = false, roomTable = false, data }) => {
   return (
@@ -22,7 +23,7 @@ const Table = ({ rankTable = false, roomTable = false, data }) => {
               <th>Bet level</th>
               <th>Status</th>
               <th>
-                <Button variant="primary">Play now</Button>
+                <Button variant="primary" className="room-table-btn">Play now</Button>
               </th>
             </tr>
           )}
@@ -33,7 +34,7 @@ const Table = ({ rankTable = false, roomTable = false, data }) => {
           }
 
           {
-            roomTable && <></>
+            roomTable && <RoomTable data={data} />
           }
         </tbody>
       </table>

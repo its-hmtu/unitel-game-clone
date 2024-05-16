@@ -1,7 +1,202 @@
 .room-page-container {
   width: 100%;
+  margin: 0 auto;
+  position: relative;
+  
+  @include media-breakpoint-up(md) {
+    margin-top: 1rem;
+  }
 
-  @include media-breakpoints-up(xxl) {
+  @include media-breakpoint-up(xxl) {
     max-width: 70vw;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  ul {
+    position: absolute;
+    top: 55px;
+    right: 0;
+
+    border: none;
+
+    & li:first-of-type {
+      background: url("/src/assets/images/roompage-tab-bronze.svg");
+      background-position: 8px;
+      background-repeat: no-repeat;
+
+      & .nav-link.active {
+        background: url("/src/assets/images/roompage-tab-bronze-active.svg");
+        background-position: 8px;
+        background-repeat: no-repeat;
+        background-color: $green-lime;
+      }
+    }
+
+    & li:nth-of-type(2) {
+      background: url("/src/assets/images/roompage-tab-silver.svg");
+      background-position: 8px;
+      background-repeat: no-repeat;
+
+      & .nav-link.active {
+        background: url("/src/assets/images/roompage-tab-silver-active.svg");
+        background-position: 8px;
+        background-repeat: no-repeat;
+        background-color: $green-lime;
+      }
+    }
+
+    & li:nth-of-type(3) {
+      background: url("/src/assets/images/roompage-tab-gold.svg");
+      background-position: 8px;
+      background-repeat: no-repeat;
+
+      & .nav-link.active {
+        background: url("/src/assets/images/roompage-tab-gold-active.svg");
+        background-position: 8px;
+        background-repeat: no-repeat;
+        background-color: $green-lime;
+      }
+    }
+
+    & li:last-of-type {
+      background: url("/src/assets/images/roompage-tab-diamond.svg");
+      background-position: 8px;
+      background-repeat: no-repeat;
+
+      & .nav-link.active {
+        background: url("/src/assets/images/roompage-tab-diamond-active.svg");
+        background-position: 8px;
+        background-repeat: no-repeat;
+        background-color: $green-lime;
+      }
+    }
+
+    & li .nav-link {
+      border: transparent;
+      border-radius: 8px;
+      padding: 8px 16px 8px 40px;
+      background-color: transparent;
+      color: $text-default;
+    
+      &.active {
+        color: $text-default
+      }
+    }
+  }
+
+  .room-search {
+    display: flex;
+    height: 40px;
+    margin-top: 16px;
+
+    @include media-breakpoint-up(md) {
+      .search-bar {
+        max-width: 115px;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      .search-bar {
+        max-width: 160px;
+      }
+    }
+
+    @include media-breakpoint-up(xl) {
+      .search-bar {
+        max-width: 280px;
+      }
+    }
+
+    .search-bar {
+      
+      
+      & input {
+        font-size: 14px;
+        height: 38px;
+        line-height: 19px;
+      }
+    }
+
+
+    .search-bar-room {
+      position: inherit;
+    }
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      background: $green-gradient;
+      border: transparent;
+    }
+  }
+
+  .room-table {
+    margin-top: 16px;
+
+    &-btn {
+      width: 100px;
+      height: 36px;
+      border-radius: 8px;
+      border: transparent;
+      font-size: 15px;
+      font-weight: 600;
+      background: $orange-gradient;
+      
+      &--join {
+        background: $green-gradient;
+      }
+    }
+
+    .progress-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+
+      .progress {
+        background-color: #c4c4c4;
+        border-radius: 8px;
+        width: 200px;
+      }
+    }
+
+    .bet-container {
+      p {
+        color: $yellow;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .other-game {
+    margin-top: 40px;
+
+    &-title {
+      width: fit-content;
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 600;  
+    }
+
+    &-search-bar {
+      position: static;
+      max-width: 270px;
+
+
+
+      input {
+        font-size: 14px;
+        line-height: 19px;
+        height: 38px;
+      }
+    }
   }
 }

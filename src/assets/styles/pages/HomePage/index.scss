@@ -52,17 +52,19 @@
       }
     }
   }
+
+  .search-bar {
+    width: 160px;
+    @include media-breakpoint-up(xxl) {
+      width: 228px;
+    }
+  }
 }
 
 .search-bar {
   position: absolute;
-  width: 160px;
   top: 0;
   right: 0;
-
-  @include media-breakpoint-up(xxl) {
-    width: 228px;
-  }
 
   & form {
     display: flex;
