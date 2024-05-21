@@ -1,27 +1,17 @@
 .room-page-container {
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  
-  @include media-breakpoint-up(md) {
-    margin-top: 1rem;
-  }
-
-  @include media-breakpoint-up(xxl) {
-    max-width: 70vw;
-  }
-
-  h1 {
-    font-size: 32px;
-    font-weight: 600;
-  }
-
   ul {
     position: absolute;
     top: 55px;
     right: 0;
-
     border: none;
+    justify-content: flex-end;
+
+    @include media-breakpoint-down(md) {
+      position: inherit;
+      top: unset;
+      right: unset;
+      justify-content: space-between;
+    }
 
     & li:first-of-type {
       background: url("/src/assets/images/roompage-tab-bronze.svg");
@@ -176,27 +166,5 @@
     }
   }
 
-  .other-game {
-    margin-top: 40px;
-
-    &-title {
-      width: fit-content;
-      font-size: 24px;
-      line-height: 32px;
-      font-weight: 600;  
-    }
-
-    &-search-bar {
-      position: static;
-      max-width: 270px;
-
-
-
-      input {
-        font-size: 14px;
-        line-height: 19px;
-        height: 38px;
-      }
-    }
-  }
+  
 }

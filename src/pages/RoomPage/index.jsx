@@ -1,27 +1,23 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-
 import RoomSearchCreate from './components/RoomSearchCreate'
-import { Tab, Tabs } from 'react-bootstrap'
+import { Container, Row, Tab, Tabs } from 'react-bootstrap'
 import Table from 'src/components/Table'
-import OtherGames from './components/OtherGames'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllGames, fetchRoomLevels } from 'src/store/game/actions'
 import { gameSlice } from "src/store/game/gameSlice";
+import { useMediaQuery, queryPoint } from 'src/utils/hooks'
 
 const RoomPage = () => {
   const { roomId } = useParams()
-  let location = useLocation()
-  console.log(location);
-
-  
   const [level, setLevel] = useState("1")
-  const otherSelected = useSelector(state => state.game.selected)
   
   // const [game, setGame] = useState({})
   const gameSelected = useSelector(state => state.game.selected)
   const gameList = useSelector(state => state.game.games || [])
   const roomLevels = useSelector(state => state.game.roomLevels)
+  const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -53,37 +49,35 @@ const RoomPage = () => {
       handleScrollTop()
     }
 
-
     return () => {
       document.title = "Unitel Games"
     }
   }, [gameSelected])
   
   return (
-    <div className='room-page-container'>
-      <h1>{ gameSelected?.title }</h1>
-      <RoomSearchCreate />
-      <Tabs
-        id="controlled-tab-example"
-        activeKey={level}
-        onSelect={(k) => setLevel(k)}
-      >
-        {
-          Array.isArray(roomLevels) && 
-          roomLevels.map((item) => {
-            return (
-              <Tab eventKey={item.id} key={item.id} title={item.name}>
-                <div>
-                  <Table roomTable data={[{id: 1, playerName: "name", betLevel: "300", status: ""}]}/>
-                </div>
-              </Tab>
-            )
-          })
-        }
-      </Tabs>
-
-      <OtherGames gameList={gameList} roomId={roomId}/>
-    </div>
+    <Container className='room-page-container' fluid>
+      <Row className={`${isMobile ? 'room-page-container-mobile' : ""}`}>
+        {!isMobile && <RoomSearchCreate />}
+        <Tabs
+          id="controlled-tab-example"
+          activeKey={level}
+          onSelect={(k) => setLevel(k)}
+        >
+          {
+            Array.isArray(roomLevels) && 
+            roomLevels.map((item) => {
+              return (
+                <Tab eventKey={item.id} key={item.id} title={item.name}>
+                  <div>
+                    <Table roomTable data={[{id: 1, playerName: "name", betLevel: "300", status: ""}]}/>
+                  </div>
+                </Tab>
+              )
+            })
+          }
+        </Tabs>
+      </Row>
+    </Container>
   )
 }
 

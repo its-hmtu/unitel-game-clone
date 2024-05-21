@@ -34,6 +34,7 @@ const OtherGames = ({gameList, roomId}) => {
             type="text"
             placeholder={t("search_bar")}
             onChange={(e) => setSearchValue(e.target.value)}
+            searchIcon={true}
           />
         </div>
       </Row>

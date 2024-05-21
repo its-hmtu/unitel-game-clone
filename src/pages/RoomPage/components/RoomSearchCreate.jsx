@@ -15,7 +15,7 @@ const RoomSearchCreate = () => {
       <div className='search-bar search-bar-room'>
         <SearchBar
           placeholder={t('room.search_id')}
-          icon={!isIconHidden}
+          searchIcon={!isIconHidden}
         />
       </div>
       <div className="d-flex">

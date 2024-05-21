@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { useRoutes } from "react-router-dom";
 import MainLayout from "src/layout/MainLayout";
 import RoomPageLayout from "src/layout/RoomPageLayout";
 import SubLayout from "src/layout/SubLayout";
@@ -6,10 +8,9 @@ import PrizePage from "src/pages/PrizePage";
 import RankPage from "src/pages/RankPage";
 import RoomPage from "src/pages/RoomPage";
 import ShopPage from "src/pages/ShopPage";
-import { queryPoint, useMediaQuery } from "src/utils/hooks";
 
-export function RouteList() {
-  const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`)
+export function RouteList(isMobile) {
+  
   return [
     {
       element: <MainLayout />,
@@ -36,7 +37,8 @@ export function RouteList() {
             ...[
               isMobile
                 ? {}
-                : {
+                :
+                  {
                     path: "/room/:roomId",
                     element: <RoomPage />,
                   },

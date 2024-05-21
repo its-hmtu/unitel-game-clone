@@ -7,7 +7,7 @@ const SearchBar = (props) => {
         <Form.Control {...props} />
       </Form.Group>
       <>
-        {props.icon &&
+        {props.searchIcon &&
           <Button variant="dark">
           <svg
             width="24"

@@ -29,9 +29,9 @@ const GameCard = ({ type, isSmall, data, idGame }) => {
         onClick={
           type === "how-to-play"
             ? () => {
-                setShow((prev) => !prev);
+                setShow(true);
               }
-            : null
+            : () => handleSelectGame(data)
         }
         to={
           type === "how-to-play"
@@ -57,8 +57,9 @@ const GameCard = ({ type, isSmall, data, idGame }) => {
             onClick={
               type === "how-to-play"
                 ? () => {
-                    setShow((prev) => !prev);
-                  }
+                  setShow(true);
+                  console.log(show)
+                }
                 : () => handleSelectGame(data)
             }
           >

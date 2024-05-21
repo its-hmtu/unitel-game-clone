@@ -1,0 +1,32 @@
+.sub-layout-container {
+  position: relative;
+
+  .sub-layout-header {
+    position: relative;
+    height: 56px;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $sub-layout-bg;
+    
+    button {
+      position: absolute;
+      left: 0;
+      background-color: transparent;
+      border: none
+    }
+  
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: $primary;
+    }
+  }
+
+  & > img {
+    position: absolute;
+    bottom: 0;
+    right: 0
+  }
+}

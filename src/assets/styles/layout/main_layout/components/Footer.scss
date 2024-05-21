@@ -24,12 +24,20 @@
 
   li {
     font-size: 1.125rem;
+
+    a {
+      color: $text-default;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $primary;
+      }
+    }
   }
 
   ul {
     & > *+* {
       margin-top: 16px;
-
     }
   }
 }
