@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllGames, fetchRoomLevels } from 'src/store/game/actions'
 import { gameSlice } from "src/store/game/gameSlice";
 import { useMediaQuery, queryPoint } from 'src/utils/hooks'
+import RoomTableMobile from './components/RoomTableMobile'
 
 const RoomPage = () => {
   const { roomId } = useParams()
@@ -57,7 +58,7 @@ const RoomPage = () => {
   return (
     <Container className='room-page-container' fluid>
       <Row className={`${isMobile ? 'room-page-container-mobile' : ""}`}>
-        {!isMobile && <RoomSearchCreate />}
+        {/* {!isMobile &&  */<RoomSearchCreate />}
         <Tabs
           id="controlled-tab-example"
           activeKey={level}
@@ -69,7 +70,11 @@ const RoomPage = () => {
               return (
                 <Tab eventKey={item.id} key={item.id} title={item.name}>
                   <div>
-                    <Table roomTable data={[{id: 1, playerName: "name", betLevel: "300", status: ""}]}/>
+                    { 
+                     isMobile 
+                     ? (<RoomTableMobile />)
+                     : (<Table roomTable data={[{id: 1, playerName: "name", betLevel: "300", status: ""}]}/>) 
+                    }
                   </div>
                 </Tab>
               )

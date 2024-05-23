@@ -10,7 +10,7 @@
       position: inherit;
       top: unset;
       right: unset;
-      justify-content: space-between;
+      justify-content: space-around;
     }
 
     & li:first-of-type {
@@ -71,6 +71,12 @@
       padding: 8px 16px 8px 40px;
       background-color: transparent;
       color: $text-default;
+
+      @include media-breakpoint-down(md) {
+        font-size: 12px;
+
+        padding: 8px 8px 8px 36px;
+      }
     
       &.active {
         color: $text-default
@@ -83,26 +89,27 @@
     height: 40px;
     margin-top: 16px;
 
-    @include media-breakpoint-up(md) {
-      .search-bar {
-        max-width: 115px;
-      }
+    @include media-breakpoint-down(md) {
+      justify-content: space-between;
+      margin-bottom: 15px;
     }
 
-    @include media-breakpoint-up(lg) {
-      .search-bar {
-        max-width: 160px;
-      }
-    }
-
-    @include media-breakpoint-up(xl) {
-      .search-bar {
-        max-width: 280px;
-      }
-    }
+    
 
     .search-bar {
-      
+      max-width: 150px;
+
+      @include media-breakpoint-up(md) {
+        max-width: 115px;
+      }
+  
+      @include media-breakpoint-up(lg) {
+        max-width: 160px;
+      }
+  
+      @include media-breakpoint-up(xl) {
+        max-width: 280px;
+      }
       
       & input {
         font-size: 14px;
@@ -125,6 +132,11 @@
       font-weight: 600;
       background: $green-gradient;
       border: transparent;
+
+      @include media-breakpoint-down(sm) {
+        font-size: 11px;
+        padding: 4px 8px;
+      }
     }
   }
 
@@ -166,5 +178,76 @@
     }
   }
 
-  
+  .room-play-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    border: transparent;
+    background: $orange-gradient;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+  }
+
+  &-mobile {
+    .tab-content {
+      padding: 0;
+      background-color: $bg;
+    }
+
+    ul {
+      background-color: $bg;
+      li {
+        padding-block: 15px!important;
+      }
+    }
+  }
+}
+
+.roompage-table-mobile-container {
+
+  .roompage-mobile-tabs {
+    border-radius: 8px;
+    border: 1px solid $gray-400;
+    padding: 24px;
+    background-image: url("/src/assets/images/roompage-mobile-bg.svg");
+    background-color: $bg;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    z-index: 99;
+
+    button {
+      min-width: 85px;
+      background: $green-gradient;
+      border: none;
+    }
+  }
+
+  .roompage-mobile-tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    p, h2{
+      font-size: 14px;
+    }
+
+    &:last-child {
+      p {
+        color: $yellow;
+        font-weight: bold;
+      }
+    }
+    
+    h2 {
+      color: $orange;
+    }
+  }
 }
