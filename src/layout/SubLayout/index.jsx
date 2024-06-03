@@ -3,7 +3,7 @@ import { Container, Button } from 'react-bootstrap'
 import backIcon from "assets/images/arrow-back.svg"
 import subLayoutCircle from "assets/images/login-circle.svg"
 import { useDispatch, useSelector } from 'react-redux'
-import { Outlet, useParams } from 'react-router-dom'
+import { Link, Outlet, useParams } from 'react-router-dom'
 import { fetchAllGames } from 'src/store/game/actions'
 import {gameSlice} from 'src/store/game/gameSlice'
 
@@ -31,7 +31,11 @@ const SubLayout = () => {
     <div className='sub-layout-container'>
       <Container className="sub-layout-header" fluid>
         <Button variant="dark" >
-          <img src={backIcon} alt="back" />
+          <Link 
+            to={"/"}
+          >
+            <img src={backIcon} alt="back" />
+          </Link>
         </Button>
         <h1>
           {selectedGame?.title || gameSelected?.title}

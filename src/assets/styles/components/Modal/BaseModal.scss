@@ -1,20 +1,69 @@
 .base-modal {
+  // position: relative;
+
   .modal-content {
     background-color: $bg;
     padding-block: 30px;
     margin-inline: auto;
-    width: calc(min(100%, 1000px));
+    width: calc(min(100%, 640px));
     min-height: 500px;
+    overflow: hidden;
+
+    &.login {
+      width: calc(min(100%, 640px));
+    }
+
+    
 
     .modal-header {
+      flex-direction: column;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 25px;
-      font-weight: 700;
       color: $primary;
       border: none;
-      padding: 0 0 10px;
+      // padding: 0 0 10px;
+
+      .modal-title {
+        font-size: 40px;
+        line-height: 48px;
+        font-weight: 600;
+        font-family: $text-poppins;
+        margin-bottom: 16px!important;
+      }
+
+      .modal-body {
+        p {
+          font-weight: normal;
+          color: $gray-300;
+        }
+      }
+    }
+
+    .modal-footer {
+      border: none;
+      width: calc(min(100%, 520px));
+      justify-content: space-between;
+      margin-inline: auto;
+
+      button {
+        width: 100%;
+        padding: 16px 19px;
+        height: 56px;
+        color: hsl(0, 100%, 100%);
+        position: relative;
+      }
+
+      button:not(:first-child) {
+        background-color: transparent;
+        border-color: transparent;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.1);
+        }
+      }
     }
 
     .carousel-indicators {
@@ -25,16 +74,6 @@
     }
   }
 
-  .btn {
-    background-color: transparent;
-    border:none;
-
-    &:hover, &:active {
-      background-color: transparent;
-      border:none
-    }
-  }
-
   .btn-modal-close {
     position: absolute;
     top: 15px;
@@ -42,6 +81,14 @@
     z-index: 9999;
     padding: 6px 12px;
     cursor: pointer;
+
+    background-color: transparent;
+    border-color: transparent;
+
+    &:active, &:focus {
+      background-color: transparent;
+      border-color: transparent;
+    }
   }
 
   .slick-dots{
@@ -102,6 +149,48 @@
     }
     .modal-body {
       padding: 5px 5px 30px;
+    }
+  }
+
+  .star-circle {
+    position: absolute;
+    top: -75px;
+    left: -58px;
+  }
+
+  .circle {
+    position: absolute;
+    bottom: 0px;
+    right: -20px;
+  }
+
+  .base-input {
+    position: relative;
+
+    input {
+      height: 52px;
+      background-color: hsl(208deg 91% 9% / 100%);
+      box-shadow: 0 0 0 30px hsl(208deg 91% 9% / 100%) inset;
+      color: hsl(223, 10%, 52%);
+      border: 1px solid hsl(208deg 60% 12% / 100%);
+      border-radius: 8px;
+
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      padding-left: 50px;
+
+      &::placeholder {
+        color: hsl(223, 10%, 52%)
+      }
+    }
+
+    img:nth-of-type(1), img:nth-of-type(2) {
+      position: absolute;
+      top: 50%;
+      left: 0px;
+      transform: translateY(-50%);
+      margin-left: 20px;
     }
   }
 }

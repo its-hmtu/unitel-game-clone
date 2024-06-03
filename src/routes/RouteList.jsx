@@ -7,6 +7,7 @@ import HomePage from "src/pages/HomePage";
 import PrizePage from "src/pages/PrizePage";
 import RankPage from "src/pages/RankPage";
 import RoomPage from "src/pages/RoomPage";
+import SettingPage from "src/pages/SettingPage";
 import ShopPage from "src/pages/ShopPage";
 
 export function RouteList(isMobile) {
@@ -45,6 +46,10 @@ export function RouteList(isMobile) {
             ],
           ],
         },
+        {
+          path: "/:type",
+          element: <SettingPage />,
+        }
       ],
     },
     {

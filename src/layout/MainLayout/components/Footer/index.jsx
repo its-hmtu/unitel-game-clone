@@ -16,6 +16,17 @@ const Footer = () => {
   //   console.log(gameHot)
   // }, [gameList])
 
+  const helpData = [
+    {
+      type: 'contact',
+      name: 'footer.contact'
+    },
+    {
+      type: 'faq',
+      name: 'footer.faq'
+    }
+  ]
+
   return (
     <Container fluid className='footer-container'>
       <Row className="justify-content-center mx-auto">
@@ -41,16 +52,17 @@ const Footer = () => {
         <Col className='col-xl-3 col-md-3'>
           <h2>{t('footer.help')}</h2>
           <ul>
-            <li>
-              <Link to="/" >
-                {t('footer.contact')}
-              </Link>
-            </li>
-            <li>
-              <Link to="/" >
-                {t('footer.faq')}
-              </Link>
-            </li>
+            {
+              helpData.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <Link to={"/:type".replace(":type", item.type)} >
+                      {t(item.name)}
+                    </Link>
+                  </li>
+                )
+              })
+            }
           </ul>
         </Col>
       </Row>

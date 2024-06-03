@@ -1,0 +1,15 @@
+.form-check {
+  padding-left: 2em;
+  color:  hsl(223, 10%, 52%);
+
+  &-input {
+    background-color: transparent;
+    border: 1.5px solid hsl(223, 10%, 52%);
+    cursor: pointer;
+    box-shadow: none;
+  }
+}
+
+.login {
+  width: calc(min(100%, 640px));
+}

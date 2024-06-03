@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import BaseModal from './index'
-import { Carousel, Container, Modal } from 'react-bootstrap'
+import { Carousel, Button, Container, Modal } from 'react-bootstrap'
+import { CloseSvg } from 'src/assets/svg/Modal/CloseSvg'
 
 import g1 from 'images/imgplay/g1.png'
 import g2 from 'images/imgplay/g2.png'
@@ -127,8 +128,17 @@ const ModalHelpPlay = ({
   
 
   return (
-    <BaseModal show={show} onHide={onHide} {...otherProps}>
-      <Container className='modal-help-play px-0'>
+    <Modal
+    show={show}
+    onHide={onHide}
+    {...otherProps}
+    size='xl'
+    aria-labelledby="contained-modal-title-vcenter"
+    centered
+    className='modal-help-play-base'
+    // style={{width: login ? 'calc(min(100%, 640px))' : 'calc(min(100%, 1000px))'}}
+    >
+    <Container className='modal-help-play px-0'>
         <Modal.Header>{stateModal.title}</Modal.Header>
         <Modal.Body>
           {
@@ -138,8 +148,10 @@ const ModalHelpPlay = ({
           }
         </Modal.Body>
       </Container>
-    </BaseModal>
-
+    <Button variant='dark' onClick={onHide} className="btn-modal-close">
+      <CloseSvg width="32" height="32" viewBox="0 0 32 32" />
+    </Button>
+  </Modal>
   )
 }
 

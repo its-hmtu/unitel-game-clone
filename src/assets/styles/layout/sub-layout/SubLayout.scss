@@ -14,7 +14,11 @@
       position: absolute;
       left: 0;
       background-color: transparent;
-      border: none
+      border: none;
+    }
+
+    .btn:first-child:active, .btn.active {
+      background-color: transparent;
     }
   
     h1 {
