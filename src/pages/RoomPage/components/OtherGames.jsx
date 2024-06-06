@@ -15,7 +15,7 @@ const OtherGames = ({gameList, roomId}) => {
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
-    setList(gameList.filter((item) => item.id != roomId))
+    setList(gameList?.filter((item) => item.id != roomId))
   }, [gameList, roomId])
 
   useEffect(() => {

@@ -6,21 +6,24 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import { fetchAllGames } from 'src/store/game/actions'
 import {gameSlice} from 'src/store/game/gameSlice'
+import { useQuery } from 'react-query'
+import { getAllGameQuery } from 'src/data/game'
 
 const SubLayout = () => {
   const {roomId} = useParams()
+  const {data: games, isLoading} = useQuery(getAllGameQuery()) 
   const dispatch = useDispatch()
 
-  const gameList = useSelector(state => state.game.games)
-  const gameSelected = gameList.find(game => game.id == roomId)
-  const selectedGame = useSelector(state => state.game.selected)
-  // const roomTitle = || "Room"
+  // const gameList = useSelector(state => state.game.games)
+  const gameSelected = games?.find(game => game.id == roomId)
+  // const selectedGame = useSelector(state => state.game.selected)
+  const roomTitle = gameSelected?.title || "Room"
 
-  useEffect(() => {
-    if (gameList.length === 0) {
-      dispatch(fetchAllGames())
-    }
-  }, [dispatch, gameList])
+  // useEffect(() => {
+  //   if (gameList.length === 0) {
+  //     dispatch(fetchAllGames())
+  //   }
+  // }, [dispatch, gameList])
 
   useEffect(() => {
     dispatch(gameSlice.actions.selectGame(gameSelected))
@@ -38,7 +41,7 @@ const SubLayout = () => {
           </Link>
         </Button>
         <h1>
-          {selectedGame?.title || gameSelected?.title}
+          {roomTitle}
         </h1>
       </Container>
       <Outlet />

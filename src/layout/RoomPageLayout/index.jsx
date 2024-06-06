@@ -1,26 +1,37 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Outlet, useParams } from 'react-router-dom'
 import OtherGames from 'src/pages/RoomPage/components/OtherGames'
 import { fetchAllGames } from 'src/store/game/actions'
 import { useMediaQuery, queryPoint } from 'src/utils/hooks/useMediaQuery'
-import daovang from 'images/banne-daovang.png'
+import { useQuery } from 'react-query'
+import { getAllGameQuery } from 'src/data/game'
 
 
 const RoomPageLayout = () => {
   const { roomId } = useParams()
+  const {data: games, isLoading} = useQuery(getAllGameQuery())
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`)
-  const dispatch = useDispatch()
-  const gameList = useSelector((state) => state.game.games)
-  const gameSelected = gameList.find((game) => game.id == roomId)
-  const selectedGame = useSelector((state) => state.game.selected)
-  let gameImage = gameSelected?.img || selectedGame?.img
+  // const dispatch = useDispatch()
+  // const gameList = useSelector((state) => state.game.games)
+  const gameSelected = games?.find((game) => game.id == roomId)
+  // const selectedGame = useSelector((state) => state.game.selected)
+  let gameImage = gameSelected?.img
+  const [gameList, setGameList] = useState([])
+
+  // useEffect(() => {
+  //   if (gameList.length === 0) {
+  //     dispatch(fetchAllGames())
+  //   }
+  // }, [dispatch, gameList])
 
   useEffect(() => {
-    if (gameList.length === 0) {
-      dispatch(fetchAllGames())
+    if (games) {
+      setGameList(games)
+    } else {
+      setGameList([])
     }
-  }, [dispatch, gameList])
+  }, [games])
 
   return (
     <div className='room-layout-container'>

@@ -151,6 +151,11 @@
 
   &--link li {
     padding: 10px 0!important;
+    a {
+      color: $text-default;
+      width: 100%;
+      display: block;
+    }
   }
 }
 

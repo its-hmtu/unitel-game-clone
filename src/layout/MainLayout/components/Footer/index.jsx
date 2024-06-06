@@ -1,20 +1,34 @@
 import {Container, Row, Col} from 'react-bootstrap';
 import laoApp from 'images/footer-lao-app.svg'
-
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useQuery } from 'react-query';
+import { getAllGameQuery } from 'src/data/game';
 
 const Footer = () => {
   const {t} = useTranslation();
-  const gameList = useSelector(state => state.game.games)
+  // const gameList = useSelector(state => state.game.games)
 
-  const gameHot = gameList.filter((item) => item.isHot)
+  const {data: games, isLoading} = useQuery(getAllGameQuery())
+
+  const gameHot = games?.filter((item) => item.isHot)
+
+  const [listGameHot, setListGameHot] = useState([])
   // useEffect(() => {
   //   console.log(gameList)
   //   console.log(gameHot)
   // }, [gameList])
+
+  useEffect(() => {
+    if (games) {
+      setListGameHot(gameHot)
+    } else {
+      setListGameHot([])
+    }
+  }, [games])
 
   const helpData = [
     {
@@ -39,7 +53,7 @@ const Footer = () => {
         <Col className='col-xl-3 col-md-3'>
           <h2>{t('footer.hot')}</h2>
           <ul>
-            {gameHot.map((item, index) => (
+            {listGameHot.map((item, index) => (
               <li key={index} >
                 <Link to={"/room/:roomId".replace(":roomId", item.id)}>
                   {item.title}

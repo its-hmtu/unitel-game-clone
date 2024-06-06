@@ -42,6 +42,7 @@ const HomePage = () => {
         {isMobile ? null : (
           <div className="search-bar">
             <SearchBar 
+              searchIcon={true}
               type="text" 
               placeholder={t("search_bar")} 
               onChange={e => setSearchValue(e.target.value)} 

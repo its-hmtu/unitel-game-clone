@@ -52,6 +52,11 @@ const Header = () => {
     localStorage.setItem("i18nextLng", lng);
   };
 
+  const helpData = [
+    { title: t("footer.contact"), type: "contact" },
+    { title: t("footer.faq"), type: "faq"},
+  ]
+
   return (
     <>
       <Navbar>
@@ -159,8 +164,15 @@ const Header = () => {
                     <div className="footer-nav-mobile">
                       <div className="footer-nav-mobile--link">
                         <ul>
-                          <li>{t("footer.contact")}</li>
-                          <li>{t("footer.faq")}</li>
+                          {helpData.map((item, index) => (
+                            <li key={index} className="footer-nav-mobile--item">
+                              <NavLink
+                                to={`/${item.type}`}
+                              >
+                                {t(item.title)}
+                              </NavLink>
+                            </li>
+                          ))}
                         </ul>
                       </div>
                       <div>
