@@ -1,7 +1,12 @@
-*, *::after, *::before {
+*, *::after, *::before{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+*::-moz-focus-inner {
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
@@ -30,8 +35,11 @@ a {
   text-decoration: none!important;
 }
 
-ul, li {
-  list-style: none;
+ul{
+  list-style-type: none;
   padding: 0!important;
-  
+}
+
+select {
+  padding: 0;
 }

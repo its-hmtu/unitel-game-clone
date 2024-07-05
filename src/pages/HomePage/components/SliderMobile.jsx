@@ -13,7 +13,7 @@ const SliderMobile = () => {
   const data = [
     img1, 
     img1,
-    img2
+    img2,
   ]
 
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.sm}px)`)

@@ -14,7 +14,7 @@ const Footer = () => {
 
   const {data: games, isLoading} = useQuery(getAllGameQuery())
 
-  const gameHot = games?.filter((item) => item.isHot)
+  const gameHot = games?.filter((item) => item.is_hot === 1)
 
   const [listGameHot, setListGameHot] = useState([])
   // useEffect(() => {
@@ -43,28 +43,28 @@ const Footer = () => {
 
   return (
     <Container fluid className='footer-container'>
-      <Row className="justify-content-center mx-auto">
+      <Row className={`${listGameHot?.length > 0 ? "justify-content-center" : "justify-content-evenly"} mx-auto`}>
         <Col className='footer-copyright col-xl-5 col-md-6'>
           <img src={laoApp} alt="Lao App logo" />
           <h6>{t("footer.all_right")}</h6>
           <p>{t('footer.content')}</p>
         </Col>
 
-        <Col className='col-xl-3 col-md-3'>
-          <h2>{t('footer.hot')}</h2>
+       {listGameHot?.length > 0 && (<Col className='col-xl-3 col-md-3'>
+          <h2 className='mb-3'>{t('footer.hot')}</h2>
           <ul>
-            {listGameHot.map((item, index) => (
+            {listGameHot?.map((item, index) => (
               <li key={index} >
                 <Link to={"/room/:roomId".replace(":roomId", item.id)}>
-                  {item.title}
+                  {item.name}
                 </Link>
               </li>
             ))}
           </ul>
-        </Col>
+        </Col>)}
 
         <Col className='col-xl-3 col-md-3'>
-          <h2>{t('footer.help')}</h2>
+          <h2 className='mb-3'>{t('footer.help')}</h2>
           <ul>
             {
               helpData.map((item, index) => {

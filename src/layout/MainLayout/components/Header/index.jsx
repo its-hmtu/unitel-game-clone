@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "images/logo.svg";
 import footerLogo from "images/footer-lao-app.svg";
 import {
@@ -13,24 +13,68 @@ import {
 import flagLa from "images/Lao.svg.png";
 import flagEn from "images/eng.png";
 import flagVi from "images/Vietnam.svg.png";
-import { Button, Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import {
+  Button,
+  Container,
+  Dropdown,
+  Nav,
+  NavDropdown,
+  Navbar,
+  Row,
+} from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import i18n from "src/i18n";
 import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery";
 import menu from "images/menu-svgrepo-com.svg";
 import Drawer from "@mui/material/Drawer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FooterGameSvg, FooterProfileSvg } from "svg/Footer";
 import LoginModal from "src/components/Modal/LoginModal";
+import { destroyUserInfo, getLanguage } from "src/utils/localStorage";
+import coin from "images/coin.svg";
+import avaFrame from "images/ava-frame.svg";
+import avaDefault from "images/ava-default.jpeg";
+import { HeaderAccountMyaccountSVG } from "src/assets/svg/Header/HeaderAccountMyaccountSVG";
+import { HeaderAccountGifthistSVG } from "src/assets/svg/Header/HeaderAccountGifthistSVG";
+import { HeaderAccountSettingSVG } from "src/assets/svg/Header/HeaderAccountSettingSVG";
+import { HeaderAccountLogoutSVG } from "src/assets/svg/Header/HeaderAccountLogoutSVG";
+import { useQuery, useQueryClient } from "react-query";
+import { getUserQuery } from "src/data/user";
+import { userInfoKey } from "src/data/user";
+import ConfirmModal from "src/components/Modal/ConfirmModal";
+import { PATHS } from "routes/path";
 
 const Header = () => {
+  const { data: user, isLoading } = useQuery(getUserQuery());
   const { t } = useTranslation();
+  const lng = getLanguage();
   const [showMenu, setShowMenu] = useState(false);
-  const [language, setLanguage] = useState(
-    localStorage.getItem("i18nextLng") || "la"
-  );
+  const [language, setLanguage] = useState(lng || "la");
+  const [userData, setUserData] = useState({});
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  // const api = import.meta.env.REACT_APP_DOMAIN_API
+
+  // useEffect(() =>{
+  //   console.log(api)
+  // })
+
+  useEffect(() => {
+    setUserData(user)
+  }, [user]);
+
+  useEffect(() => {
+    setLanguage(lng);
+  }, [lng]);
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      console.log(user);
+    }
+  }, [user, isLoading]);
 
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`);
 
@@ -44,6 +88,14 @@ const Header = () => {
 
   const handleShowLoginModal = () => {
     setShowLoginModal((prev) => !prev);
+  };
+
+  const handleShowConfirmModal = () => {
+    setShowConfirmModal((prev) => !prev);
+  }
+
+  const closeConfirmModal = () => {
+    setShowConfirmModal(false);
   }
 
   const changeLanguage = (lng) => {
@@ -54,8 +106,17 @@ const Header = () => {
 
   const helpData = [
     { title: t("footer.contact"), type: "contact" },
-    { title: t("footer.faq"), type: "faq"},
-  ]
+    { title: t("footer.faq"), type: "faq" },
+  ];
+
+  const handleLogout = () => {
+    destroyUserInfo();
+    handleShowConfirmModal();
+    queryClient.invalidateQueries(userInfoKey);
+    queryClient.removeQueries(userInfoKey);
+    // setUserData({})
+    navigate(PATHS.HOME_PAGE);
+  }
 
   return (
     <>
@@ -166,9 +227,7 @@ const Header = () => {
                         <ul>
                           {helpData.map((item, index) => (
                             <li key={index} className="footer-nav-mobile--item">
-                              <NavLink
-                                to={`/${item.type}`}
-                              >
+                              <NavLink to={`/${item.type}`}>
                                 {t(item.title)}
                               </NavLink>
                             </li>
@@ -275,26 +334,110 @@ const Header = () => {
                   </>
                 )}
               </NavDropdown>
-              <Button variant="primary" className="login-btn" onClick={handleShowLoginModal}>
-                <HeaderUserLoginSvg
-                  width={24}
-                  height={24}
-                  viewBox={"0 0 24 24"}
-                />
-                {t("login.login")}
-              </Button>
+
+              {userData ? (
+                <Row className="profile-header">
+                  <Link
+                    to={"/profile"}
+                    replace
+                    className="profile-header__coin"
+                  >
+                    <img src={coin} alt="Total coin" />
+                    <span>{userData?.coin}</span>
+                  </Link>
+
+                  <Dropdown align="end">
+                    <Dropdown.Toggle>
+                      <img
+                        src={userData?.avatarImage || avaDefault}
+                        alt="Avatar default"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = avaDefault;
+                        }}
+                      />
+                      <img src={avaFrame} alt="Avatar frame" />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item>
+                        <Link to="/profile" replace>
+                          <HeaderAccountMyaccountSVG
+                            width="20"
+                            height="20"
+                            viewBox="0 0 19 19"
+                          />
+                          <p>{t("header.account.my_acc")}</p>
+                        </Link>
+                      </Dropdown.Item>
+
+                      <Dropdown.Item>
+                        <Link to="/profile" replace>
+                          <HeaderAccountGifthistSVG
+                            width="20"
+                            height="20"
+                            viewBox="0 0 19 19"
+                          />
+                          <p>{t("header.account.gift_hist")}</p>
+                        </Link>
+                      </Dropdown.Item>
+
+                      <Dropdown.Item>
+                        <Link to="/profile" replace>
+                          <HeaderAccountSettingSVG
+                            width="20"
+                            height="20"
+                            viewBox="0 0 19 19"
+                          />
+                          <p>{t("header.account.setting")}</p>
+                        </Link>
+                      </Dropdown.Item>
+
+                      <Button
+                        variant="dark"
+                        onClick={handleShowConfirmModal}
+                        className="justify-content-start"
+                      >
+                        <HeaderAccountLogoutSVG
+                          width="20"
+                          height="20"
+                          viewBox="0 0 19 19"
+                        />
+                        <p>{t("header.account.logout")}</p>
+                      </Button>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Row>
+              ) : (
+                <Button
+                  variant="primary"
+                  className="login-btn"
+                  onClick={handleShowLoginModal}
+                >
+                  <HeaderUserLoginSvg
+                    width={24}
+                    height={24}
+                    viewBox={"0 0 24 24"}
+                  />
+                  {t("login.login")}
+                </Button>
+              )}
             </Nav>
           </Container>
         )}
       </Navbar>
-      <LoginModal 
+      <LoginModal
         show={showLoginModal}
         onHide={() => {
           setShowLoginModal((prev) => !prev);
         }}
       />
+      {showConfirmModal && <ConfirmModal 
+        show={showConfirmModal}
+        onHide={handleShowConfirmModal}
+        title={t('modal.profile.logout')}
+        onLogout={handleLogout}
+      />}
     </>
-    
   );
 };
 

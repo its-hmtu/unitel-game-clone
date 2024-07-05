@@ -16,7 +16,7 @@ const RoomSearchCreate = () => {
       <div className='search-bar search-bar-room'>
         <SearchBar
           placeholder={t('room.search_id')}
-          searchIcon={isMobile ? true : !isIconHidden}
+          searchicon={isMobile ?  true : !isIconHidden}
         />
       </div>
       

@@ -1,0 +1,35 @@
+.modal-content {
+  .modal-create-room {
+  
+    .modal-footer {
+      justify-content: center;
+      gap: 20px;
+
+      button {
+        width: 181px;
+        padding: 16px 19px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+
+        &:first-child {
+          background-color: transparent;
+          border: 1px solid $orange;
+          color: $orange;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+          }
+        }
+
+        &:nth-child(2) {
+          background: $green-gradient;
+          border: none;
+          color: $white;
+        }
+      }
+    }
+  
+  }
+}

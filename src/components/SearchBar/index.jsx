@@ -1,13 +1,14 @@
 import { Form, Button } from "react-bootstrap";
 
 const SearchBar = (props) => {
+  const searchIcon = props.searchicon;
   return (
     <Form>
       <Form.Group controlId="formBasicEmail">
         <Form.Control {...props} />
       </Form.Group>
       <>
-        {props.searchIcon &&
+        {searchIcon &&
           <Button variant="dark">
           <svg
             width="24"

@@ -36,3 +36,36 @@ table {
     }
   }
 }
+
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .pagination-pagesize {
+    align-items: center;
+    gap: 10px;
+
+    select {
+      background-color: $header-bg;
+      border: 1px solid $gray-200;
+      border-radius: 5px;
+      width: 63px;
+      height: 36px;
+      color: #B1B5C3;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    span {
+      color: $gray-200;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 24px;
+    }
+  } 
+}

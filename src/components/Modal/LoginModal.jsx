@@ -1,12 +1,17 @@
 import React, {useRef, useEffect} from 'react'
 import BaseModal from '.'
-import { Container, Modal, Form, Button, Row, Col } from 'react-bootstrap'
+import { Container, Modal, Form, Button, Row, Col, Spinner } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import phoneIcon from 'images/login-call.svg'
 import lockIcon from 'images/login-lock.svg'
 import hidePass from 'images/login-hidepass.svg'
 import showPass from 'images/login-showpass.svg'
 import { Link } from 'react-router-dom'
+import { useLogin, userInfoKey } from 'src/data/user'
+import axios from 'axios'
+import { API_PATHS } from 'src/routes/api.path'
+import i18n from 'src/i18n'
+import { useQueryClient } from 'react-query'
 
 const LoginModal = ({
   show,
@@ -15,13 +20,37 @@ const LoginModal = ({
 }) => {
   const {t} = useTranslation()
   const ref = useRef()
+  const errorRef = useRef(null)
   const [info, setInfo] = React.useState({
     msisdn: '',
     password: '',
     grant_type: 'login'
   })
+  const queryClient = useQueryClient()
 
   const [isShowPass, setIsShowPass] = React.useState(false)
+
+  const {mutate: loginMutate, data, isLoading: isLogin} = useLogin(
+    (data) => {
+      axios.get(API_PATHS.getUser).then(res => {
+        const lng = res?.data.data?.language;
+        if (lng) {
+          i18n.changeLanguage(lng)
+        } else {
+          i18n.changeLanguage('la')
+        }
+      })
+
+      console.log(data)
+      onHide()
+    },
+
+    () => {
+      if (errorRef.current) {
+        errorRef.current.innerText = data?.mesage
+      }
+    }
+  )
 
   useEffect(() => {
     if (ref.current) {
@@ -40,7 +69,7 @@ const LoginModal = ({
   }
 
   const handleLoginClick = () => {
-
+    loginMutate(info)
   }
 
   const onShowLoginSms = () => {}
@@ -64,7 +93,7 @@ const LoginModal = ({
         </Modal.Header>
 
         <Modal.Body>
-          <Form>
+          <Form className='baseinput-container'>
             <Form.Group className='mb-3 base-input'>
               <img src={phoneIcon} alt="" />
               <Form.Control
@@ -93,7 +122,7 @@ const LoginModal = ({
                 <img src={isShowPass ? showPass : hidePass} alt="" style={{margin: "0"}}/>
               </Button>
               <Form.Control
-									type={isShowPass ? 'password' : 'text'}
+									type={isShowPass ? 'text' : 'password'}
 									onChange={handleInfoChange}
 									id="password"
 									placeholder={t('modal.form.pass')}
@@ -108,7 +137,11 @@ const LoginModal = ({
                   />
                 </Form.Group>
               </Col>
-              {/*TODO: */}
+              {parseInt(data?.responseCode) === 403 ? (
+									<Col xs={6} className="error-login text-end">
+										<p ref={errorRef}>{data?.message}</p>
+									</Col>
+								) : null}
             </Row>
           </Form>
         </Modal.Body>
@@ -116,9 +149,12 @@ const LoginModal = ({
           <Button
             variant="primary"
             type="submit"
+            disabled={isLogin}
             onClick={handleLoginClick}
           >
-            {t('modal.login.login_pass_btn')}
+            {
+              isLogin ? <Spinner animation="border" /> : t('modal.login.login_pass_btn')
+            }
           </Button>
           <Button variant='dark' onClick={onShowLoginSms}>
             {t('modal.login.login_otp')}

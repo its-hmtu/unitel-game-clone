@@ -1,27 +1,51 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, createContext } from "react";
 import GameList from "./components/GameList";
 import Slider from "./components/Slider";
 import { Row, Tabs, Tab } from "react-bootstrap";
 import SearchBar from "components/SearchBar";
 import { useTranslation } from "react-i18next";
 import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery";
+import { makeData } from "utils/makeData";
 import SliderMobile from "./components/SliderMobile";
-import { useSelector } from "react-redux";
+import noti from "images/notification.svg"
+import { useQuery } from "react-query";
+// export const GameContext = createContext()
 
 const HomePage = () => {
   const { t } = useTranslation();
   const [key, setKey] = useState("all-game");
+  
 
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`);
 
   const [searchValue, setSearchValue] = useState('')
+
+  const notiData = makeData('noti', 3);
+  
+  // useEffect(() => {
+  //   setAllGame(data)
+  // }, [data])
 
   return (
     <>
       <div className="slider">
         {isMobile ? <SliderMobile /> : <Slider />}
         <div className="noti">
-          <marquee>Congrats</marquee>
+          <marquee>
+            <div className="d-flex" style={{gap: '5px'}}>
+              <img src={noti} alt="noti" /> 
+              {
+                notiData?.map((item, index) => {
+                  return (<span key={index}>
+                    {t('congrat')
+                      .replace('_PLAYER_', item.player)
+                      .replace('_REWARD_', item.reward)
+                    }
+                  </span>)
+                })
+              }
+            </div>
+          </marquee>
         </div>
       </div>
       <Row className="game-list mx-0 mx-auto">
@@ -42,7 +66,7 @@ const HomePage = () => {
         {isMobile ? null : (
           <div className="search-bar">
             <SearchBar 
-              searchIcon={true}
+              searchicon={true}
               type="text" 
               placeholder={t("search_bar")} 
               onChange={e => setSearchValue(e.target.value)} 

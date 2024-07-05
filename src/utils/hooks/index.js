@@ -1,1 +1,0 @@
-export { useMediaQuery, queryPoint } from './useMediaQuery'

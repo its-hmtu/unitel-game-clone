@@ -16,9 +16,12 @@ const RoomPageLayout = () => {
   // const gameList = useSelector((state) => state.game.games)
   const gameSelected = games?.find((game) => game.id == roomId)
   // const selectedGame = useSelector((state) => state.game.selected)
-  let gameImage = gameSelected?.img
+  let gameImage = gameSelected?.image
   const [gameList, setGameList] = useState([])
 
+  useEffect(() => {
+    console.log(games);
+  }, [])
   // useEffect(() => {
   //   if (gameList.length === 0) {
   //     dispatch(fetchAllGames())
@@ -35,10 +38,14 @@ const RoomPageLayout = () => {
 
   return (
     <div className='room-layout-container'>
-      {isMobile ? null : <h1>{ gameSelected?.title }</h1>}
+      {isMobile ? null : gameSelected ? (
+        <h1>{ gameSelected?.name}</h1> 
+      ) : (
+        <h1>Room</h1>
+      )}
       {isMobile ? 
         (<img 
-          src={gameImage}
+          src={gameSelected?.image}
           alt='room-image'
           className='room-image'
         />) : null

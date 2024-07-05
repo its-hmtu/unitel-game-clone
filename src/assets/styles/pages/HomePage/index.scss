@@ -110,6 +110,15 @@
 .slider {
   position: relative;
 
+  .carousel-indicators {
+    & [data-bs-target] {
+      background-color: hsl(223, 10%, 52%);  
+    }
+    & .active {
+      background-color: $orange;
+    }
+  }
+
   .carousel-inner {
     border-radius: 24px;
   }
@@ -123,9 +132,17 @@
     width: calc(100vw - 3 * 10vw);
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 0 auto;
     backdrop-filter: blur(10px);
     padding-inline: 10vw;
+
+
+    marquee {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
 
     @include media-breakpoint-down(md) {
       position: unset;

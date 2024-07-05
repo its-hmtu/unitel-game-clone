@@ -222,7 +222,7 @@
 			"player": "Player",
 			"bet_level": "Bet level",
 			"status": "Status",
-			"pagination": "Show _FIRSTROOM_ to _LASTROOM_ in total _TOTALROOM_",
+			"pagination": "Showing _FIRSTROOM_ to _LASTROOM_ in total _TOTALROOM_",
 			"join": "Join",
 			"memessage_play_now": "You are currently in another playroom, please exit all playrooms before starting",
 			"check_coin": "not enough coins"

@@ -1,41 +1,48 @@
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import RoomSearchCreate from './components/RoomSearchCreate'
 import { Container, Row, Tab, Tabs } from 'react-bootstrap'
-import Table from 'src/components/Table'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllGames, fetchRoomLevels } from 'src/store/game/actions'
-import { gameSlice } from "src/store/game/gameSlice";
-import { useMediaQuery, queryPoint } from 'src/utils/hooks'
+import { useMediaQuery, queryPoint } from 'hooks/useMediaQuery'
 import RoomTableMobile from './components/RoomTableMobile'
+import RoomTable from './components/RoomTable'
+import { useQuery } from 'react-query'
+import { getRoomLevelsQuery } from 'src/data/game'
+import { useTranslation } from 'react-i18next'
+import { getAllGameQuery } from 'data/game'
 
 const RoomPage = () => {
   const { roomId } = useParams()
   const [level, setLevel] = useState("1")
+  const {t} = useTranslation()
   
   // const [game, setGame] = useState({})
-  const gameSelected = useSelector(state => state.game.selected)
-  const gameList = useSelector(state => state.game.games || [])
-  const roomLevels = useSelector(state => state.game.roomLevels)
+  const {data: gameList, isLoading: isAllGameLoading} = useQuery(getAllGameQuery())
+  const gameSelected = gameList?.find((game) => game.id == roomId)
+  const {data: roomLevels, isLoading} = useQuery(getRoomLevelsQuery())
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`)
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   if (gameList?.length === 0) {
+  //     dispatch(fetchAllGames())
+  //   }
+  // }, [dispatch, gameList])
+
+  // useEffect(() => {
+  //   if (roomLevels?.length === 0) {
+  //     dispatch(fetchRoomLevels())
+  //   }
+  // }, [dispatch, roomLevels])
+
+  // useEffect(() => {
+  //   dispatch(gameSlice.actions.selectGame(gameList?.find(item => item.id == roomId)))
+  // }, [dispatch, roomId, gameList]);
 
   useEffect(() => {
-    if (gameList.length === 0) {
-      dispatch(fetchAllGames())
-    }
-  }, [dispatch, gameList])
+    console.log(gameSelected) 
+  }, [])
 
-  useEffect(() => {
-    if (roomLevels.length === 0) {
-      dispatch(fetchRoomLevels())
-    }
-  }, [dispatch, roomLevels])
-
-  useEffect(() => {
-    dispatch(gameSlice.actions.selectGame(gameList.find(item => item.id == roomId)))
-  }, [dispatch, roomId, gameList]);
 
   const handleScrollTop = () => {
     window.scrollTo({
@@ -46,7 +53,7 @@ const RoomPage = () => {
 
   useEffect(() => {
     if (gameSelected) {
-      document.title = gameSelected.title
+      document.title = gameSelected.name
       handleScrollTop()
     }
 
@@ -66,14 +73,14 @@ const RoomPage = () => {
         >
           {
             Array.isArray(roomLevels) && 
-            roomLevels.map((item) => {
+            roomLevels?.map((item) => {
               return (
-                <Tab eventKey={item.id} key={item.id} title={item.name}>
+                <Tab eventKey={item.id} key={item.id} title={t(`room.tab.${item.name}`)}>
                   <div>
                     { 
                      isMobile 
                      ? (<RoomTableMobile />)
-                     : (<Table roomTable data={[{id: 1, playerName: "name", betLevel: "300", status: ""}]}/>) 
+                     : (<RoomTable data={[{id: 1, player_count: "1", coin: "300", status: 2}]}/>) 
                     }
                   </div>
                 </Tab>

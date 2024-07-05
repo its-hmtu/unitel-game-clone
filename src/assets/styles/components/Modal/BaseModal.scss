@@ -6,7 +6,7 @@
     padding-block: 30px;
     margin-inline: auto;
     width: calc(min(100%, 640px));
-    min-height: 500px;
+    // min-height: 500px;
     overflow: hidden;
 
     &.login {
@@ -164,6 +164,11 @@
     right: -20px;
   }
 
+  
+  
+}
+
+.baseinput-container {
   .base-input {
     position: relative;
 
@@ -194,6 +199,7 @@
     }
   }
 }
+
 
 
 

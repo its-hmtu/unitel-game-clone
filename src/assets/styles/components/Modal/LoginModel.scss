@@ -10,6 +10,15 @@
   }
 }
 
+.login-modal-container {
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px hsl(208deg 91% 9% / 100%) inset;
+    -webkit-text-fill-color: hsl(223, 10%, 52%);
+    // cursor color 
+    caret-color: hsl(223, 10%, 52%);
+  }
+}
+
 .login {
   width: calc(min(100%, 640px));
 }

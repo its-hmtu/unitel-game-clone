@@ -2,71 +2,86 @@ import Container from 'react-bootstrap/Container'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import { useTranslation } from 'react-i18next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PackageCard from './PackageCard'
 import { queryPoint, useMediaQuery } from 'src/utils/hooks/useMediaQuery'
+import { useQuery } from 'react-query'
+import { getPackageQuery } from 'src/data/game'
 
 const ShopPage = () => {
   const { t } = useTranslation();
   const [key, setKey] = useState(1)
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px`)
+  const {data: packages, isLoading} = useQuery(getPackageQuery());
 
-  const sub = [
-    {
-      title: 'Daily',
-      descript: t('shoppage.reward_desc').replace('_GOLD_', "100"),
-      img: './src/assets/images/shoppage-package1.svg',
-      price: "500",
-      isBestSale: false,
-    }
-  ]
+  const [sub, setSub] = useState(packages?.filter(item => item.packageType === 1))
+  const [retail, setRetail] = useState(packages?.filter(item => item.packageType === 1))
 
-  const retail = [
-    {
-      title: 'Package 1',
-      descript: t('shoppage.reward_desc').replace('_GOLD_', "50"),
-      img: './src/assets/images/shoppage-package1.svg',
-      price: "500",
-      isBestSale: false,
+  // get package data from data array but don't get the first element
 
-    },
 
-    {
-      title: 'Package 2',
-      descript: t('shoppage.reward_desc').replace('_GOLD_', "100"),
-      img: './src/assets/images/shoppage-package2.svg',
-      price: "1,000",
-      isBestSale: true,
+  
+  useEffect(() => {
+    setSub(packages?.filter(item => item.packageType === 1))
+    setRetail(packages?.filter(item => item.packageType === 2))
+  }, [packages])
 
-    },
+  // const sub = [
+  //   {
+  //     title: 'Daily',
+  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "100"),
+  //     img: './src/assets/images/shoppage-package1.svg',
+  //     price: "500",
+  //     isBestSale: false,
+  //   }
+  // ]
 
-    {
-      title: 'Package 3',
-      descript: t('shoppage.reward_desc').replace('_GOLD_', "250"),
-      img: './src/assets/images/shoppage-package3.svg',
-      price: "2,000",
-      isBestSale: false,
+  // const retail = [
+  //   {
+  //     title: 'Package 1',
+  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "50"),
+  //     img: './src/assets/images/shoppage-package1.svg',
+  //     price: "500",
+  //     isBestSale: false,
 
-    },
+  //   },
 
-    {
-      title: 'Package 4',
-      descript: t('shoppage.reward_desc').replace('_GOLD_', "700"),
-      img: './src/assets/images/shoppage-package4.svg',
-      price: "5,000",
-      isBestSale: false,
+  //   {
+  //     title: 'Package 2',
+  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "100"),
+  //     img: './src/assets/images/shoppage-package2.svg',
+  //     price: "1,000",
+  //     isBestSale: true,
 
-    },
+  //   },
 
-    {
-      title: 'Package 5',
-      descript: t('shoppage.reward_desc').replace('_GOLD_', "1,500"),
-      img: './src/assets/images/shoppage-package5.svg',
-      price: "10,000",
-      isBestSale: false,
+  //   {
+  //     title: 'Package 3',
+  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "250"),
+  //     img: './src/assets/images/shoppage-package3.svg',
+  //     price: "2,000",
+  //     isBestSale: false,
 
-    }
-  ]
+  //   },
+
+  //   {
+  //     title: 'Package 4',
+  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "700"),
+  //     img: './src/assets/images/shoppage-package4.svg',
+  //     price: "5,000",
+  //     isBestSale: false,
+
+  //   },
+
+  //   {
+  //     title: 'Package 5',
+  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "1,500"),
+  //     img: './src/assets/images/shoppage-package5.svg',
+  //     price: "10,000",
+  //     isBestSale: false,
+
+  //   }
+  // ]
 
   return (
     <Container fluid className={`shoppage ${isMobile ? "mobile": ""}`}>

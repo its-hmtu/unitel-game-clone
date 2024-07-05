@@ -14,6 +14,8 @@ $yellow-gradient: linear-gradient(180deg, rgba(251, 255, 31, 1) 18%, rgba(255, 1
 $sub-layout-bg: #051e33;
 $bg: #001B32;
 $header-bg: #000E1A;
+$header-link: #787f91;
+$box-shadow: #110c2240;
 
 $black: #141416;
 
@@ -32,3 +34,6 @@ $primary: $orange;
 $secondary: $green-lime;
 
 $text-poppins: 'Poppins', sans-serif;
+
+$url_circle_on: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org…r='3' fill='hsl%280, 100%, 100%%29'/%3e%3c/svg%3e");
+$url_circle_off: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org… r='3' fill='hsl%28207, 4%, 51%%29'/%3e%3c/svg%3e");

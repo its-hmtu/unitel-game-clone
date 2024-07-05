@@ -24,10 +24,12 @@
     width: 100%;
   }
 
-  .top-rank {
-    img {
-      display: initial;
-      width: 32px;
+  .rank-table {
+    td {
+      img {
+        display: initial;
+        width: 32px;
+      }
     }
   }
 }
@@ -55,6 +57,9 @@
     & > div {
       display: flex;
       margin-left: 43%;
+      img {
+        width: initial;
+      }
       p {
         margin: 0;
         font-weight: 600;
@@ -62,7 +67,7 @@
         line-height: 19px;
         text-shadow: 0 1px 1px rgba(0,0,0,.25);
         color: #fe0;
-        margin-left: 15%;
+        margin-left: 15%!important;
       }
     }
   }
@@ -205,11 +210,15 @@
     border-bottom: 1px solid rgba(120, 127, 145, .1);
     margin-inline: 3px;
 
-    .col {
+    .rank-table-mobile {
+      min-height: unset;
+    }
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    td {
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      width: 25%;
       &:not(:first-child) {
         font-size: 12px;
       }

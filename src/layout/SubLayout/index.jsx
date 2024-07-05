@@ -17,7 +17,7 @@ const SubLayout = () => {
   // const gameList = useSelector(state => state.game.games)
   const gameSelected = games?.find(game => game.id == roomId)
   // const selectedGame = useSelector(state => state.game.selected)
-  const roomTitle = gameSelected?.title || "Room"
+  const roomTitle = gameSelected?.name || "Room"
 
   // useEffect(() => {
   //   if (gameList.length === 0) {
@@ -25,9 +25,9 @@ const SubLayout = () => {
   //   }
   // }, [dispatch, gameList])
 
-  useEffect(() => {
-    dispatch(gameSlice.actions.selectGame(gameSelected))
-  },[dispatch, gameSelected])
+  // useEffect(() => {
+  //   dispatch(gameSlice.actions.selectGame(gameSelected))
+  // },[dispatch, gameSelected])
 
 
   return (

@@ -23,8 +23,8 @@ const FooterMobile = () => {
   const dt = 5;
   const controlledFooter = () => {
     const scroll = window.scrollY;
-    console.log(scroll);
-    console.log(lastPosition);
+    // console.log(scroll);
+    // console.log(lastPosition);
     if (Math.abs(lastPosition - scroll) <= dt) return;
     const fHeight = document.getElementById('footer').offsetHeight;
 

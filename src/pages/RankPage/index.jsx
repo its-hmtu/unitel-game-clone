@@ -27,46 +27,39 @@ const RankPage = () => {
     const data = [
       {
         rank: 1,
-        playerName: "0123456789",
-        gold: "1,680",
+        msisdn: "0123456789",
+        gold: "1680",
         win: 2,
         lose: 0,
       },
       {
         rank: 2,
-        playerName: "2222222222",
+        msisdn: "2222222222",
         gold: "320",
         win: 2,
         lose: 2,
       },
       {
         rank: 3,
-        playerName: "111111111",
+        msisdn: "111111111",
         gold: "320",
         win: 2,
         lose: 1,
       },
       {
         rank: 4,
-        playerName: "0123456789",
+        msisdn: "0123456789",
         gold: "240",
         win: 1,
         lose: 0,
       },
       {
         rank: 5,
-        playerName: "0123456789",
+        msisdn: "0123456789",
         gold: "240",
         win: 1,
         lose: 0,
       },
-      {
-        rank: 5,
-        playerName: "0123456789",
-        gold: "240",
-        win: 1,
-        lose: 0,
-      }
     ];
 
     setRankData(data);
@@ -105,10 +98,11 @@ const RankPage = () => {
                     </NavDropdown>
                   </Nav>
                 </div>
-                <RankTableMobile data={rankData}/>
+                <RankTableMobile dataRank={rankData}/>
               </>
             ) : (
-              <Table rankTable data={rankData} />
+              // <Table rankTable data={rankData} />
+              <RankTable time={key} />
             )}
           </Tab>
         </Tabs>

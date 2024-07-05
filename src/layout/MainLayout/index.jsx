@@ -1,12 +1,12 @@
-import Header from "./components/Header"
-import {Outlet} from 'react-router-dom'
-import Footer from "./components/Footer"
-import buonPiMay from 'images/buonpimay-event.png'
-import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery"
-import FooterMobile from "./components/FooterMobile"
+import Header from "./components/Header";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer";
+import buonPiMay from "images/buonpimay-event.png";
+import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery";
+import FooterMobile from "./components/FooterMobile";
 
 const MainLayout = () => {
-  const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`)
+  const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`);
   return (
     <div className="main-layout-container">
       <Header />
@@ -18,7 +18,7 @@ const MainLayout = () => {
       </div>
       {isMobile ? <FooterMobile /> : <Footer />}
     </div>
-  )
-}
+  );
+};
 
-export default MainLayout
+export default MainLayout;

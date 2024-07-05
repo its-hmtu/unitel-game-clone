@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&display=swap');
 
+:root {
+  --url: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 8 8"%3e%3ccircle r="3" fill="rgba%2820, 20, 22, 0.25%29"/%3e%3c/svg%3e');
+  --url_white: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org… 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e")
+}
+
 body {
   font-family: "Noto Sans Lao", sans-serif;
   color: $text-default;
@@ -30,4 +35,18 @@ body {
   &:active {
     color: $text-default;
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $orange;
+  border-radius: 10px;
 }

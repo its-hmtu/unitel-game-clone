@@ -40,15 +40,15 @@ const GameCard = ({ type, isSmall, data, idGame }) => {
         }
         replace
       >
-        <Card.Img src={data.img} />
-        {data.isHot && (
+        <Card.Img src={data?.image} />
+        {data?.is_hot && (
           <img src={gamecard_ishot} alt="" className="card-ishot" />
         )}
         <Card.Body>
           <div>
-            <Card.Title>{data.title}</Card.Title>
+            <Card.Title>{data?.name}</Card.Title>
             <Card.Text>
-              {t("game_card.number_playing").replace("_NUMBER_", data.player)}
+              {t("game_card.number_playing").replace("_NUMBER_", data?.player)}
             </Card.Text>
           </div>
           <Button
