@@ -9,11 +9,9 @@ import package4 from "images/shoppage-package4.svg";
 import package5 from "images/shoppage-package5.svg";
 import ConfirmModal from "components/Modal/ConfirmModal";
 import { getUserInfo } from "utils/localStorage";
-import { Skeleton } from "@mui/material";
 import LoginModal from "components/Modal/LoginModal";
-import OTPConfirmModal from "components/Modal/OTPConfirmModal";
 
-const PackageCard = ({ data, isRetail = false, loading }) => {
+const PackageCard = ({ data, isRetail = false}) => {
   const { t } = useTranslation();
   const images = [package1, package2, package3, package4, package5];
 
