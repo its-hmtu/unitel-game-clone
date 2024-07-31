@@ -102,24 +102,24 @@ const RouteList = () => {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/prize" element={<PrizePage />} />
-        <Route path="/rank" element={<RankPage />} />
+        <Route path={PATHS.SHOP_PAGE} element={<ShopPage />} />
+        <Route path={PATHS.PRIZE_PAGE} element={<PrizePage />} />
+        <Route path={PATHS.RANK_PAGE} element={<RankPage />} />
         {
           // user && <Route path="/profile" element={<ProfilePage />} />
         }
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/room/:roomId" element={<RoomPageLayout />}>
+        <Route path={PATHS.PROFILE_PAGE} element={<ProfilePage />} />
+        <Route path={PATHS.ROOM_PAGE} element={<RoomPageLayout />}>
           {
             isMobile ? null : <Route index element={<RoomPage />} />
           }
           {!isMobileMD && <Route path={PATHS.PLAYROOM_PAGE} element={<PlayRoomPage/>}/>}
         </Route>
-        <Route path="/:type" element={<SettingPage />} />
+        <Route path={PATHS.SETTING_PAGE} element={<SettingPage />} />
 
       </Route>
       <Route element={<SubLayout />}>
-        <Route path="/room/:roomId" element={<RoomPageLayout />}>
+        <Route path={PATHS.ROOM_PAGE} element={<RoomPageLayout />}>
           <Route index element={<RoomPage />} />
         </Route>
       </Route>
