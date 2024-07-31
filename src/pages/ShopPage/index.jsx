@@ -16,72 +16,12 @@ const ShopPage = () => {
 
   const [sub, setSub] = useState(packages?.filter(item => item.packageType === 1))
   const [retail, setRetail] = useState(packages?.filter(item => item.packageType === 1))
-
-  // get package data from data array but don't get the first element
-
-
   
   useEffect(() => {
     setSub(packages?.filter(item => item.packageType === 1))
     setRetail(packages?.filter(item => item.packageType === 2))
   }, [packages])
 
-  // const sub = [
-  //   {
-  //     title: 'Daily',
-  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "100"),
-  //     img: './src/assets/images/shoppage-package1.svg',
-  //     price: "500",
-  //     isBestSale: false,
-  //   }
-  // ]
-
-  // const retail = [
-  //   {
-  //     title: 'Package 1',
-  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "50"),
-  //     img: './src/assets/images/shoppage-package1.svg',
-  //     price: "500",
-  //     isBestSale: false,
-
-  //   },
-
-  //   {
-  //     title: 'Package 2',
-  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "100"),
-  //     img: './src/assets/images/shoppage-package2.svg',
-  //     price: "1,000",
-  //     isBestSale: true,
-
-  //   },
-
-  //   {
-  //     title: 'Package 3',
-  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "250"),
-  //     img: './src/assets/images/shoppage-package3.svg',
-  //     price: "2,000",
-  //     isBestSale: false,
-
-  //   },
-
-  //   {
-  //     title: 'Package 4',
-  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "700"),
-  //     img: './src/assets/images/shoppage-package4.svg',
-  //     price: "5,000",
-  //     isBestSale: false,
-
-  //   },
-
-  //   {
-  //     title: 'Package 5',
-  //     descript: t('shoppage.reward_desc').replace('_GOLD_', "1,500"),
-  //     img: './src/assets/images/shoppage-package5.svg',
-  //     price: "10,000",
-  //     isBestSale: false,
-
-  //   }
-  // ]
 
   return (
     <Container fluid className={`shoppage ${isMobile ? "mobile": ""}`}>
@@ -103,7 +43,7 @@ const ShopPage = () => {
             eventKey={1}
             title={t('shoppage.sub')}
           >
-            <PackageCard data={sub} />
+            <PackageCard data={sub}/>
           </Tab>
           <Tab
             eventKey={2}
@@ -113,6 +53,8 @@ const ShopPage = () => {
           </Tab>
         </Tabs>
       </div>
+
+
     </Container>
   )
 }

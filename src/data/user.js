@@ -1,6 +1,8 @@
 import { useMutation, useQueryClient } from "react-query";
 import { getGiftHistApi, getSettingApi, getUserApi, loginApi, updateUserInfoApi, updateUserSettingApi } from "api/user";
 import { saveUserInfo } from "src/utils/localStorage";
+import { getUserInfo } from "utils/localStorage";
+import { setSocketRoomId } from "utils/socket";
 
 export const userInfoKey = 'user-info';
 export const settingKey = 'setting';
@@ -16,6 +18,7 @@ export const useLogin = (succes = function() {}, error = function() {}) => {
       queryClient.setQueryData(userInfoKey, data.data);
       if (data && parseInt(data.responseCode) !== 403) {
         console.log(data.data)
+        setSocketRoomId(0)
         succes(data.data)
       } else {
         error()
@@ -30,7 +33,8 @@ export const useLogin = (succes = function() {}, error = function() {}) => {
 export const getUserQuery = () => ({
   queryKey: [userInfoKey],
   queryFn: getUserApi,
-  refetchOnWindowFocus: true
+  refetchOnWindowFocus: true,
+  enabled: getUserInfo() ? true : false,
 })
 
 export const getSettingQuery = () => ({

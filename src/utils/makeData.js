@@ -23,6 +23,8 @@ export const makeData = (key, ...size) => {
     const data = () => {
       if (key === 'noti') {
         return newNoti();
+      } else if (key === 'image') {
+        return newImage();
       }
     }
 
@@ -113,12 +115,12 @@ export const makeData = (key, ...size) => {
 // 	}
 // }
 
-// const newImage = () => {
-// 	return {
-// 		id: faker.datatype.number(999),
-// 		image: faker.image.cats(),
-// 	}
-// }
+const newImage = () => {
+	return {
+		id: faker.datatype.number(999),
+		image: faker.image.cats(),
+	}
+}
 
 // const newReward = () => {
 // 	const date = new Date(faker.datatype.datetime())

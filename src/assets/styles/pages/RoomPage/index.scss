@@ -159,6 +159,10 @@
       
       &--join {
         background: $green-gradient;
+
+        &:disabled {
+          color: $text-default;
+        }
       }
     }
 

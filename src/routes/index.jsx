@@ -9,8 +9,11 @@ import RankPage from "src/pages/RankPage";
 import RoomPage from "src/pages/RoomPage";
 import SettingPage from "src/pages/SettingPage";
 import ShopPage from "src/pages/ShopPage";
-import { queryPoint } from 'hooks/useMediaQuery'
+import { queryPoint, useMediaQuery } from 'hooks/useMediaQuery'
 import React from 'react'
+import { getUserInfo } from "utils/localStorage";
+import { PATHS } from "./path";
+import PlayRoomPage from "pages/PlayRoomPage";
 
 // export function RouteList(isMobile) {
   
@@ -77,6 +80,8 @@ import React from 'react'
 
 const RouteList = () => {
   const [isMobile, setIsMobile] = React.useState(false)
+  const isMobileMD = useMediaQuery(`(max-width: ${queryPoint.md}px)`)
+  const user = getUserInfo()
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -100,11 +105,15 @@ const RouteList = () => {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/prize" element={<PrizePage />} />
         <Route path="/rank" element={<RankPage />} />
+        {
+          // user && <Route path="/profile" element={<ProfilePage />} />
+        }
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/room/:roomId" element={<RoomPageLayout />}>
           {
             isMobile ? null : <Route index element={<RoomPage />} />
           }
+          {!isMobileMD && <Route path={PATHS.PLAYROOM_PAGE} element={<PlayRoomPage/>}/>}
         </Route>
         <Route path="/:type" element={<SettingPage />} />
 

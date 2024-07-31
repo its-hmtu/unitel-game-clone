@@ -171,6 +171,7 @@
 .baseinput-container {
   .base-input {
     position: relative;
+    
 
     input {
       height: 52px;
@@ -190,6 +191,12 @@
       }
     }
 
+    &.join-modal {
+      input {
+        padding-left: 12px;
+      }
+    }
+
     img:nth-of-type(1), img:nth-of-type(2) {
       position: absolute;
       top: 50%;
@@ -197,6 +204,8 @@
       transform: translateY(-50%);
       margin-left: 20px;
     }
+
+    // change color of autocomplete 
   }
 }
 

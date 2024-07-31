@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import no_data from 'images/profilepage-gifthist-nodata.svg'
@@ -8,14 +8,24 @@ import top3 from 'images/rankpage-top3.svg'
 import { useReactTable, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, createColumnHelper } from '@tanstack/react-table'
 import { useTranslation } from 'react-i18next'
 import Table from 'src/components/Table'
+import { useQuery } from 'react-query'
+import { getRankQuery } from 'data/game'
+import { hidePhoneNumber } from 'utils/helpers'
 
-const RankTableMobile = ({dataRank, pageIndex = 0}) => {
-  const {t} = useTranslation()
+const RankTableMobile = ({dataRank, pageIndex = 0, time}) => {
+  const [paramRank, setParamRank] = useState({
+    offset: 0,
+    limit: 10,
+  })
+  const {data: rank, isLoading} = useQuery(getRankQuery(time, paramRank.offset, paramRank.limit))
 
-  const data = dataRank?.map(item => {
-    
+  let rankList = (rank && rank.filter(item => item.coin_win !== 0)) || []
+  const rankData = rankList?.map(item => {
+    item.msisdn = hidePhoneNumber(item.msisdn)
     return item
   })
+
+  const { t } = useTranslation();
 
   const columnHelper = createColumnHelper()
   const columns = [
@@ -59,7 +69,7 @@ const RankTableMobile = ({dataRank, pageIndex = 0}) => {
   ]
 
   return (
-    <div className='rank-mobile-table'>
+    <div className="rank-mobile-table">
       <Row className='rank-mobile-header'>
         <Col className='col-3'> 
           <p>Rank</p>
@@ -109,7 +119,7 @@ const RankTableMobile = ({dataRank, pageIndex = 0}) => {
       } */}
 
       <Row className='rank-mobile-row'>
-        <Table rankTable rankTableMobile data={data} columns={columns} pageIndex={pageIndex} />
+        <Table rankTable rankTableMobile data={rankData} columns={columns} pageIndex={pageIndex} />
       </Row> 
     </div>
   )

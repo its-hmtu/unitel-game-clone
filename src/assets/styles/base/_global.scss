@@ -50,3 +50,20 @@ body {
   background-color: $orange;
   border-radius: 10px;
 }
+
+input:is(:autofill, :-webkit-autofill)  {
+  -webkit-box-shadow: 0 0 0 30px rgb(3 17 28) inset;
+
+  background-color: hsl(208deg 91% 9% / 100%);
+  box-shadow: 0 0 0 30px hsl(208deg 91% 9% / 100%) inset;
+  -webkit-text-fill-color: hsl(223, 10%, 52%)!important;
+  // cursor color 
+  caret-color: hsl(223, 10%, 52%);
+  border: 1px solid hsl(208deg 60% 12% / 100%);
+  border-radius: 8px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  padding-left: 50px;
+}

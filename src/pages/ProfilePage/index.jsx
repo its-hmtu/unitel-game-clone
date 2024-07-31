@@ -16,6 +16,9 @@ import { getUserQuery } from "data/user";
 import { destroyUserInfo } from "utils/localStorage";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "routes/path";
+import SelectAva from "./components/SelectAva";
+import { makeData } from "utils/makeData";
+import uploadAva from 'images/profilepage-uploadava.svg'
 
 const ProfilePage = () => {
   const {data: user, isLoading: isUserLoading} = useQuery(getUserQuery())
@@ -29,6 +32,17 @@ const ProfilePage = () => {
 
   const [key, setKey] = React.useState(1);
   const [confirmModal, setConfirmModal] = React.useState(false);
+  const defaultAva = makeData('image',16)
+
+  const [selectAva, setSelectAva] = useState(false)
+
+  const handleSelectAva = () => {
+    setSelectAva(!selectAva)
+  }
+
+  const handleCloseSelectAva = () => {
+    setSelectAva(false)
+  }
 
   const handleConfirmModal = () => {
     setConfirmModal(!confirmModal);
@@ -58,12 +72,19 @@ const ProfilePage = () => {
                       e.target.src = avaDefault;
                     }}
                   />
+                  <div className="upload-ava">
+                    <img 
+                      src={uploadAva}
+                      onClick={handleSelectAva}
+                      alt="Upload avatar"
+                    />
+                  </div>
                 </div>
                 <p>{user?.displayName}</p>
               </Row>
               <Row className="sidebar-menu mt-3 flex-column">
                 <Nav variant="pills" className="flex-column">
-                  <Nav.Item>
+                  <Nav.Item onClick={handleCloseSelectAva}>
                     <Nav.Link eventKey={1}>
                       <HeaderAccountMyaccountSVG 
                         width="20"
@@ -74,7 +95,7 @@ const ProfilePage = () => {
                     </Nav.Link>
                   </Nav.Item>
 
-                  <Nav.Item>
+                  <Nav.Item onClick={handleCloseSelectAva}>
                     <Nav.Link eventKey={2}>
                       <HeaderAccountGifthistSVG 
                         width="20"
@@ -85,7 +106,7 @@ const ProfilePage = () => {
                     </Nav.Link>
                   </Nav.Item>
 
-                  <Nav.Item>
+                  <Nav.Item onClick={handleCloseSelectAva}>
                     <Nav.Link eventKey={3}>
                       <HeaderAccountSettingSVG 
                         width="20"
@@ -108,7 +129,11 @@ const ProfilePage = () => {
               </Row>
             </Col>
             <Col sm={8}>
-              <Tab.Content className="profile-page-content">
+              {selectAva ? (
+                <div className="profile-page-content ms-2 ms-lg-4">
+                  <SelectAva defaultAva={defaultAva} />
+                </div>
+              ) : (<Tab.Content className="profile-page-content">
                 <Tab.Pane eventKey={1}>
                   <UserInfo
                     userData={
@@ -126,7 +151,7 @@ const ProfilePage = () => {
                   <Setting />
                 </Tab.Pane>
                 <Tab.Pane eventKey={4}></Tab.Pane>
-              </Tab.Content>
+              </Tab.Content>)}
             </Col>
           </Row>
         </Tab.Container>

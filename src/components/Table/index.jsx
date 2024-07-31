@@ -20,6 +20,7 @@ const Table = ({
   rankTable = false, 
   rankTableMobile = false,
   roomTable = false,
+  totalCount,
   onChangePage,
   onChangPageSize,
   data,
@@ -48,7 +49,7 @@ const Table = ({
   })
 
   const {pageSize} = table.getState().pagination
-  const totalRoom = table.options.data?.length
+  const totalRoom = totalCount ? totalCount : table.options.data?.length
   const width = rankTable && columns.length === 3 ? '33.33' : "auto"
 
   return (

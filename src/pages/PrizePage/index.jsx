@@ -7,6 +7,7 @@ import PrizeCard from './PrizeCard'
 import { useMediaQuery,queryPoint } from 'src/utils/hooks/useMediaQuery'
 import { useQuery } from 'react-query'
 import { getGiftQuery } from 'src/data/game'
+import { ProgressBar } from 'react-bootstrap'
 
 const PrizePage = () => {
   const { t } = useTranslation();
@@ -23,8 +24,6 @@ const PrizePage = () => {
       setMinutes(gifts?.slice(4))
     }
   }, [gifts, isLoading])
-
-  
   
   return (
     <Container fluid className='shoppage'>
@@ -37,7 +36,7 @@ const PrizePage = () => {
         )
       }
 
-      <div className='package-container'>
+      <div className='package-container position-relative'>
         <Tabs
           activeKey={key}
           onSelect={(k) => setKey(k)}

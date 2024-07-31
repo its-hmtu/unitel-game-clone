@@ -98,7 +98,7 @@ const RankPage = () => {
                     </NavDropdown>
                   </Nav>
                 </div>
-                <RankTableMobile dataRank={rankData}/>
+                <RankTableMobile dataRank={rankData} time={key}/>
               </>
             ) : (
               // <Table rankTable data={rankData} />

@@ -33,7 +33,7 @@
   right: 10px;
   bottom: 50px;
   z-index: 1000;
-  display: none;
+  // display: none;
 
   @include media-breakpoint-down(sm) {
     bottom: 70px;

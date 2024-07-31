@@ -9,7 +9,7 @@ export const PATHS = {
 	FRIEND_PAGE: `${BASE_PATH}friend`,
 	MORE_PAGE: `${BASE_PATH}more`,
 	ROOM_PAGE: `${BASE_PATH}room/:roomId`,
-	PLAYROOM_PAGE: `${BASE_PATH}room-play/:roomId/:gameId`,
+	PLAYROOM_PAGE: `${BASE_PATH}room/:roomId/:gameId`,
 	LOGIN_PASS_MOBILE: `${BASE_PATH}login`,
 	LOGIN_OTP_MOBILE: `${BASE_PATH}login-otp`,
 	OTP_MOBILE: `${BASE_PATH}confirm-otp`,
