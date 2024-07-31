@@ -17,7 +17,7 @@ import {
 import { SnackBarContext } from "contexts/SnackBarContext";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { SocketContext } from "utils/socket";
+import { SocketContext } from "contexts/SocketContext";
 import JoinModal from "components/Modal/JoinModal";
 import { getUserQuery } from "data/user";
 import { RoomSearchContext } from "contexts/RoomSearchContext";

@@ -9,7 +9,7 @@ import { Breadcrumb, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { PATHS } from "routes/path";
-import { SocketContext } from "utils/socket";
+import { SocketContext } from "contexts/SocketContext";
 import { HeaderHomeSvg } from "assets/svg/Header";
 import avaDefault from "images/ava-default.jpeg";
 import tickCircleIcon from "images/playroompage-tickCircle.svg";

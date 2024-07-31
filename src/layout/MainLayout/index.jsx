@@ -5,7 +5,7 @@ import buonPiMay from "images/buonpimay-event.png";
 import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery";
 import FooterMobile from "./components/FooterMobile";
 import { useContext, useEffect } from "react";
-import { SocketContext } from "utils/socket";
+import { SocketContext } from "contexts/SocketContext";
 import SnackBar from "components/SnackBar";
 import { SnackBarContext } from "contexts/SnackBarContext";
 import { PATHS } from "routes/path";

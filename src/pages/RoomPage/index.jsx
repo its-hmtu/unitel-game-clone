@@ -10,7 +10,7 @@ import { getRoomLevelsQuery } from 'src/data/game'
 import { useTranslation } from 'react-i18next'
 import { getAllGameQuery, getListRoomOfGameQuery } from 'data/game'
 import CreateRoomModal from 'components/Modal/CreateRoomModal'
-import { SocketContext } from 'utils/socket'
+import { SocketContext } from 'contexts/SocketContext'
 
 const RoomPage = () => {
   const location = useLocation()

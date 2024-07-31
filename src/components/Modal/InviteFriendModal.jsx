@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useTransition } from 'react'
 import BaseModal from '.'
 import { queryPoint, useMediaQuery } from 'utils/hooks/useMediaQuery'
-import { SocketContext } from 'utils/socket'
+import { SocketContext } from 'contexts/SocketContext'
 import { useQuery } from 'react-query'
 import { getListFriendInvitePlayQuery } from 'data/game'
 import { Button, Col, Container, Modal, Row } from 'react-bootstrap'

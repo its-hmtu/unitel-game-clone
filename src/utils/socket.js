@@ -80,5 +80,4 @@ export const setSocketRoomId = async room_id => {
   }, 100);
 }
 
-export const SocketContext = createContext();
 
