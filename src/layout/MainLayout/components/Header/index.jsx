@@ -27,7 +27,7 @@ import i18n from "src/i18n";
 import { queryPoint, useMediaQuery } from "src/utils/hooks/useMediaQuery";
 import menu from "images/menu-svgrepo-com.svg";
 import Drawer from "@mui/material/Drawer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FooterGameSvg, FooterProfileSvg } from "svg/Footer";
 import LoginModal from "src/components/Modal/LoginModal";
 import { destroyUserInfo, getLanguage } from "src/utils/localStorage";
@@ -44,9 +44,11 @@ import { userInfoKey } from "src/data/user";
 import ConfirmModal from "src/components/Modal/ConfirmModal";
 import { PATHS } from "routes/path";
 import { getUserInfo } from "utils/localStorage";
+import { ProfileTabContext } from "contexts/ProfileTabContext";
 
 const Header = () => {
   const { data: user, isLoading } = useQuery(getUserQuery());
+  const {tab, setTab} = useContext(ProfileTabContext)
   const { t } = useTranslation();
   const lng = getLanguage();
   const [showMenu, setShowMenu] = useState(false);
@@ -388,7 +390,9 @@ const Header = () => {
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item>
-                        <Link to={PATHS.PROFILE_PAGE} replace>
+                        <Link to={PATHS.PROFILE_PAGE} replace 
+                          onClick={() => setTab(1)}
+                        >
                           <HeaderAccountMyaccountSVG
                             width="20"
                             height="20"
@@ -399,7 +403,9 @@ const Header = () => {
                       </Dropdown.Item>
 
                       <Dropdown.Item>
-                        <Link to={PATHS.PROFILE_PAGE} replace>
+                        <Link to={PATHS.PROFILE_PAGE} replace
+                          onClick={() => setTab(2)}
+                        >
                           <HeaderAccountGifthistSVG
                             width="20"
                             height="20"
@@ -410,7 +416,9 @@ const Header = () => {
                       </Dropdown.Item>
 
                       <Dropdown.Item>
-                        <Link to={PATHS.PROFILE_PAGE} replace>
+                        <Link to={PATHS.PROFILE_PAGE} replace
+                          onClick={() => setTab(3)}
+                        >
                           <HeaderAccountSettingSVG
                             width="20"
                             height="20"

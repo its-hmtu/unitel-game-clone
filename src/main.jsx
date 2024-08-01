@@ -8,6 +8,7 @@ import SnackBarProvider from 'contexts/SnackBarContext'
 import RoomSearchProvider from 'contexts/RoomSearchContext'
 import SocketProvider from 'contexts/SocketContext'
 import TitleProvider from 'contexts/TitleContext'
+import ProfileTabProvider from 'contexts/ProfileTabContext'
 
 const clientQuery = new QueryClient()
 
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <SnackBarProvider>
           <RoomSearchProvider>
             <TitleProvider>
-              <App /> 
+              <ProfileTabProvider>
+                <App /> 
+              </ProfileTabProvider>
             </TitleProvider>
           </RoomSearchProvider>
         </SnackBarProvider>

@@ -22,6 +22,7 @@ import uploadAva from "images/profilepage-uploadava.svg";
 import { queryPoint, useMediaQuery } from "utils/hooks/useMediaQuery";
 import arrowNext from "images/arrow-next-white.svg";
 import { TitleContext } from "contexts/TitleContext";
+import { ProfileTabContext } from "contexts/ProfileTabContext";
 
 const ProfilePage = () => {
   const { data: user, isLoading: isUserLoading } = useQuery(getUserQuery());
@@ -37,6 +38,7 @@ const ProfilePage = () => {
   const defaultAva = makeData("image", 16);
   const [selectAva, setSelectAva] = useState(false);
   const {title, setTitle} = useContext(TitleContext)
+  const {tab, setTab} = useContext(ProfileTabContext)
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.sm}px)`);
 
   const handleSelectAva = () => {
@@ -62,7 +64,7 @@ const ProfilePage = () => {
   return (
     <>
       <Container fluid className="profile-page-container">
-        <Tab.Container activeKey={key} onSelect={(k) => setKey(k)}>
+        <Tab.Container activeKey={tab} onSelect={(k) => setTab(k)}>
           <Row>
             <Col sm={4} className="sidebar">
               <Row className="sidebar-info">
