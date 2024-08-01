@@ -1,7 +1,7 @@
 import axios from "axios";
 import { parse } from "dotenv";
 import { API_PATHS } from "routes/api.path";
-import { getLanguage, getUserInfo } from "utils/localStorage";
+import { destroyUserInfo, getLanguage, getUserInfo } from "utils/localStorage";
 
 axios.interceptors.request.use(
    (config) => {
@@ -47,8 +47,14 @@ export const updateUserInfoApi = async userInfo => {
 
 export const getUserApi = async () => {
   try {
+    if (!getUserInfo()) {
+      return null
+    }
     const {data} = await axios.get(API_PATHS.getUser)
     if (parseInt(data.responseCode) !== 200) {
+      if (getUserInfo()) {
+        destroyUserInfo()
+      }
       throw new Error(data.message || 'Cannot get user info')
     }
 

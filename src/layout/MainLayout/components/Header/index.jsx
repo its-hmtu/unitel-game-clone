@@ -131,88 +131,43 @@ const Header = () => {
                 <img src={logo} alt="logo" style={{ width: "95px" }} />
               </Link>
             </div>
-            {userData || userStorage ? (
-              <Row className="profile-header">
-                <Link
-                  to={PATHS.PROFILE_PAGE}
-                  replace
-                  className="profile-header__coin"
-                >
-                  <img src={coin} alt="Total coin" />
-                  <span>{userData?.coin}</span>
-                </Link>
-
-                <Dropdown align="end">
-                  <Link to={PATHS.PROFILE_PAGE} replace>
-                    <img
-                      src={userData?.avatarImage || avaDefault}
-                      alt="Avatar default"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = avaDefault;
-                      }}
-                    />
-                    <img src={avaFrame} alt="Avatar frame" />
-                  </Link>
-                  {/* {<Dropdown.Menu>
-                  <Dropdown.Item>
-                    <Link to={PATHS.PROFILE_PAGE} replace>
-                      <HeaderAccountMyaccountSVG
-                        width="20"
-                        height="20"
-                        viewBox="0 0 19 19"
-                      />
-                      <p>{t("header.account.my_acc")}</p>
-                    </Link>
-                  </Dropdown.Item>
-
-                  <Dropdown.Item>
-                    <Link to={PATHS.PROFILE_PAGE} replace>
-                      <HeaderAccountGifthistSVG
-                        width="20"
-                        height="20"
-                        viewBox="0 0 19 19"
-                      />
-                      <p>{t("header.account.gift_hist")}</p>
-                    </Link>
-                  </Dropdown.Item>
-
-                  <Dropdown.Item>
-                    <Link to={PATHS.PROFILE_PAGE} replace>
-                      <HeaderAccountSettingSVG
-                        width="20"
-                        height="20"
-                        viewBox="0 0 19 19"
-                      />
-                      <p>{t("header.account.setting")}</p>
-                    </Link>
-                  </Dropdown.Item>
-
-                  <Button
-                    variant="dark"
-                    onClick={handleShowConfirmModal}
-                    className="justify-content-start"
+            {
+              user ? (
+                <Row className="profile-header">
+                  <Link
+                    to={PATHS.PROFILE_PAGE}
+                    replace
+                    className="profile-header__coin"
                   >
-                    <HeaderAccountLogoutSVG
-                      width="20"
-                      height="20"
-                      viewBox="0 0 19 19"
-                    />
-                    <p>{t("header.account.logout")}</p>
-                  </Button>
-                </Dropdown.Menu>} */}
-                </Dropdown>
-              </Row>
-            ) : (
-              <Nav className="nav-btns">
-                <Button
-                  variant="primary"
-                  className="login-btn login-btn-mobile"
-                >
-                  {t("login.login")}
-                </Button>
-              </Nav>
-            )}
+                    <img src={coin} alt="Total coin" />
+                    <span>{user?.coin}</span>
+                  </Link>
+
+                  <Dropdown align="end">
+                    <Link to={PATHS.PROFILE_PAGE}>
+                      <img
+                        src={user?.avatarImage || avaDefault}
+                        alt="Avatar default"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = avaDefault;
+                        }}
+                      />
+                      <img src={avaFrame} alt="Avatar frame" />
+                    </Link>
+                  </Dropdown>
+                </Row>
+              ) : (
+                <Nav className="nav-btns">
+              <Button
+                variant="primary"
+                className="login-btn login-btn-mobile"
+              >
+                {t("login.login")}
+              </Button>
+            </Nav>
+              )
+            }
             <Drawer anchor="left" open={showMenu} onClose={handleCloseMenu}>
               <div style={{ backgroundColor: "hsl(207deg 83% 6%)" }}>
                 <div
@@ -408,7 +363,7 @@ const Header = () => {
                 )}
               </NavDropdown>
 
-              {userData || userStorage ? (
+              {user ? (
                 <Row className="profile-header">
                   <Link
                     to={PATHS.PROFILE_PAGE}
@@ -416,13 +371,13 @@ const Header = () => {
                     className="profile-header__coin"
                   >
                     <img src={coin} alt="Total coin" />
-                    <span>{userData?.coin}</span>
+                    <span>{user?.coin}</span>
                   </Link>
 
                   <Dropdown align="end">
                     <Dropdown.Toggle>
                       <img
-                        src={userData?.avatarImage || avaDefault}
+                        src={user?.avatarImage || avaDefault}
                         alt="Avatar default"
                         onError={(e) => {
                           e.target.onerror = null;

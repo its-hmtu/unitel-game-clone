@@ -33,8 +33,8 @@ export const useLogin = (succes = function() {}, error = function() {}) => {
 export const getUserQuery = () => ({
   queryKey: [userInfoKey],
   queryFn: getUserApi,
-  refetchOnWindowFocus: true,
-  enabled: getUserInfo() ? true : false,
+  // refetchOnWindowFocus: true,
+  // enabled: getUserInfo() ? true : false,
 })
 
 export const getSettingQuery = () => ({
