@@ -43,7 +43,6 @@ const MainLayout = () => {
       document.body.classList.remove("disable-scroll");
     }
 
-    console.log("location", location);
   }, [location]);
 
   useEffect(() => {

@@ -5,18 +5,7 @@ import { destroyUserInfo, getUserInfo } from "utils/localStorage";
 
 export const getAllGame = async () => {
   try {
-    // const data = await axios.get('https://fir-2630f-default-rtdb.asia-southeast1.firebasedatabase.app/games.json')
-    
-    // console.log(data)
-    // if (parseInt(data.status) !== 200) {
-    //   throw new Error(data.message)
-    // } 
-
-    // return data.data
-
     const { data } = await axios.get(API_PATHS.getAllGame)
-
-    console.log(data)
 
     if (parseInt(data.responseCode) !== 200) {
       throw new Error(data.message || 'Error')

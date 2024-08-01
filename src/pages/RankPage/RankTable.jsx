@@ -24,9 +24,9 @@ const RankTable = ({ time }) => {
     return item
   })
 
-  useEffect(() => {
-    console.log(rankData);
-  }, [])
+  // useEffect(() => {
+  //   console.log(rankData);
+  // }, [])
 
   const columnHelper = createColumnHelper()
 
@@ -61,7 +61,6 @@ const RankTable = ({ time }) => {
     columnHelper.accessor(row => row.coin_win, {
       id: t("rankpage.table.gold"),
       cell: info => {
-        console.log(info.getValue())
 				return (
 					<div className="betcoin">
 						<div>

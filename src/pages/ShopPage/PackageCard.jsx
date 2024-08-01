@@ -24,7 +24,7 @@ const PackageCard = ({ data, isRetail = false}) => {
 
     setPackageSelect(item);
 
-    console.log(item);
+    // console.log(item);
   };
 
   const user = getUserInfo();

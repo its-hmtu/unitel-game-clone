@@ -22,52 +22,6 @@ const RankPage = () => {
 
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`);
 
-  const [rankData, setRankData] = useState([]);
-  useEffect(() => {
-    const data = [
-      {
-        rank: 1,
-        msisdn: "0123456789",
-        gold: "1680",
-        win: 2,
-        lose: 0,
-      },
-      {
-        rank: 2,
-        msisdn: "2222222222",
-        gold: "320",
-        win: 2,
-        lose: 2,
-      },
-      {
-        rank: 3,
-        msisdn: "111111111",
-        gold: "320",
-        win: 2,
-        lose: 1,
-      },
-      {
-        rank: 4,
-        msisdn: "0123456789",
-        gold: "240",
-        win: 1,
-        lose: 0,
-      },
-      {
-        rank: 5,
-        msisdn: "0123456789",
-        gold: "240",
-        win: 1,
-        lose: 0,
-      },
-    ];
-
-    setRankData(data);
-  }, []);
-
-  useEffect(() => {
-    console.log(key);
-  }, [key]);
   return (
     <Container fluid className="rankpage-container">
       <div
@@ -98,7 +52,7 @@ const RankPage = () => {
                     </NavDropdown>
                   </Nav>
                 </div>
-                <RankTableMobile dataRank={rankData} time={key}/>
+                <RankTableMobile time={key}/>
               </>
             ) : (
               // <Table rankTable data={rankData} />

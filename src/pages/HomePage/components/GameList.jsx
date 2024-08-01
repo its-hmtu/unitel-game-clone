@@ -21,9 +21,9 @@ const GameList = ({ type, searchValue }) => {
   const isHot = games?.filter((item) => item.isHot);
   const notHot = games?.filter((item) => !item.isHot);
 
-  useEffect(() => {
-    console.log(games);
-  }, []);
+  // useEffect(() => {
+  //   console.log(games);
+  // }, []);
 
   useEffect(() => {
     if (games) {

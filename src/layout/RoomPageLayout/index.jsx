@@ -19,9 +19,9 @@ const RoomPageLayout = () => {
   let gameImage = gameSelected?.image
   const [gameList, setGameList] = useState([])
 
-  useEffect(() => {
-    console.log(games);
-  }, [])
+  // useEffect(() => {
+  //   console.log(games);
+  // }, [])
   // useEffect(() => {
   //   if (gameList.length === 0) {
   //     dispatch(fetchAllGames())
