@@ -95,6 +95,7 @@ export const getRank = async ({queryKey}) => {
       throw new Error(data.errorMessage || "Can't get user ranking")
     }
 
+    // console.log(data.data.ranks)
     return data.data.ranks
   } catch (e) {
     console.error(e.message)

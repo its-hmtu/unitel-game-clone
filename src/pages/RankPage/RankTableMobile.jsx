@@ -19,7 +19,7 @@ const RankTableMobile = ({dataRank, pageIndex = 0, time}) => {
   })
   const {data: rank, isLoading} = useQuery(getRankQuery(time, paramRank.offset, paramRank.limit))
 
-  let rankList = (rank && rank.filter(item => item.coin_win !== 0)) || []
+  let rankList = (rank && rank?.filter(item => item.coin_win !== 0)) || []
   const rankData = rankList?.map(item => {
     item.msisdn = hidePhoneNumber(item.msisdn)
     return item
@@ -48,7 +48,7 @@ const RankTableMobile = ({dataRank, pageIndex = 0, time}) => {
       cell: info => (<p>{info.getValue()}</p>),
       footer: info => info.column.id
     }),
-    columnHelper.accessor(row => row.gold, {
+    columnHelper.accessor(row => row.coin_win, {
       id: t("rankpage.table.gold"),
       cell: info => {
 				return (
@@ -61,7 +61,7 @@ const RankTableMobile = ({dataRank, pageIndex = 0, time}) => {
       
       footer: info => info.column.id
     }),
-    columnHelper.accessor(row => `${row.win}/${row.lose}`, {
+    columnHelper.accessor(row => `${row.total_win}/${row.total_lose}`, {
       id: t("rankpage.table.winrate"),
       cell: info => (<p>{info.getValue()}</p>),
       footer: info => info.column.id
@@ -87,39 +87,19 @@ const RankTableMobile = ({dataRank, pageIndex = 0, time}) => {
           <p>Win/Lose</p>
         </Col>
       </Row>
-      {/* {
-        data?.length > 0 ? data?.map((item, index) => {
-          return (
-            <Row className='rank-mobile-row' key={index}>
-              <Col className='col-3'>
-                {
-                  index === 0 ? <img src={top1} alt="" /> :
-                  index === 1 ? <img src={top2} alt="" /> :
-                  index === 2 ? <img src={top3} alt="" /> :
-                  index + 1
-                }
-              </Col>
-
-              <Col className='col-3'>
-                <p>{item?.msisdn}</p>
-              </Col>
-
-              <Col className='col-3'>
-                <p>{new Intl.NumberFormat('lo').format(item?.gold)}</p>
-              </Col>
-
-              <Col className='col-3'>
-                <p>{item.win}/{item.lose}</p>
-              </Col>
-            </Row>
-          ) 
-        }) : (
-          <img src={no_data} alt="No data" className='no-data-img'/>
-        )
-      } */}
 
       <Row className='rank-mobile-row'>
-        <Table rankTable rankTableMobile data={rankData} columns={columns} pageIndex={pageIndex} />
+        <Table 
+          rankTable 
+          rankTableMobile 
+          {
+            ...{
+              columns,
+              data: !isLoading ? rankData : [],
+            }
+          }
+          pageIndex={pageIndex} 
+        />
       </Row> 
     </div>
   )

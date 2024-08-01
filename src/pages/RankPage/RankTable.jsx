@@ -18,11 +18,15 @@ const RankTable = ({ time }) => {
   })
   const {data: rank, isLoading} = useQuery(getRankQuery(time, paramRank.offset, paramRank.limit))
 
-  let rankList = (rank && rank.filter(item => item.coin_win !== 0)) || []
+  let rankList = (rank && rank?.filter(item => item.coin_win !== 0));
   const rankData = rankList?.map(item => {
     item.msisdn = hidePhoneNumber(item.msisdn)
     return item
   })
+
+  useEffect(() => {
+    console.log(rankData);
+  }, [])
 
   const columnHelper = createColumnHelper()
 
@@ -31,7 +35,7 @@ const RankTable = ({ time }) => {
       cell: info => {
         const orderId = parseInt(info.row.id) + 1
         return orderId === 1 ? ( 
-          
+
             <img src={top1} alt="" />
           
           ) : orderId === 2 ? (
@@ -54,9 +58,10 @@ const RankTable = ({ time }) => {
       header: () => <span>{t('rankpage.table.player')}</span>,
       footer: info => info.column.id
     }),
-    columnHelper.accessor(row => row.gold, {
+    columnHelper.accessor(row => row.coin_win, {
       id: t("rankpage.table.gold"),
       cell: info => {
+        console.log(info.getValue())
 				return (
 					<div className="betcoin">
 						<div>
@@ -72,7 +77,7 @@ const RankTable = ({ time }) => {
       header: () => <span>{t('rankpage.table.gold')}</span>,
       footer: info => info.column.id
     }),
-    columnHelper.accessor(row => `${row.win}/${row.lose}`, {
+    columnHelper.accessor(row => `${row.total_win}/${row.total_lose}`, {
       id: t("rankpage.table.winrate"),
       header: () => <span>{t('rankpage.table.winrate')}</span>,
       footer: info => info.column.id
@@ -81,49 +86,13 @@ const RankTable = ({ time }) => {
 
   return (
     <>
-      {/* {data.length > 0 ? (
-        data.map((item, index) => (
-          <tr key={index}>
-            {item.rank === 1 ? (
-              <td className="top-rank">
-                <img src={top1} alt="" />
-              </td>
-            ) : item.rank === 2 ? (
-              <td className="top-rank">
-                <img src={top2} alt="" />
-              </td>
-            ) : item.rank === 3 ? (
-              <td className="top-rank">
-                <img src={top3} alt="" />
-              </td>
-            ) : (
-              <td>{item.rank}</td>
-            )}
-            <td>{item.playerName}</td>
-            <td>
-              <div className="betcoin">
-                <div>
-                  <img src={coin} alt="" />
-                  <p>{item.gold}</p>
-                </div>
-              </div>
-            </td>
-            <td>
-              {item.win}/{item.lose}
-            </td>
-          </tr>
-        ))
-      ) : (
-        <tr>
-          <td colSpan={60} style={{ height: "500px" }}>
-            <img src={no_data} alt="No data" className="no-data-img" />
-          </td>
-        </tr>
-      )} */}
-
       <Table
-        data={rankData}
-        columns={columns}
+        {
+          ...{
+            data: !isLoading ? rankData : [],
+            columns,
+          }
+        }
         rankTable
         setParamRank={setParamRank}
         paramRank={paramRank}

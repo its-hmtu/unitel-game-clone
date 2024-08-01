@@ -1,5 +1,5 @@
 import { t } from "i18next";
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types"; // Add this line
 import {
   useReactTable,
@@ -23,7 +23,7 @@ const Table = ({
   roomTable = false,
   totalCount,
   onChangePage,
-  onChangPageSize,
+  onChangePageSize,
   data,
   columns,
   pageIndex = 0,
@@ -40,6 +40,10 @@ const Table = ({
   };
 
   // const columnHelper = createColumnHelper()
+
+  // useEffect(() => {
+  //   console.log(data)
+  // })
 
   const table = useReactTable({
     data,
@@ -61,14 +65,6 @@ const Table = ({
         {
           rankTableMobile ? null : (
             <thead>
-          {/* {rankTable && (
-            <tr>
-              <th>Rank</th>
-              <th>Player</th>
-              <th>Gold</th>
-              <th>Win/Lose</th>
-            </tr>
-          )} */}
           {
             table.getHeaderGroups().map(header => (
               <tr key={header.id}>
@@ -86,28 +82,10 @@ const Table = ({
               </tr>
             ))
           }
-          {/* {roomTable && (
-            <tr>
-              <th>ID</th>
-              <th>Player</th>
-              <th>Bet level</th>
-              <th>Status</th>
-              <th>
-                <Button variant="primary" className="room-table-btn">Play now</Button>
-              </th>
-            </tr>
-          )} */}
         </thead>
           )
         }
         <tbody>
-          {/* {
-            rankTable && <RankTable data={data} />
-          }
-
-          {
-            roomTable && <RoomTable data={data} />
-          } */}
           {table.getRowModel().rows.length ? table.getRowModel().rows.map(row => {
 						return (
 							<tr key={row.id}>
@@ -142,7 +120,7 @@ const Table = ({
               value={pageSize}
               onChange={(e) => {
                 if (onChangePageSize instanceof Function) {
-                  onChangPageSize(e.target.value)
+                  onChangePageSize(e.target.value)
                   
                 }
                 table.setPageSize(Number(e.target.value))
