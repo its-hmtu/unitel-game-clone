@@ -1,5 +1,4 @@
 import axios from "axios";
-import { parse } from "dotenv";
 import { API_PATHS } from "routes/api.path";
 import { destroyUserInfo, getLanguage, getUserInfo } from "utils/localStorage";
 
