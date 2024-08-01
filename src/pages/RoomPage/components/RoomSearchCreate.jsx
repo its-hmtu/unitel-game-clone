@@ -71,10 +71,27 @@ const RoomSearchCreate = ({ game, level }) => {
       {isMobile ? (
         <div className="d-flex">
           <div className="d-flex">
-            <Button variant="primary" className="room-search-btn">
-              <img src={addIcon} alt="" />
-              <p className="m-0">{t("room.create_room")}</p>
-            </Button>
+            {user ? (
+              <Button
+                variant="primary"
+                className="room-search-btn"
+                onClick={handleShowCreateRoom}
+
+              >
+                <img src={addIcon} alt="" />
+                <p className="m-0">{t("room.create_room")}</p>
+              </Button>
+            ) : (
+              <Button
+                variant="primary"
+                className="room-search-btn"
+                onClick={handleShowLogin}
+
+              >
+                <img src={addIcon} alt="" />
+                <p className="m-0">{t("room.create_room")}</p>
+              </Button>
+            )}
           </div>
           {isMobile && (
             <div className="d-flex">

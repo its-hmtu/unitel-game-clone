@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Col, Container, Nav, Row, Tab } from "react-bootstrap";
 import avaDefault from "images/ava-default.jpeg";
 import { t } from "i18next";
@@ -14,35 +14,38 @@ import { HeaderAccountMyaccountSVG } from "svg/Header/HeaderAccountMyaccountSVG"
 import { useQuery, useQueryClient } from "react-query";
 import { getUserQuery } from "data/user";
 import { destroyUserInfo } from "utils/localStorage";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PATHS } from "routes/path";
 import SelectAva from "./components/SelectAva";
 import { makeData } from "utils/makeData";
-import uploadAva from 'images/profilepage-uploadava.svg'
+import uploadAva from "images/profilepage-uploadava.svg";
+import { queryPoint, useMediaQuery } from "utils/hooks/useMediaQuery";
+import arrowNext from "images/arrow-next-white.svg";
+import { TitleContext } from "contexts/TitleContext";
 
 const ProfilePage = () => {
-  const {data: user, isLoading: isUserLoading} = useQuery(getUserQuery())
+  const { data: user, isLoading: isUserLoading } = useQuery(getUserQuery());
   const { t } = useTranslation();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   useEffect(() => {
     console.log(user);
-  }, [])
-
+  }, []);
 
   const [key, setKey] = React.useState(1);
   const [confirmModal, setConfirmModal] = React.useState(false);
-  const defaultAva = makeData('image',16)
-
-  const [selectAva, setSelectAva] = useState(false)
+  const defaultAva = makeData("image", 16);
+  const [selectAva, setSelectAva] = useState(false);
+  const {title, setTitle} = useContext(TitleContext)
+  const isMobile = useMediaQuery(`(max-width: ${queryPoint.sm}px)`);
 
   const handleSelectAva = () => {
-    setSelectAva(!selectAva)
-  }
+    setSelectAva(!selectAva);
+  };
 
   const handleCloseSelectAva = () => {
-    setSelectAva(false)
-  }
+    setSelectAva(false);
+  };
 
   const handleConfirmModal = () => {
     setConfirmModal(!confirmModal);
@@ -51,10 +54,10 @@ const ProfilePage = () => {
   const handleLogout = () => {
     destroyUserInfo();
     handleConfirmModal();
-    queryClient.invalidateQueries('user-info');
-    queryClient.removeQueries('user-info');
-    navigate(PATHS.HOME_PAGE, { replace: true })
-  }
+    queryClient.invalidateQueries("user-info");
+    queryClient.removeQueries("user-info");
+    navigate(PATHS.HOME_PAGE, { replace: true });
+  };
 
   return (
     <>
@@ -72,95 +75,164 @@ const ProfilePage = () => {
                       e.target.src = avaDefault;
                     }}
                   />
-                  <div className="upload-ava">
-                    <img 
-                      src={uploadAva}
-                      onClick={handleSelectAva}
-                      alt="Upload avatar"
-                    />
-                  </div>
+                  {!isMobile && (
+                    <div className="upload-ava">
+                      <img
+                        src={uploadAva}
+                        onClick={handleSelectAva}
+                        alt="Upload avatar"
+                      />
+                    </div>
+                  )}
                 </div>
                 <p>{user?.displayName}</p>
               </Row>
               <Row className="sidebar-menu mt-3 flex-column">
                 <Nav variant="pills" className="flex-column">
-                  <Nav.Item onClick={handleCloseSelectAva}>
-                    <Nav.Link eventKey={1}>
-                      <HeaderAccountMyaccountSVG 
-                        width="20"
-                        height="20"
-                        viewBox="0 0 19 19"
-                      />
-                      {t("profile.sidebar.my_acc")}
-                    </Nav.Link>
-                  </Nav.Item>
+                  {!isMobile ? (
+                    <>
+                      <Nav.Item onClick={handleCloseSelectAva}>
+                        <Nav.Link eventKey={1}>
+                          <div className="d-flex align-items-center gap-2">
+                            <HeaderAccountMyaccountSVG
+                              width="20"
+                              height="20"
+                              viewBox="0 0 19 19"
+                            />
+                            {t("profile.sidebar.my_acc")}
+                          </div>
+                          {isMobile && <img src={arrowNext} alt="" />}
+                        </Nav.Link>
+                      </Nav.Item>
 
-                  <Nav.Item onClick={handleCloseSelectAva}>
-                    <Nav.Link eventKey={2}>
-                      <HeaderAccountGifthistSVG 
-                        width="20"
-                        height="20"
-                        viewBox="0 0 19 19"
-                      />
-                      {t("profile.sidebar.gift_hist")}
-                    </Nav.Link>
-                  </Nav.Item>
+                      <Nav.Item onClick={handleCloseSelectAva}>
+                        <Nav.Link eventKey={2}>
+                          <div className="d-flex align-items-center gap-2">
+                            <HeaderAccountGifthistSVG
+                              width="20"
+                              height="20"
+                              viewBox="0 0 19 19"
+                            />
+                            {t("profile.sidebar.gift_hist")}
+                          </div>
+                          {isMobile && <img src={arrowNext} alt="" />}
+                        </Nav.Link>
+                      </Nav.Item>
 
-                  <Nav.Item onClick={handleCloseSelectAva}>
-                    <Nav.Link eventKey={3}>
-                      <HeaderAccountSettingSVG 
-                        width="20"
-                        height="20"
-                        viewBox="0 0 19 19"
-                      />
-                      {t("profile.sidebar.setting")}
-                    </Nav.Link>
-                  </Nav.Item>
+                      <Nav.Item onClick={handleCloseSelectAva}>
+                        <Nav.Link eventKey={3}>
+                          <div className="d-flex align-items-center gap-2">
+                            <HeaderAccountSettingSVG
+                              width="20"
+                              height="20"
+                              viewBox="0 0 19 19"
+                            />
+                            {t("profile.sidebar.setting")}
+                          </div>
+                          {isMobile && <img src={arrowNext} alt="" />}
+                        </Nav.Link>
+                      </Nav.Item>
+                    </>
+                  ) : (
+                    <>
+                      <Nav.Item onClick={handleCloseSelectAva}>
+                        <Link to={PATHS.MY_ACCOUNT} onClick={
+                          () => setTitle(t('mobile.my_acc.basic_info'))
+                        }>
+                          <div className="d-flex align-items-center gap-2">
+                            <HeaderAccountMyaccountSVG
+                              width="20"
+                              height="20"
+                              viewBox="0 0 19 19"
+                            />
+                            {t("profile.sidebar.my_acc")}
+                          </div>
+                          {isMobile && <img src={arrowNext} alt="" />}
+                        </Link>
+                      </Nav.Item>
+
+                      <Nav.Item onClick={handleCloseSelectAva}>
+                        <Link to={PATHS.GIFT_HIST} onClick={
+                          () => setTitle(t('mobile.gift_hist.title'))
+                        }>
+                          <div className="d-flex align-items-center gap-2">
+                            <HeaderAccountGifthistSVG
+                              width="20"
+                              height="20"
+                              viewBox="0 0 19 19"
+                            />
+                            {t("profile.sidebar.gift_hist")}
+                          </div>
+                          {isMobile && <img src={arrowNext} alt="" />}
+                        </Link>
+                      </Nav.Item>
+
+                      <Nav.Item onClick={handleCloseSelectAva}>
+                        <Link to={PATHS.SETTING} onClick={
+                          () => setTitle(t('mobile.setting.title'))
+                        }>
+                          <div className="d-flex align-items-center gap-2">
+                            <HeaderAccountSettingSVG
+                              width="20"
+                              height="20"
+                              viewBox="0 0 19 19"
+                            />
+                            {t("profile.sidebar.setting")}
+                          </div>
+                          {isMobile && <img src={arrowNext} alt="" />}
+                        </Link>
+                      </Nav.Item>
+                    </>
+                  )}
 
                   <Button onClick={handleConfirmModal} variant="dark">
-                    <HeaderAccountLogoutSVG 
-                      width="20"
-											height="20"
-											viewBox="0 0 19 19"
-                    />
-                    {t("profile.sidebar.logout")}
-                    </Button>
+                    <div className="d-flex align-items-center gap-2">
+                      <HeaderAccountLogoutSVG
+                        width="20"
+                        height="20"
+                        viewBox="0 0 19 19"
+                      />
+                      {t("profile.sidebar.logout")}
+                    </div>
+                  </Button>
                 </Nav>
               </Row>
             </Col>
-            <Col sm={8}>
-              {selectAva ? (
-                <div className="profile-page-content ms-2 ms-lg-4">
-                  <SelectAva defaultAva={defaultAva} />
-                </div>
-              ) : (<Tab.Content className="profile-page-content">
-                <Tab.Pane eventKey={1}>
-                  <UserInfo
-                    userData={
-                      {
-                        displayName: user?.displayName,
-                        msisdn: user?.msisdn,
-                      }
-                    }
-                  />
-                </Tab.Pane>
-                <Tab.Pane eventKey={2}>
-                  <GiftHist />
-                </Tab.Pane>
-                <Tab.Pane eventKey={3}>
-                  <Setting />
-                </Tab.Pane>
-                <Tab.Pane eventKey={4}></Tab.Pane>
-              </Tab.Content>)}
-            </Col>
+            {!isMobile && (
+              <Col sm={8}>
+                {selectAva ? (
+                  <div className="profile-page-content ms-2 ms-lg-4">
+                    <SelectAva defaultAva={defaultAva} />
+                  </div>
+                ) : (
+                  <Tab.Content className="profile-page-content">
+                    <Tab.Pane eventKey={1}>
+                      <UserInfo
+                        userData={{
+                          displayName: user?.displayName,
+                          msisdn: user?.msisdn,
+                        }}
+                      />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey={2}>
+                      <GiftHist />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey={3}>
+                      <Setting />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey={4}></Tab.Pane>
+                  </Tab.Content>
+                )}
+              </Col>
+            )}
           </Row>
         </Tab.Container>
       </Container>
-      <ConfirmModal 
-        show={confirmModal} 
+      <ConfirmModal
+        show={confirmModal}
         onHide={handleConfirmModal}
         onLogout={handleLogout}
-        title={t('modal.profile.logout')} 
+        title={t("modal.profile.logout")}
       />
     </>
   );

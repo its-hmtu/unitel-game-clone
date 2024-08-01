@@ -14,6 +14,9 @@ import React from 'react'
 import { getUserInfo } from "utils/localStorage";
 import { PATHS } from "./path";
 import PlayRoomPage from "pages/PlayRoomPage";
+import UserInfoMobile from "pages/ProfilePage/components/UserInfoMobile";
+import GiftHistMobile from "pages/ProfilePage/components/GiftHistMobile";
+import SettingMobile from "pages/ProfilePage/components/SettingMobile";
 
 // export function RouteList(isMobile) {
   
@@ -122,6 +125,10 @@ const RouteList = () => {
         <Route path={PATHS.ROOM_PAGE} element={<RoomPageLayout />}>
           <Route index element={<RoomPage />} />
         </Route>
+
+        <Route path={PATHS.MY_ACCOUNT} element={<UserInfoMobile />} />
+        <Route path={PATHS.GIFT_HIST} element={<GiftHistMobile />} />
+        <Route path={PATHS.SETTING} element={<SettingMobile />} />
       </Route>
 
     </Routes>

@@ -15,6 +15,7 @@ import { Button } from "react-bootstrap";
 import RankTable from "src/pages/RankPage/RankTable";
 import RoomTable from "src/pages/RoomPage/components/RoomTable";
 import Pagination from "../Pagination";
+import { queryPoint, useMediaQuery } from "utils/hooks/useMediaQuery";
 
 const Table = ({ 
   rankTable = false, 
@@ -51,6 +52,8 @@ const Table = ({
   const {pageSize} = table.getState().pagination
   const totalRoom = totalCount ? totalCount : table.options.data?.length
   const width = rankTable && columns.length === 3 ? '33.33' : "auto"
+
+  const isMobileMD = useMediaQuery(`(max-width: ${queryPoint.md}px)`)
 
   return (
     <div className={`table-wrapper ${rankTable && "rank-table"} ${rankTableMobile && "rank-table-mobile"} ${roomTable && "room-table"}`}>
@@ -124,7 +127,7 @@ const Table = ({
 						<tr>
 							<td colSpan={60} style={{ height: '500px' }}>
 								<img
-									style={{ width: '20%', margin: 'auto' }}
+									style={{ width: rankTableMobile ? "40%" : "20%", margin: 'auto' }}
 									src={no_data}
 									alt="No reward is found"
 								/>

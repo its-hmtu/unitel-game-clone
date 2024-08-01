@@ -1,20 +1,25 @@
 import ConfirmModal from "components/Modal/ConfirmModal";
+import LoginModal from "components/Modal/LoginModal";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useTranslation } from "react-i18next";
+import { getUserInfo } from "utils/localStorage";
 
 const PrizeCard = ({ data, bgMinutes = false }) => {
   const { t } = useTranslation();
   const [confirmModal, setConfirmModal] = useState(false);
-
+  const [loginModal, setLoginModal] = useState(false);
   const [packageSelect, setPackageSelect] = useState({});
+  const user = getUserInfo();
 
   const handleConfirmModal = (item) => {
-    setConfirmModal(!confirmModal);
-
-    setPackageSelect(item);
-
-    console.log(item);
+    if (user) {
+      setConfirmModal(prev => !prev);
+      setPackageSelect(item);
+    }
+    else {
+      setLoginModal(prev => !prev);
+    } 
   }
  
   return (
@@ -48,13 +53,21 @@ const PrizeCard = ({ data, bgMinutes = false }) => {
         })
       }
 
-      <ConfirmModal
+      {confirmModal && <ConfirmModal
         show={confirmModal}
         onHide={() => setConfirmModal(false)}
         title={t("modal.prize.are_you_sure")
           .replace("_GOLD_", packageSelect?.coin)
           .replace("_REWARD_", packageSelect?.name)}
-      />
+      />}
+
+      {
+        loginModal && <LoginModal 
+          show={loginModal}
+          onHide={() => setLoginModal(false)}
+          hideDecor
+        />
+      }
     </>
   );
 };

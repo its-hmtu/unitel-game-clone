@@ -1,47 +1,42 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import backIcon from "assets/images/arrow-back.svg"
 import subLayoutCircle from "assets/images/login-circle.svg"
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, Outlet, useParams } from 'react-router-dom'
-import { fetchAllGames } from 'src/store/game/actions'
-import {gameSlice} from 'src/store/game/gameSlice'
+import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { getAllGameQuery } from 'src/data/game'
+import { queryPoint, useMediaQuery } from 'utils/hooks/useMediaQuery'
+import { PATHS } from 'routes/path'
+import { TitleContext } from 'contexts/TitleContext'
 
 const SubLayout = () => {
+  const location = useLocation()
+  const navigate = useNavigate();
   const {roomId} = useParams()
   const {data: games, isLoading} = useQuery(getAllGameQuery()) 
-  const dispatch = useDispatch()
-
-  // const gameList = useSelector(state => state.game.games)
   const gameSelected = games?.find(game => game.id == roomId)
-  // const selectedGame = useSelector(state => state.game.selected)
   const roomTitle = gameSelected?.name || "Room"
+  const {title} = useContext(TitleContext)
+  const isMobileMD = useMediaQuery(`(max-width: ${queryPoint.md}px)`)
 
-  // useEffect(() => {
-  //   if (gameList.length === 0) {
-  //     dispatch(fetchAllGames())
-  //   }
-  // }, [dispatch, gameList])
-
-  // useEffect(() => {
-  //   dispatch(gameSlice.actions.selectGame(gameSelected))
-  // },[dispatch, gameSelected])
-
+  const handleBack = () => {
+    if (location.pathname.includes("/room") && isMobileMD) {
+      navigate(PATHS.HOME_PAGE)
+    } else {
+      navigate(-1)
+    }
+  }
 
   return (
     <div className='sub-layout-container'>
       <Container className="sub-layout-header" fluid>
-        <Button variant="dark" >
-          <Link 
-            to={"/"}
-          >
-            <img src={backIcon} alt="back" />
-          </Link>
+        <Button variant="dark" onClick={handleBack}>
+          <img src={backIcon} alt="back" />
         </Button>
         <h1>
-          {roomTitle}
+          {
+            window.location.pathname.split('/')[1] === PATHS.ROOM_PAGE.split('/')[1] && window.location.pathname.split('/')[3] == null ? roomTitle : title
+          }
         </h1>
       </Container>
       <Outlet />

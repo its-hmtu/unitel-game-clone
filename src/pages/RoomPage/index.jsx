@@ -77,7 +77,7 @@ const RoomPage = () => {
                     <div>
                       {
                        isMobile
-                       ? (<RoomTableMobile />)
+                       ? (<RoomTableMobile level={level}/>)
                        : (<RoomTable game={gameSelected} level={level}/>)
                       }
                     </div>

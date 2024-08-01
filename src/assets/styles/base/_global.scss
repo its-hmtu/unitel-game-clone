@@ -42,8 +42,9 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 10px;
+  background-color: rgb(3, 17, 28)!important;
+  // border-radius: 10px;
+  border: none!important;
 }
 
 ::-webkit-scrollbar-thumb {

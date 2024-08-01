@@ -9,6 +9,11 @@
   @include media-breakpoint-down(xl) {
     width: 80vw;
   }
+
+  @include media-breakpoint-down(sm) {
+    margin: 20px 0;
+    width: 100vw;
+  }
 }
 
 .sidebar {
@@ -81,6 +86,7 @@
     a {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 10px;
       height: 48px;
       border-radius: 6px;
@@ -99,6 +105,21 @@
       background-color: transparent;
       border: transparent;
       transition: none;
+    }
+
+    @include media-breakpoint-down(sm) {
+      justify-content: center;
+
+      .nav-item {
+        border-bottom: 1px solid #787F91;
+        border-radius: 0;
+        margin-bottom: 10px;
+      }
+
+      // .nav-link.active {
+      //   background-color: transparent;
+      //   color: #787F91;
+      // }
     }
   }
 }
@@ -157,7 +178,7 @@
 
       &.selected {
         .ava {
-          outline: 2px solid $green
+          outline: 2px solid $green;
         }
       }
 
@@ -168,7 +189,7 @@
         object-fit: cover;
 
         &:hover {
-          outline: 2px solid $green
+          outline: 2px solid $green;
         }
       }
 
@@ -330,12 +351,10 @@
     min-height: auto;
     padding: 0;
   }
-
-  
 }
 .profile-confirm {
   background: $green-gradient;
-  color: $white!important;
+  color: $white !important;
   border: none;
   height: 52px;
   font-size: 20px;

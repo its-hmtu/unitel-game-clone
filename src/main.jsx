@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import SnackBarProvider from 'contexts/SnackBarContext'
 import RoomSearchProvider from 'contexts/RoomSearchContext'
 import SocketProvider from 'contexts/SocketContext'
+import TitleProvider from 'contexts/TitleContext'
 
 const clientQuery = new QueryClient()
 
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <SocketProvider>
         <SnackBarProvider>
           <RoomSearchProvider>
-            <App /> 
+            <TitleProvider>
+              <App /> 
+            </TitleProvider>
           </RoomSearchProvider>
         </SnackBarProvider>
       </SocketProvider>

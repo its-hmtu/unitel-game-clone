@@ -43,6 +43,7 @@ import { getUserQuery } from "src/data/user";
 import { userInfoKey } from "src/data/user";
 import ConfirmModal from "src/components/Modal/ConfirmModal";
 import { PATHS } from "routes/path";
+import { getUserInfo } from "utils/localStorage";
 
 const Header = () => {
   const { data: user, isLoading } = useQuery(getUserQuery());
@@ -52,26 +53,21 @@ const Header = () => {
   const [language, setLanguage] = useState(lng || "la");
   const [userData, setUserData] = useState({});
   const queryClient = useQueryClient();
+  const userStorage = getUserInfo();
   const navigate = useNavigate();
-  // const api = import.meta.env.REACT_APP_DOMAIN_API
-
-  // useEffect(() =>{
-  //   console.log(api)
-  // })
-
   useEffect(() => {
-    setUserData(user)
+    setUserData(user);
   }, [user]);
 
   useEffect(() => {
     setLanguage(lng);
   }, [lng]);
 
-  useEffect(() => {
-    if (!isLoading && user) {
-      console.log(user);
-    }
-  }, [user, isLoading]);
+  // useEffect(() => {
+  //   if (!isLoading && user) {
+  //     console.log(user);
+  //   }
+  // }, [user, isLoading]);
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -92,11 +88,11 @@ const Header = () => {
 
   const handleShowConfirmModal = () => {
     setShowConfirmModal((prev) => !prev);
-  }
+  };
 
   const closeConfirmModal = () => {
     setShowConfirmModal(false);
-  }
+  };
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -116,7 +112,7 @@ const Header = () => {
     queryClient.removeQueries(userInfoKey);
     // setUserData({})
     navigate(PATHS.HOME_PAGE);
-  }
+  };
 
   return (
     <>
@@ -135,11 +131,88 @@ const Header = () => {
                 <img src={logo} alt="logo" style={{ width: "95px" }} />
               </Link>
             </div>
-            <Nav className="nav-btns">
-              <Button variant="primary" className="login-btn login-btn-mobile">
-                {t("login.login")}
-              </Button>
-            </Nav>
+            {userData || userStorage ? (
+              <Row className="profile-header">
+                <Link
+                  to={PATHS.PROFILE_PAGE}
+                  replace
+                  className="profile-header__coin"
+                >
+                  <img src={coin} alt="Total coin" />
+                  <span>{userData?.coin}</span>
+                </Link>
+
+                <Dropdown align="end">
+                  <Link to={PATHS.PROFILE_PAGE} replace>
+                    <img
+                      src={userData?.avatarImage || avaDefault}
+                      alt="Avatar default"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = avaDefault;
+                      }}
+                    />
+                    <img src={avaFrame} alt="Avatar frame" />
+                  </Link>
+                  {/* {<Dropdown.Menu>
+                  <Dropdown.Item>
+                    <Link to={PATHS.PROFILE_PAGE} replace>
+                      <HeaderAccountMyaccountSVG
+                        width="20"
+                        height="20"
+                        viewBox="0 0 19 19"
+                      />
+                      <p>{t("header.account.my_acc")}</p>
+                    </Link>
+                  </Dropdown.Item>
+
+                  <Dropdown.Item>
+                    <Link to={PATHS.PROFILE_PAGE} replace>
+                      <HeaderAccountGifthistSVG
+                        width="20"
+                        height="20"
+                        viewBox="0 0 19 19"
+                      />
+                      <p>{t("header.account.gift_hist")}</p>
+                    </Link>
+                  </Dropdown.Item>
+
+                  <Dropdown.Item>
+                    <Link to={PATHS.PROFILE_PAGE} replace>
+                      <HeaderAccountSettingSVG
+                        width="20"
+                        height="20"
+                        viewBox="0 0 19 19"
+                      />
+                      <p>{t("header.account.setting")}</p>
+                    </Link>
+                  </Dropdown.Item>
+
+                  <Button
+                    variant="dark"
+                    onClick={handleShowConfirmModal}
+                    className="justify-content-start"
+                  >
+                    <HeaderAccountLogoutSVG
+                      width="20"
+                      height="20"
+                      viewBox="0 0 19 19"
+                    />
+                    <p>{t("header.account.logout")}</p>
+                  </Button>
+                </Dropdown.Menu>} */}
+                </Dropdown>
+              </Row>
+            ) : (
+              <Nav className="nav-btns">
+                <Button
+                  variant="primary"
+                  className="login-btn login-btn-mobile"
+                >
+                  {t("login.login")}
+                </Button>
+              </Nav>
+            )}
             <Drawer anchor="left" open={showMenu} onClose={handleCloseMenu}>
               <div style={{ backgroundColor: "hsl(207deg 83% 6%)" }}>
                 <div
@@ -335,10 +408,10 @@ const Header = () => {
                 )}
               </NavDropdown>
 
-              {userData ? (
+              {userData || userStorage ? (
                 <Row className="profile-header">
                   <Link
-                    to={"/profile"}
+                    to={PATHS.PROFILE_PAGE}
                     replace
                     className="profile-header__coin"
                   >
@@ -360,7 +433,7 @@ const Header = () => {
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item>
-                        <Link to="/profile" replace>
+                        <Link to={PATHS.PROFILE_PAGE} replace>
                           <HeaderAccountMyaccountSVG
                             width="20"
                             height="20"
@@ -371,7 +444,7 @@ const Header = () => {
                       </Dropdown.Item>
 
                       <Dropdown.Item>
-                        <Link to="/profile" replace>
+                        <Link to={PATHS.PROFILE_PAGE} replace>
                           <HeaderAccountGifthistSVG
                             width="20"
                             height="20"
@@ -382,7 +455,7 @@ const Header = () => {
                       </Dropdown.Item>
 
                       <Dropdown.Item>
-                        <Link to="/profile" replace>
+                        <Link to={PATHS.PROFILE_PAGE} replace>
                           <HeaderAccountSettingSVG
                             width="20"
                             height="20"
@@ -431,12 +504,14 @@ const Header = () => {
           setShowLoginModal((prev) => !prev);
         }}
       />
-      {showConfirmModal && <ConfirmModal 
-        show={showConfirmModal}
-        onHide={handleShowConfirmModal}
-        title={t('modal.profile.logout')}
-        onLogout={handleLogout}
-      />}
+      {showConfirmModal && (
+        <ConfirmModal
+          show={showConfirmModal}
+          onHide={handleShowConfirmModal}
+          title={t("modal.profile.logout")}
+          onLogout={handleLogout}
+        />
+      )}
     </>
   );
 };
