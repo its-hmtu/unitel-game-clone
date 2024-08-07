@@ -22,7 +22,6 @@ const ShopPage = () => {
     setRetail(packages?.filter(item => item.packageType === 2))
   }, [packages])
 
-
   return (
     <Container fluid className={`shoppage ${isMobile ? "mobile": ""}`}>
       {
@@ -33,7 +32,6 @@ const ShopPage = () => {
           </div>
         )
       }
-
       <div className='package-container'>
         <Tabs
           activeKey={key}
@@ -53,8 +51,6 @@ const ShopPage = () => {
           </Tab>
         </Tabs>
       </div>
-
-
     </Container>
   )
 }

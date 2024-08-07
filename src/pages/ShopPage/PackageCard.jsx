@@ -21,17 +21,13 @@ const PackageCard = ({ data, isRetail = false}) => {
 
   const handleConfirmModal = (item) => {
     setConfirmModal(!confirmModal);
-
     setPackageSelect(item);
-
-    // console.log(item);
   };
 
   const user = getUserInfo();
   return (
     <>
       {
-        // eslint-disable-next-line react/prop-types
         data?.map((item, index) => {
           return (
             <div key={index} className={`package ${isRetail ? "retail" : ""}`}>

@@ -7,7 +7,6 @@ import { getSettingQuery } from "src/data/user";
 const SettingPage = () => {
   const { type } = useParams();
   const { data: helpData, isLoading } = useQuery(getSettingQuery());
-
   const HTML = (helpData && helpData.find((item) => item.type === type)) || "";
 
   return (

@@ -6,11 +6,15 @@ import { FooterGameSvg, FooterProfileSvg } from 'src/assets/svg/Footer'
 import { useTranslation } from 'react-i18next'
 import { HeaderCupSvg, HeaderShopSvg, HeaderStarSvg } from 'src/assets/svg/Header'
 import { useEffect, useState } from 'react'
+import { PATHS } from 'routes/path'
+import { useQuery } from 'react-query'
+import { getUserQuery } from 'data/user'
 
 const FooterMobile = () => {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(true);
   const [lastPosition, setLastPosition] = useState(0);
+  const {data: user} = useQuery(getUserQuery());
 
   const getMaxHeight = () => {
     return Math.max(
@@ -42,12 +46,13 @@ const FooterMobile = () => {
     window.addEventListener('scroll', controlledFooter, {passive: true});
     return () => window.removeEventListener('scroll', controlledFooter);
   }, [lastPosition])
+
   return (
     <Container id='footer' fluid className={`footer-mobile ${isVisible ? "" : "footer-hidden"}`}>
       <Navbar>
         <Nav>
           <NavLink
-            to={"/"}
+            to={PATHS.HOME_PAGE}
             className="nav-link"
           >
             <FooterGameSvg width="20" height="20" viewBox="0 0 20 20" />
@@ -55,7 +60,7 @@ const FooterMobile = () => {
           </NavLink>
 
           <NavLink
-            to={"/shop"}
+            to={PATHS.SHOP_PAGE}
             className="nav-link"
           >
             <HeaderShopSvg width="20" height="20" viewBox="0 0 18 14" />
@@ -63,7 +68,7 @@ const FooterMobile = () => {
           </NavLink>
 
           <NavLink
-            to={"/prize"}
+            to={PATHS.PRIZE_PAGE}
             className="nav-link"
           >
             <HeaderStarSvg width="22" height="20" viewBox="0 0 18 16" />
@@ -71,20 +76,20 @@ const FooterMobile = () => {
           </NavLink>
 
           <NavLink
-            to={"/rank"}
+            to={PATHS.RANK_PAGE}
             className="nav-link"
           >
             <HeaderCupSvg width="20" height="20" viewBox="0 0 20 20" />
             {t("header.rank")}
           </NavLink>
 
-          <NavLink
-            to={"/profile"}
+          {user && (<NavLink
+            to={PATHS.PROFILE_PAGE}
             className="nav-link"
           >
             <FooterProfileSvg width="20" height="20" viewBox="0 0 20 20" />
             {t("profile.profile")}
-          </NavLink>
+          </NavLink>)}
         </Nav>
       </Navbar>
     </Container>

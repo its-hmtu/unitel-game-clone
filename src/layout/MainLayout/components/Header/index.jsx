@@ -48,7 +48,7 @@ import { ProfileTabContext } from "contexts/ProfileTabContext";
 
 const Header = () => {
   const { data: user, isLoading } = useQuery(getUserQuery());
-  const {tab, setTab} = useContext(ProfileTabContext)
+  const { setTab } = useContext(ProfileTabContext);
   const { t } = useTranslation();
   const lng = getLanguage();
   const [showMenu, setShowMenu] = useState(false);
@@ -129,47 +129,51 @@ const Header = () => {
                 className="me-2"
                 onClick={handleOpenMenu}
               />
-              <Link to={"/"} className="navbar-brand">
-                <img src={logo} alt="logo" style={{ width: "95px" }} />
+              <Link to={PATHS.HOME_PAGE} className="navbar-brand">
+                <img
+                  src={logo}
+                  alt="logo"
+                  style={{ width: "95px" }}
+                  draggable="false"
+                />
               </Link>
             </div>
-            {
-              user ? (
-                <Row className="profile-header">
-                  <Link
-                    to={PATHS.PROFILE_PAGE}
-                    replace
-                    className="profile-header__coin"
-                  >
-                    <img src={coin} alt="Total coin" />
-                    <span>{user?.coin}</span>
-                  </Link>
+            {user ? (
+              <Row className="profile-header">
+                <Link
+                  to={PATHS.PROFILE_PAGE}
+                  replace
+                  className="profile-header__coin"
+                >
+                  <img src={coin} alt="Total coin" draggable="false" />
+                  <span>{new Intl.NumberFormat("lo").format(user?.coin)}</span>
+                </Link>
 
-                  <Dropdown align="end">
-                    <Link to={PATHS.PROFILE_PAGE}>
-                      <img
-                        src={user?.avatarImage || avaDefault}
-                        alt="Avatar default"
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = avaDefault;
-                        }}
-                      />
-                      <img src={avaFrame} alt="Avatar frame" />
-                    </Link>
-                  </Dropdown>
-                </Row>
-              ) : (
-                <Nav className="nav-btns">
-              <Button
-                variant="primary"
-                className="login-btn login-btn-mobile"
-              >
-                {t("login.login")}
-              </Button>
-            </Nav>
-              )
-            }
+                <Dropdown align="end">
+                  <Link to={PATHS.PROFILE_PAGE}>
+                    <img
+                      src={user?.avatarImage || avaDefault}
+                      alt="Avatar default"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = avaDefault;
+                      }}
+                      draggable="false"
+                    />
+                    <img src={avaFrame} alt="Avatar frame" draggable="false" />
+                  </Link>
+                </Dropdown>
+              </Row>
+            ) : (
+              <Nav className="nav-btns">
+                <Button
+                  variant="primary"
+                  className="login-btn login-btn-mobile"
+                >
+                  {t("login.login")}
+                </Button>
+              </Nav>
+            )}
             <Drawer anchor="left" open={showMenu} onClose={handleCloseMenu}>
               <div style={{ backgroundColor: "hsl(207deg 83% 6%)" }}>
                 <div
@@ -180,7 +184,7 @@ const Header = () => {
                   }}
                 >
                   <Link
-                    to={"/"}
+                    to={PATHS.HOME_PAGE}
                     className="navbar-brand d-flex flex-column justify-content-center align-items-center my-2"
                   >
                     <img
@@ -192,7 +196,7 @@ const Header = () => {
                   <Container fluid>
                     <Nav className="d-flex flex-column align-items-start navbar-nav-mobile">
                       <NavLink
-                        to={"/"}
+                        to={PATHS.HOME_PAGE}
                         className="nav-link nav-link-mobile"
                         style={{ padding: "10px!important" }}
                       >
@@ -204,7 +208,7 @@ const Header = () => {
                         {t("mobile.footer.game")}
                       </NavLink>
                       <NavLink
-                        to={"/shop"}
+                        to={PATHS.SHOP_PAGE}
                         className="nav-link nav-link-mobile"
                         style={{ padding: "10px!important" }}
                       >
@@ -216,7 +220,7 @@ const Header = () => {
                         {t("header.shop")}
                       </NavLink>
                       <NavLink
-                        to={"/prize"}
+                        to={PATHS.PRIZE_PAGE}
                         className="nav-link nav-link-mobile"
                         style={{ padding: "10px!important" }}
                       >
@@ -228,7 +232,7 @@ const Header = () => {
                         {t("header.prize")}
                       </NavLink>
                       <NavLink
-                        to={"/rank"}
+                        to={PATHS.RANK_PAGE}
                         className="nav-link nav-link-mobile"
                         style={{ padding: "10px!important" }}
                       >
@@ -239,18 +243,20 @@ const Header = () => {
                         />
                         {t("header.rank")}
                       </NavLink>
-                      <NavLink
-                        to={"/profile"}
-                        className="nav-link nav-link-mobile"
-                        style={{ padding: "10px!important" }}
-                      >
-                        <FooterProfileSvg
-                          width={20}
-                          height={20}
-                          viewBox={"0 0 20 20"}
-                        />
-                        {t("profile.profile")}
-                      </NavLink>
+                      {user && (
+                        <NavLink
+                          to={PATHS.PROFILE_PAGE}
+                          className="nav-link nav-link-mobile"
+                          style={{ padding: "10px!important" }}
+                        >
+                          <FooterProfileSvg
+                            width={20}
+                            height={20}
+                            viewBox={"0 0 20 20"}
+                          />
+                          {t("profile.profile")}
+                        </NavLink>
+                      )}
                     </Nav>
                     <div className="footer-nav-mobile">
                       <div className="footer-nav-mobile--link">
@@ -268,10 +274,11 @@ const Header = () => {
                         <img
                           src={footerLogo}
                           alt="Lao app footer"
-                          style={{ marginBottom: "10px" }}
+                          className="mb-2"
+                          draggable="false"
                         />
-                        <p>{t("footer.all_right")}</p>
-                        <p>{t("footer.content")}</p>
+                        <p className="mb-2">{t("footer.all_right")}</p>
+                        <p style={{fontSize: "14px", textAlign: "justify"}} className="pe-2">{t("footer.content")}</p>
                       </div>
                     </div>
                   </Container>
@@ -281,23 +288,23 @@ const Header = () => {
           </Container>
         ) : (
           <Container fluid className="">
-            <Link to={"/"} className="navbar-brand">
-              <img src={logo} alt="logo" />
+            <Link to={PATHS.HOME_PAGE} className="navbar-brand">
+              <img src={logo} alt="logo" draggable="false" />
             </Link>
             <Nav className="nav-margin">
-              <NavLink to={"/"} className="nav-link">
+              <NavLink to={PATHS.HOME_PAGE} className="nav-link">
                 <HeaderHomeSvg width={16} height={16} viewBox={"0 0 16 16"} />
                 {t("header.home")}
               </NavLink>
-              <NavLink to={"/shop"} className="nav-link">
+              <NavLink to={PATHS.SHOP_PAGE} className="nav-link">
                 <HeaderShopSvg width={16} height={16} viewBox={"0 0 16 16"} />
                 {t("header.shop")}
               </NavLink>
-              <NavLink to={"/prize"} className="nav-link">
+              <NavLink to={PATHS.PRIZE_PAGE} className="nav-link">
                 <HeaderStarSvg width={22} height={20} viewBox={"0 0 18 16"} />
                 {t("header.prize")}
               </NavLink>
-              <NavLink to={"/rank"} className="nav-link">
+              <NavLink to={PATHS.RANK_PAGE} className="nav-link">
                 <HeaderCupSvg width={16} height={16} viewBox={"0 0 16 16"} />
                 {t("header.rank")}
               </NavLink>
@@ -308,6 +315,7 @@ const Header = () => {
               }
               alt="Laos's flag"
               className="language-icon"
+              draggable="false"
             />
             <Nav className="nav-btns">
               <NavDropdown
@@ -372,8 +380,10 @@ const Header = () => {
                     replace
                     className="profile-header__coin"
                   >
-                    <img src={coin} alt="Total coin" />
-                    <span>{user?.coin}</span>
+                    <img src={coin} alt="Total coin" draggable="false" />
+                    <span>
+                      {new Intl.NumberFormat("lo").format(user?.coin)}
+                    </span>
                   </Link>
 
                   <Dropdown align="end">
@@ -386,11 +396,17 @@ const Header = () => {
                           e.target.src = avaDefault;
                         }}
                       />
-                      <img src={avaFrame} alt="Avatar frame" />
+                      <img
+                        src={avaFrame}
+                        alt="Avatar frame"
+                        draggable="false"
+                      />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item>
-                        <Link to={PATHS.PROFILE_PAGE} replace 
+                        <Link
+                          to={PATHS.PROFILE_PAGE}
+                          replace
                           onClick={() => setTab(1)}
                         >
                           <HeaderAccountMyaccountSVG
@@ -403,7 +419,9 @@ const Header = () => {
                       </Dropdown.Item>
 
                       <Dropdown.Item>
-                        <Link to={PATHS.PROFILE_PAGE} replace
+                        <Link
+                          to={PATHS.PROFILE_PAGE}
+                          replace
                           onClick={() => setTab(2)}
                         >
                           <HeaderAccountGifthistSVG
@@ -416,7 +434,9 @@ const Header = () => {
                       </Dropdown.Item>
 
                       <Dropdown.Item>
-                        <Link to={PATHS.PROFILE_PAGE} replace
+                        <Link
+                          to={PATHS.PROFILE_PAGE}
+                          replace
                           onClick={() => setTab(3)}
                         >
                           <HeaderAccountSettingSVG
@@ -461,12 +481,14 @@ const Header = () => {
           </Container>
         )}
       </Navbar>
-      <LoginModal
-        show={showLoginModal}
-        onHide={() => {
-          setShowLoginModal((prev) => !prev);
-        }}
-      />
+      {showLoginModal && (
+        <LoginModal
+          show={showLoginModal}
+          onHide={() => {
+            setShowLoginModal((prev) => !prev);
+          }}
+        />
+      )}
       {showConfirmModal && (
         <ConfirmModal
           show={showConfirmModal}
