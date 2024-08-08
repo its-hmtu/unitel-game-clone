@@ -33,6 +33,7 @@ const RankPage = () => {
           <Tab
             eventKey={"rank"}
             title={isMobile ? t("rankpage.title") : null}
+            // title= {t("rankpage.title")}
             className="rank-tab"
           >
             {isMobile ? (

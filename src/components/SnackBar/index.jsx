@@ -14,7 +14,7 @@ const Root = styled('div')(({ theme }) => ({
 const SnackBar = ({runSnackBar, message, severity, ...props}) => {
   const {snackBar, setSnackBar} = useContext(SnackBarContext);
 
-  const [openTime, setOpenTime] = useState(false)
+  const [openTime, setOpenTime] = useState(false || 0)
 
   useEffect(() => {
     if (runSnackBar) {

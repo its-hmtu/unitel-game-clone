@@ -10,6 +10,7 @@ import package5 from "images/shoppage-package5.svg";
 import ConfirmModal from "components/Modal/ConfirmModal";
 import { getUserInfo } from "utils/localStorage";
 import LoginModal from "components/Modal/LoginModal";
+import OTPConfirmModal from "components/Modal/OTPConfirmModal";
 
 const PackageCard = ({ data, isRetail = false}) => {
   const { t } = useTranslation();
@@ -17,12 +18,25 @@ const PackageCard = ({ data, isRetail = false}) => {
 
   const [confirmModal, setConfirmModal] = useState(false);
   const [packageSelect, setPackageSelect] = useState({});
+  const [itemSelect, setItemSelect] = useState({});
   const [otpModal, setOtpModal] = useState(false)
 
-  const handleConfirmModal = (item) => {
-    setConfirmModal(!confirmModal);
-    setPackageSelect(item);
-  };
+  // const handleConfirmModal = (item) => {
+  //   setConfirmModal(!confirmModal);
+  //   setPackageSelect(item);
+  // };
+
+  function openConfirmModal(item) {
+    if (user) {
+      setItemSelect(item);
+      setConfirmModal(true);
+      setPackageSelect(item?.name);
+    }
+  }
+
+  function closeConfirmModal() {
+    setConfirmModal(false);
+  }
 
   const user = getUserInfo();
   return (
@@ -43,7 +57,7 @@ const PackageCard = ({ data, isRetail = false}) => {
 
               <img src={images[index]} alt="image" />
               <Button
-                onClick={() => handleConfirmModal(item)}              
+                onClick={() => openConfirmModal(item)}              
               >{t("shoppage.buy").replace("_PRICE_", item?.fee)}</Button>
 
               {item?.isHot === 1 && (
@@ -58,15 +72,30 @@ const PackageCard = ({ data, isRetail = false}) => {
         })
       }
       {user ? (
-        <ConfirmModal
+        confirmModal && <ConfirmModal
           show={confirmModal}
-          onHide={() => setConfirmModal(false)}
+          onHide={closeConfirmModal}
+          onOpenOTP={() => {
+            setOtpModal(true);
+            setConfirmModal(false);
+          }}
           title={t("modal.shop.are_you_sure").replace(
             "_PACKAGE_",
             packageSelect?.name
           )}
         />
-      ) : <LoginModal show={confirmModal} onHide={() => setConfirmModal(false)} />}
+      ) :  (confirmModal && <LoginModal show={confirmModal} onHide={() => setConfirmModal(false)} />)}
+
+      {
+        <OTPConfirmModal 
+          isShopPage="shopPage/PackageCard"
+          show={otpModal} 
+          onHide={() => setOtpModal(false)}
+          dataSelect={itemSelect}
+          phone={user?.msisdn}
+          hideDecor
+        />
+      }
     </>
   );
 };

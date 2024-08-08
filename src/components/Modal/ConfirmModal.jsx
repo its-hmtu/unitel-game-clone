@@ -4,7 +4,7 @@ import { Button, Container, Modal } from 'react-bootstrap'
 import confirmIcon from 'images/modal-confirm-questionMark.svg'
 import { useTranslation } from 'react-i18next'
 
-const ConfirmModal = ({show, onHide, title, onLogout, hideDecor}) => {
+const ConfirmModal = ({show, onHide, title, onLogout, onOpenOTP, hideDecor}) => {
   const {t} = useTranslation()
   return (
     <BaseModal show={show} onHide={onHide}>
@@ -29,7 +29,7 @@ const ConfirmModal = ({show, onHide, title, onLogout, hideDecor}) => {
           <Button variant='dark' onClick={onHide}>
             {t('modal.btn.cancel')}
           </Button>
-          <Button variant='secondary' onClick={onLogout}>
+          <Button variant='secondary' onClick={onOpenOTP || onLogout}>
             {t('modal.btn.agree')}
           </Button>
         </Modal.Footer>

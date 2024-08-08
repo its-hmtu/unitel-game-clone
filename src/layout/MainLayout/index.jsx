@@ -9,9 +9,10 @@ import { SocketContext } from "contexts/SocketContext";
 import SnackBar from "components/SnackBar";
 import { SnackBarContext } from "contexts/SnackBarContext";
 import { PATHS } from "routes/path";
-import { useQuery } from "react-query";
+import { QueryClient, useQuery } from "react-query";
 import { getCheckEventWaterQuery } from "data/game";
-import { getUserQuery } from "data/user";
+import { getUserQuery, userInfoKey } from "data/user";
+import { destroyUserInfo } from "utils/localStorage";
 
 const MainLayout = () => {
   const isMobile = useMediaQuery(`(max-width: ${queryPoint.md}px)`);
@@ -55,6 +56,15 @@ const MainLayout = () => {
   ];
 
   const navigate = useNavigate()
+
+  // useEffect(() => {
+  //   if (isMobile) {
+  //     // logout current user when user change from mobile to desktop
+  //     destroyUserInfo();
+  //     new QueryClient().invalidateQueries(userInfoKey);
+  //     new QueryClient().removeQueries(userInfoKey);
+  //   }
+  // }, [isMobile])
 
   return (
     <div className="main-layout-container">
